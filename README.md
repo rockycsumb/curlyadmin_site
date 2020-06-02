@@ -1,2 +1,0 @@
-# curlyadmin
-Admin Service
