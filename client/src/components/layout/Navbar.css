@@ -1,0 +1,275 @@
+.icon {
+	font-size: 20px;
+}
+
+.changeBG {
+	background-color: white !important;
+	
+}
+
+.steflogo {
+	height: 60px !important;
+}
+
+.navbarBrand {
+	display: flex;
+	align-items: center;
+	color: white !important;
+	
+}
+
+.toggler {
+	display: none;
+	
+}
+
+.curlyName {
+	font-family: 'Pacifico', cursive;
+	font-weight: 400;
+	font-size: 2em;
+}
+
+.adminName {
+	font-family: 'Maven Pro', sans-serif;
+	font-size: 1.50em;
+}
+
+.headroom {
+	
+    will-change: transform;
+    transition: transform 200ms linear;
+}
+
+.headroom--pinned {
+    transform: translateY(0%);
+}
+
+.headroom--unpinned {
+    transform: translateY(-100%);
+}
+
+.dropdown-menu {
+	border: solid red 3px;
+ 	min-width: 12em;
+	margin-right: 5em;
+	left: -12em;
+}
+
+.fademe {
+	display: inline;
+	height: 20px;
+	opacity: 0;
+	
+}
+
+/* The container <div> - needed to position the dropdown content */
+.dropdown {
+  position: fixed;
+  display: inline-block;
+  width: 100%;
+  z-index: 2000;
+  padding: 30px;
+}
+
+.dropdown-navbar-header {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	color: #282D32 !important;
+	/* border: solid yellow 2px; */
+}
+
+.dropdown-toggler {
+	padding: 0;
+	font-size: 1em;
+	border: 0;
+	margin-top: 1em;
+}
+
+/* Dropdown Content (Hidden by Default) */
+.dropdown-content {
+  	display: none;
+  position: absolute;
+  background-color: #f1f1f1;
+  /* background-color: lightblue; */
+  /* min-width: 160px; */
+  width: 95%;
+  padding: 20px;
+  margin: 0 auto;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+  border-radius: 5px;
+
+}
+
+/* Links inside the dropdown */
+.dropdown-content a {
+  color: black;
+  padding: 0 16px;
+  text-decoration: none;
+  width: 6em;
+  margin: .5em 0;
+}
+
+.dropdown-content button {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: flex;
+  justify-content: flex-end;  
+}
+
+/* Change color of dropdown links on hover */
+/* .dropdown-content a:hover {background-color: #ddd} */
+
+/* Show the dropdown menu (use JS to add this class to the .dropdown-content container when the user clicks on the dropdown button) */
+.show {
+	display:block;
+}
+
+
+
+@media only screen and (max-width: 992px){
+	.toggler {
+		display: inline;
+		border: 0;
+		position: relative;
+		top: 10px;	}
+	
+	.nav-links {
+		display: none;
+	}
+	
+	.fademe {
+		opacity: 1;
+		transition: 2s ease-in-out;
+	}
+	
+	.dropdown {
+		padding: 20px;
+	}
+	
+	.dropdown-content {
+		width: 95%;
+	}
+}
+
+@media only screen and (max-width: 768px){
+	.dropdown {
+		padding: 15px;
+	}
+	
+	.dropdown-content {
+		width: 93%;
+	}
+}
+
+
+
+
+.fade-in {
+  animation: fadeIn ease  .4s;
+  -webkit-animation: fadeIn ease  .4s;
+  -moz-animation: fadeIn ease  .4s;
+  -o-animation: fadeIn ease .4s;
+  -ms-animation: fadeIn ease  .4s;
+}
+@keyframes fadeIn {
+  0% {
+    opacity:0;
+  }
+  100% {
+    opacity:1;
+  }
+}
+
+@-moz-keyframes fadeIn {
+  0% {
+    opacity:0;
+  }
+  100% {
+    opacity:1;
+  }
+}
+
+@-webkit-keyframes fadeIn {
+  0% {
+    opacity:0;
+  }
+  100% {
+    opacity:1;
+  }
+}
+
+@-o-keyframes fadeIn {
+  0% {
+    opacity:0;
+  }
+  100% {
+    opacity:1;
+  }
+}
+
+@-ms-keyframes fadeIn {
+  0% {
+    opacity:0;
+  }
+  100% {
+    opacity:1;
+}
+}
+
+.fade-out {
+  
+  animation: fadeOut ease .4s;
+  -webkit-animation: fadeOut ease .4s;
+  -moz-animation: fadeOut ease .4s;
+  -o-animation: fadeOut ease .4s;
+  -ms-animation: fadeOut ease .4s;
+	
+}
+@keyframes fadeOut {
+  0% {
+    opacity:1;
+  }
+  100% {
+    opacity:0;
+  }
+}
+
+@-moz-keyframes fadeOut {
+  0% {
+    opacity:1;
+  }
+  100% {
+    opacity:0;
+  }
+}
+
+@-webkit-keyframes fadeOut {
+  0% {
+    opacity:1;
+  }
+  100% {
+    opacity:0;
+  }
+}
+
+@-o-keyframes fadeOut {
+  0% {
+    opacity:1;
+  }
+  100% {
+    opacity:0;
+  }
+}
+
+@-ms-keyframes fadeOut {
+  0% {
+    opacity:1;
+  }
+  100% {
+    opacity:0;
+}
+}
+

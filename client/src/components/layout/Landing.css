@@ -1,0 +1,54 @@
+.landingBackground {
+	/* background: linear-gradient(150deg, #f57b5f 15%, #fb6340 70%, #d44a20 94%); */
+	height: 50em;
+	background-color: #ee5522;
+	
+	background-image: url("../../theme/homepagebackground1.jpg");
+
+	background-attachment: fixed;
+	background-size: cover;
+	margin-top: 0;
+	/* border: solid red 2px; */
+	
+	
+}
+
+.landing-shape {
+	/* border: solid yellow 2px; */
+	
+}
+
+
+@media only screen and (max-width: 500px){
+	/* .landingBackground {
+		height: 0px !important;
+		
+		
+	} */
+	
+	.landing-cards {
+		padding-top: 1em;
+	}
+}
+
+
+@media only screen and (max-width: 768px) {
+	.heading-blurb {
+		top: 50px;
+		text-align: center;
+		width: 400px;
+	}
+}
+
+@media only screen and (max-width: 992px) {
+	.heading-blurb {
+		top: 50px;
+		text-align: center;
+	}
+	
+	.landing-cards {
+		padding-top: 1em;
+		top: -5em;
+	}
+	
+}

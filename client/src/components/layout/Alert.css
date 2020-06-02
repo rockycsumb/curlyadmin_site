@@ -1,0 +1,16 @@
+.checkBorder {
+	border: solid pink 5px;
+}
+
+.alertFadeOut {
+  animation: fadeOut ease .5s;
+  
+}
+@keyframes fadeOut {
+  0% {
+    opacity:1;
+  }
+  100% {
+    opacity:0;
+  }
+}

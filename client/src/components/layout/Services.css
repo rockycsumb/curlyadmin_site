@@ -1,0 +1,9 @@
+.Services-task-amount {
+	font-size: 5rem;
+	margin:40px 0;
+	margin-bottom:50px;
+}
+
+p.Services-description {
+	line-height: 0;
+}
