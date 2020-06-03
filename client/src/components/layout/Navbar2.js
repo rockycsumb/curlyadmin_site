@@ -1,6 +1,6 @@
 
 import React, {useEffect, useState, Fragment} from "react";
-import { Link } from "react-router-dom";
+import { NavLink as NavLinkRRD, Link } from "react-router-dom";
 import {connect} from 'react-redux';
 import PropTypes from 'prop-types';
 import {logout} from '../../actions/auth';
@@ -26,10 +26,26 @@ import {
 
 const NavBar = ({auth: {isAuthenticated, loading}, logout}) => {
 	const [isOpen, setIsOpen] = useState(false);
+	const [fadeOut, setFadeOut] = useState("");
+	
 	
 	const toggler = () => {
+		
 		setIsOpen(!isOpen)
+		
+		// if(isOpen){
+		// 	setFadeOut("dropdown-content-notshow");
+		// 	setTimeout(()=>{
+		// 		setFadeOut("notshow");
+		// 	}, 350)
+		// } else {
+		// 	setFadeOut("");
+		// }
 	};
+	
+	
+	
+	
 	
 	useEffect(()=>{
 			var myElement = document.getElementById("navbar-main");
@@ -37,16 +53,18 @@ const NavBar = ({auth: {isAuthenticated, loading}, logout}) => {
 			// initialise
 			headroom.init();
 			
-	},[isOpen]);
+	},[]);
 	
 	return(
 		<div>
-			<div class="dropdown">
+			
+			
+			<div className={isOpen ? "dropdown"
+						: "dropdown hide-dropdown"}>
 				<div 
 					id="myDropdown" 
-					className={isOpen ? `${"dropdown-content"} ${"show fade-in"}`
-						: "dropdown-content"
-						}
+					className={isOpen ? "dropdown-content"
+						: "dropdown-content hide"}
 				>
 					<div className="dropdown-navbar-header">
 						<NavbarBrand to="/" tag={Link} onClick={toggler}>
@@ -61,7 +79,7 @@ const NavBar = ({auth: {isAuthenticated, loading}, logout}) => {
 						  
 						<div>
 							<Button onClick={toggler} className="dropdown-toggler bg-transparent" >
-								<i class="fas fa-times" />
+								<i className="fas fa-times" />
 							</Button>
 						</div>
 					</div>
@@ -130,48 +148,58 @@ const NavBar = ({auth: {isAuthenticated, loading}, logout}) => {
 				</NavbarBrand>
 
 				<Button onClick={toggler} className="toggler bg-transparent" >
-					<i className="fas fa-bars" />
+					<i className="fas fa-bars icon-toggler" />
 				</Button>
 					
 					
 				
-					<Nav className="mr-auto nav-links" navbar>
+					<Nav className="ml-auto nav-links" navbar>
 						<NavItem>
-							<NavLink 
-								to="/" 
+							<NavLinkRRD
+								className="navbar-navlink"
+								to="/home" 
+								activeClassName={"active-navbar"}
 								tag={Link}
 							>
 								Home
 								
-							</NavLink>
+							</NavLinkRRD>
 						</NavItem>
 						<NavItem>
-							<NavLink 
+							<NavLinkRRD
+								className="navbar-navlink"
 								to="/services" 
+								activeClassName={"active-navbar"}
 								tag={Link}
 							>
 								Services
-							</NavLink>
+							</NavLinkRRD>
 						</NavItem>
 						<NavItem>
-							<NavLink 
+							<NavLinkRRD 
+								className="navbar-navlink"
+								activeClassName={"active-navbar"}
 								to="/about" 
 								tag={Link}
 							>
 								About
-							</NavLink>
+							</NavLinkRRD>
 						</NavItem>
 						<NavItem>
-							<NavLink 
+							<NavLinkRRD 
+								className="navbar-navlink"
+								activeClassName={"active-navbar"}
 								to="/contact" 
 								tag={Link}
 							>
 								Contact
-							</NavLink>
+							</NavLinkRRD>
 						</NavItem>
 					</Nav>
 				</Container>
 			</Navbar>
+			
+			
 		</div>
 	)
 }

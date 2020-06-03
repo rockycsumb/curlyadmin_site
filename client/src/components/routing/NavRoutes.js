@@ -32,6 +32,7 @@ const NavRoutes = ({auth: {isAuthenticated}}) => {
 				
 				<section>
 					<Switch>
+						<Route exact path="/home" component={Landing} />
 						<Route exact path="/login" component={Login} />
 						<Route exact path="/register" component={Register} />
 						<Route exact path="/about" component={About} />
