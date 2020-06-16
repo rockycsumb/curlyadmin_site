@@ -2,10 +2,7 @@ import React, {Fragment} from 'react';
 import {BrowserRouter as Router, Route, Switch, Redirect} from 'react-router-dom';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
-
-// import NavBar from '../layout/Navbar';
-import NavBar from '../layout/Navbar2';
-
+import NavBar from '../layout/Navbar';
 import Landing from '../layout/Landing';
 import About from '../layout/About';
 import Services from '../layout/Services';
@@ -16,20 +13,14 @@ import Register from '../auth/Register';
 import Dashboard from '../dashboard/Dashboard';
 import Spinner from '../layout/Spinner.js';
 import PrivateRoute from './PrivateRoute';
-import SimpleFooter from "../Footers/SimpleFooter.js";
+import Footer from "../Footers/Footer.js";
 
 const NavRoutes = ({auth: {isAuthenticated}}) => {
 	return (
 		<Router>
-			<Fragment>
-				
-				
-				
+			<Fragment>				
 				{isAuthenticated ? <Redirect id="navbar-main" to="/dashboard/overview" /> : <NavBar />}
-						
 						<Route exact path="/" component={Landing} />
-				{/*<section className="App-container">*/}
-				
 				<section>
 					<Switch>
 						<Route exact path="/home" component={Landing} />
@@ -44,7 +35,7 @@ const NavRoutes = ({auth: {isAuthenticated}}) => {
 						<Route exact path="/dashboard/login" component={()=><Redirect to="/" />} />
 					</Switch>
 				</section>
-				{isAuthenticated ? <Fragment /> : <SimpleFooter />}
+				{isAuthenticated ? <Fragment /> : <Footer />}
 				
 			</Fragment>	
 		</Router>

@@ -13,7 +13,6 @@ import {
 } from 'reactstrap';
 
 const Facebook = ({login, isAuthenticated, registerSocialMedia}) => {
-	
 	const [userInfo, setUserInfo] = useState({
 		isLoggedIn: false,
 		userID: '',

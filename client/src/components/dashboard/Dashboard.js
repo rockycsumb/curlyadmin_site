@@ -11,7 +11,7 @@ import DashboardProfile from './DashboardProfile';
 import CreateProfile from '../profile-form/CreateProfile';
 import EditProfile from '../profile-form/EditProfile';
 import PrivateRoute from '../routing/PrivateRoute';
-import SimpleFooter from "../Footers/SimpleFooter.js";
+import Footer from "../Footers/Footer.js";
 import {BrowserRouter as Router, Route, Switch, Redirect} from 'react-router-dom';
 
 

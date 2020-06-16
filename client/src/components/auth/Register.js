@@ -47,7 +47,6 @@ import {
 
 import './Auth.css';
 // core components
-import SimpleFooter from "../Footers/SimpleFooter.js";
 
 
 const Register = ({setAlert, register, isAuthenticated}) => {

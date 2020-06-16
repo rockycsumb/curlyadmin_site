@@ -1,0 +1,197 @@
+.landingBackground {
+	height: 20em;
+	background-image: url("../images/homepagebackground1.jpg");
+	background-attachment: fixed;
+	background-size: cover;
+	margin-top: 0;
+	/* border: solid red 2px; */
+}
+
+.landing-shape {
+	/* border: solid yellow 2px; */
+}
+
+.landing-h4-p {
+	color: #32325d;
+}
+
+.bg-gradient-secondary {
+    background: linear-gradient(35deg,#f4f5f7,#f4f4f7)!important;
+}
+
+.landing-cards {
+	position: relative;
+    bottom: 10em;
+}
+
+.two-card-top-space {
+	position: relative;
+	top: -7em;
+}
+
+.card-space {
+		margin-top: 1.5rem;
+}
+
+.round-cards-button {
+	margin-top: 1.5rem;
+}
+
+.center-image {
+  display: block;
+  margin-left: auto;
+  margin-right: auto; 
+}
+
+.make-image-fluid {
+  max-width: 100%;
+  height: auto; 
+}
+.card-up-hover:hover {
+  transform: translateY(-20px);
+  transition: all 0.15s ease; 
+}
+
+.landing-text-color-primary {
+	color: #5E72E4;
+}
+
+.landing-text-color-success {
+	color: #2DCE89;
+}
+
+.landing-text-color-danger {
+	color: #FB6340;
+}
+
+.landing-bg-color-primary {
+	background-color: #C4CBF5;
+}
+
+.landing-bg-color-success {
+	background-color: #A9ECD0;
+}
+
+.landing-bg-color-danger {
+	background-color: #FDC5B8;
+}
+
+.landing-bg-color-default {
+	background-color: #172B4D;
+}
+
+
+.btn-rollover-color-default:hover {
+	background-color: rgba(23,43,77, 0.9);
+}
+
+.btn-rollover-color-default:active {
+	background-color: rgba(23,43,77, 0.9) !important;
+}
+
+
+.landing-button-color-primary {
+	background-color: #5E72E4;
+}
+
+.landing-button-color-success {
+	background-color: #2DCE89;
+}
+
+.landing-button-color-danger {
+	background-color: #FB6340;
+}
+
+.btn-rollover-color-primary:hover {
+	background-color: rgba(94,114,228, 0.8);
+}
+
+.btn-rollover-color-primary:active {
+	background-color: rgba(94,114,228, 0.8) !important;
+}
+
+.btn-rollover-color-success:hover {
+	background-color: rgba(45,206,137, 0.8);
+}
+
+.btn-rollover-color-success:active {
+	background-color: rgba(45,206,137, 0.8) !important;
+}
+
+.btn-rollover-color-danger:hover {
+	background-color: rgba(251,99,64, 0.8);
+}
+
+.btn-rollover-color-danger:active {
+	background-color: rgba(251,99,64, 0.8) !important;
+}
+
+.landing-form {
+	position: relative;
+	top: -3em;
+	padding: 5em 0;
+	background-color: #172B4D;
+}
+
+.recaptcha-border {
+	border: solid red 3px;
+}
+
+.please-verify {
+	display: inline-block;
+	color: red;
+}
+
+.please-verify-hide {
+	display: none;
+}
+
+@media only screen and (max-width: 500px){
+	.landing-cards {
+		padding-top: 1em;
+	}
+}
+
+
+@media only screen and (max-width: 768px) {
+	.heading-blurb {
+		top: 50px;
+		text-align: center;
+		width: 400px;
+	}
+	
+	.round-cards-button {
+		margin-top: 1.5rem !important;
+	}
+}
+
+@media only screen and (max-width: 992px) {
+	.heading-blurb {
+		top: 50px;
+		text-align: center;
+	}
+	
+	.landing-cards {
+		padding-top: 1em;
+		top: -5em;
+	}
+	
+	.card-space {
+		margin-top: 1.5rem !important;
+	}
+	
+	.two-card-top-space {
+		position: relative;
+		top: 0;
+	}
+}
+
+@media only screen and (max-width: 1199px) {
+	.card-space {
+		margin-top: 0;
+	}
+	
+	.round-cards-button {
+		margin-top: 3rem;
+	}
+}

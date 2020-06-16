@@ -14,6 +14,8 @@ export const PROFILE_ERROR = 'PROFILE_ERROR';
 export const ACCOUNT_DELETED = 'ACCOUNT_DELETED';
 export const GET_TASKS = 'GET_TASKS';
 export const TASK_ERROR = 'TASK_ERROR';
+export const SET_LANGUAGE = 'SET_LANGUAGE';
+
 
 
 

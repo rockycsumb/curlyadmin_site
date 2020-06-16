@@ -1,40 +1,17 @@
-/*!
-
-=========================================================
-* Argon Design System React - v1.1.0
-=========================================================
-
-* Product Page: https://www.creative-tim.com/product/argon-design-system-react
-* Copyright 2020 Creative Tim (https://www.creative-tim.com)
-* Licensed under MIT (https://github.com/creativetimofficial/argon-design-system-react/blob/master/LICENSE.md)
-
-* Coded by Creative Tim
-
-=========================================================
-
-* The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
-
-*/
 import React from "react";
-import {Link, Redirect, NavLink} from 'react-router-dom';
+import {Link} from 'react-router-dom';
 import {connect} from 'react-redux';
 import PropTypes from 'prop-types';
 import emailjs from 'emailjs-com';
-// nodejs library that concatenates classes
-import classnames from "classnames";
-
-
-
-
-
+import ScrollAnimation from 'react-animate-on-scroll';
+import '../../assets/css/Landing.css';
+import Recaptcha from 'react-recaptcha';
 
 // reactstrap components
 import {
-  Badge,
   Button,
   Card,
   CardBody,
-  CardImg,
   FormGroup,
   Input,
   InputGroupAddon,
@@ -45,9 +22,21 @@ import {
   Col
 } from "reactstrap";
 
-// core components
-import SimpleFooter from "../../components/Footers/SimpleFooter.js";
-import './Landing.css';
+//EMAIL KEY
+const EMAIL_JS_KEY = `${process.env.REACT_APP_API_KEY}`;
+
+const words = {
+	english: {
+		administratives_support: "Administrative Support",
+		learn_more: "Learn More",
+		send_message: "Send Messge"
+	},
+	spanish: {
+		administratives_support: "apoyo a la administraciรณn",
+		learn_more: "Aprende Mas",
+		send_message: "Spanish name for send message"
+	}
+}
 
 class Landing extends React.Component {
 	constructor(props){
@@ -55,10 +44,15 @@ class Landing extends React.Component {
 		this.state = {
 			name: "",
 			email: "",
-			message: ""		
+			message: "",
+			isVerified: false,
+			verifyRequired: false
 		};
+		
 		this.handleChange = this.handleChange.bind(this);
 		this.handleSubmit = this.handleSubmit.bind(this);
+		this.recaptchaLoaded = this.recaptchaLoaded.bind(this);
+		this.verifyCallback = this.verifyCallback.bind(this);
 	}
 
 	handleChange(evt){
@@ -67,10 +61,19 @@ class Landing extends React.Component {
 		})
 	}
 	
+	recaptchaLoaded() {
+		// console.log("captcha loaded succesfully")
+	}
+	
 	handleSubmit(evt){
-		evt.preventDefault();
-		console.log(this.state);
 		
+		if(!this.state.isVerified) {
+			this.setState({
+				verifyRequired: true
+			})
+		} else {
+			
+		evt.preventDefault();
 		const {
 			name,
 			email,
@@ -85,125 +88,137 @@ class Landing extends React.Component {
 			
 		var service_id = "default_service";
 		var template_id = "formpage";
-		var user_id = "user_XKRqgVmkTkoqnvfTpqZSo"
+		var user_id = EMAIL_JS_KEY;
 		
-		emailjs.send(service_id, template_id, templateParams, user_id);
-		
+		// emailjs.send(service_id, template_id, templateParams, user_id);
 		
 		this.setState({
 			name: "",
 			email: "",
 			message: ""
 		})
-		
-		this.props.history.push('/confirmation')
+
+		this.props.history.push({
+			pathname: '/confirmation',
+			state: templateParams.name
+		})
+	  }
 	}
   
   componentDidMount() {
     document.documentElement.scrollTop = 0;
     document.scrollingElement.scrollTop = 0;
-    this.refs.main.scrollTop = 0;
+    this.refs.main.scrollTop = 0;	  
+  }
+	
+	verifyCallback(response){
+	  if(response){
+		  this.setState({
+			  isVerified: true,
+			  verifyRequired: false
+		  })
+	  }
   }
 
   render() {
-	
 	  
+    let languageSelected = "english";
+    const {language} = this.props;
+    // console.log("lang from redux " ,language)
+	
+	if(language !== undefined)
+		{
+			languageSelected = language;
+		}
+	
+	const {learn_more, administratives_support} = words[languageSelected];
+	 	
     return (
       <>
-        
         <main ref="main">
-          <div className="position-relative">
-            {/* shape Hero */}
-            <section className="">
+          <div>
+            <section className="pb-100">
               <div className="landingBackground">
-               
-                
-              </div>
-              <Container className="py-lg-md d-flex heading-blurb">
-                <div className="col px-0">
-                  <Row className="justify-content-center">
-                    <div>
-					   <h1 className="display-3 text-white">
-						   {' '}{/*Welcome to Your Virtual Assistance*/}
-                      </h1>
-					</div>
-                     
-						
-                    
-                  </Row>
-                </div>
-              </Container>
-              {/* SVG separator */}
-              <div className="separator separator-bottom separator-skew">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  preserveAspectRatio="none"
-                  version="1.1"
-                  viewBox="0 0 2560 100"
-                  x="0"
-                  y="0"
-                >
-                  <polygon
-                    className="fill-white"
-                    points="2560 0 2560 100 0 100"
-                  />
-                </svg>
               </div>
             </section>
-            {/* 1st Hero Variation */}
           </div>
-			
-			
-          <section className="section section-lg pt-lg-0 mt--200 landing-cards">
+		  
+		  {/*  THREE CARDS */}
+		 <ScrollAnimation animateIn="fadeIn">
+          <section className="landing-cards">
             <Container>
               <Row className="justify-content-center">
                 <Col lg="12">
                   <Row className="row-grid">
                     <Col lg="4">
-                      <Card className="card-lift--hover shadow border-0">
+                      <Card className="card-up-hover shadow mb-5 border-0">
                         <CardBody className="py-5">
-                          <div className="icon icon-shape icon-shape-primary rounded-circle mb-4">
-                            <i className="fa fa-table" />
+                          <div className="mb-4">
+                            <i className="fa fa-table 
+										  landing-bg-color-primary 
+										  rounded-circle p-3
+										  landing-text-color-primary" 
+								/>
                           </div>
-                          <h6 className="text-primary text-uppercase">
-                            Virtual Assistant
+                          <h6 className="landing-text-color-primary 
+										 text-uppercase 
+										 font-weight-bold"
+							  >
+                            {administratives_support}
                           </h6>
-                          <p className="description mt-3">
-                            Administration Support
-							<p> </p>
+                          <p className="description mt-3 font-weight-light">
+                            {administratives_support}
                           </p>
-				
-							
                           <Button
-                            className="mt-4"
-                            color="primary"
-							  to="/services"
-							  tag={Link}
+                            className="mt-4 
+									   text-uppercase 
+									   landing-button-color-primary 
+									   border-0 
+									   shadow 
+									   btn-rollover-color-primary
+									  
+									   font-weight-bold
+									   py-2 px-4"
+							to="/services"
+							tag={Link}
                           >
 							   Learn more                   
                           </Button>
-						  
                         </CardBody>
                       </Card>
                     </Col>
                     <Col lg="4">
-                      <Card className="card-lift--hover shadow border-0">
+                      <Card className="card-up-hover shadow mb-5 border-0">
                         <CardBody className="py-5">
-                          <div className="icon icon-shape icon-shape-success rounded-circle mb-4">
-                            <i className="fa fa-clock-o" />
+                          <div className="mb-4">
+                            <i className="fa fa-clock-o 
+										  landing-bg-color-success
+										  landing-text-color-success 
+										  rounded-circle p-3" 
+								/>
                           </div>
-                          <h6 className="text-success text-uppercase">
+                          <h6 className="landing-text-color-success 
+										 text-uppercase 
+										 font-weight-bold"
+							  >
                             Bookeeping
                           </h6>
-                          <p className="description mt-3">
-                            Budget Management and Expense Reports 
+                          <p className="description mt-3 font-weight-light">
+                            Budget Management
                           </p>
      
                           <Button
-                            className="mt-lg-4"
-                            color="success"
-                           to="/services"
-							  tag={Link}
+                            className="mt-4
+									   card-space 
+									   text-uppercase 
+									   landing-button-color-success 
+									   border-0 
+									   shadow 
+									   btn-rollover-color-success
+									   font-weight-bold
+									   py-2 px-4"
+                        	to="/services"
+							tag={Link}
                           >
 							   Learn more                   
                           </Button>
@@ -211,23 +226,34 @@ class Landing extends React.Component {
                       </Card>
                     </Col>
                     <Col lg="4">
-                      <Card className="card-lift--hover shadow border-0">
+                      <Card className="card-up-hover shadow border-0">
                         <CardBody className="py-5">
-                          <div className="icon icon-shape icon-shape-warning rounded-circle mb-4">
-                            <i className="fa fa-laptop" />
+                          <div className="mb-4">
+                            <i className="fa fa-laptop 
+										  landing-bg-color-danger 
+										  landing-text-color-danger 
+										  rounded-circle p-3" />
                           </div>
-                          <h6 className="text-warning text-uppercase">
+                          <h6 className="landing-text-color-danger 
+										 text-uppercase 
+										 font-weight-bold">
                             IT Support
                           </h6>
-                          <p className="description mt-3">
+                          <p className="description mt-3 font-weight-light">
                             Maintenance, Updates and More
                           </p>
 	
                           <Button
-                            className="mt-4"
-                            color="warning"
-                           to="/services"
-							  tag={Link}
+                            className="mt-4 
+									   text-uppercase 
+									   landing-button-color-danger 
+									   border-0 
+									   shadow 
+									   btn-rollover-color-danger
+									   font-weight-bold
+									   py-2 px-4"
+                          	to="/services"
+							tag={Link}
                           >
 							   Learn more                   
                           </Button>
@@ -239,23 +265,21 @@ class Landing extends React.Component {
               </Row>
             </Container>
           </section>
-			
-		
-			
-          <section className="section">
+			</ScrollAnimation>
+			  
+		  {/*  TWO ROUND CARDS */}			
+          <section className="mb-3 two-card-top-space" >
             <Container>
-				
               <Row className="justify-content-center">
                 <Col className="mb-5 mb-lg-0" lg="6" md="6">
+				  <ScrollAnimation animateIn="fadeInUp">
                   <div className="px-4">
-                    {/*
-					  <img
+                    <img
                       alt="..."
-                      className="rounded-circle img-center img-fluid shadow shadow-lg--hover"
-                      src={require("../../assets/img/theme/homepgpicv1.jpg")}
+                      className="rounded-circle center-image make-image-fluid shadow shadow-lg--hover"
+                      src={require("../../assets/images/homepgpicv1.jpg")}
                       style={{ width: "200px" }}
                     />
-					*/}
                     <div className="pt-4 text-center">
                       <h5 className="title">
                         <span className="d-block mb-1">Need administrative support?</span>
@@ -263,29 +287,34 @@ class Landing extends React.Component {
                       </h5>
                       <div className="mt-3">
                         <Button
-                            className="mt-4"
-                            color="primary"
-                            to="/services"
+                            className="mt-4 
+									   text-uppercase 
+									   landing-button-color-primary 
+									   border-0 
+									   shadow 
+									   btn-rollover-color-primary
+									   font-weight-bold
+									   py-2 px-4"
+							to="/services"
 							tag={Link}
-                            
                           >
-                            Learn more
+							   Learn more                   
                           </Button>
 
                       </div>
                     </div>
                   </div>
+				  </ScrollAnimation>
                 </Col>
                 <Col className="mb-5 mb-lg-0" lg="6" md="6">
+				  <ScrollAnimation animateIn="fadeInUp" delay={500}>
                   <div className="px-4">
-					 {/*
                     <img
                       alt="..."
-                      className="rounded-circle img-center img-fluid shadow shadow-lg--hover"
-                      src={require("../../assets/img/theme/homepgpic2.jpg")}
+                      className="rounded-circle center-image make-image-fluid shadow shadow-lg--hover"
+                      src={require("../../assets/images/homepgpic2.jpg")}
                       style={{ width: "200px" }}
                     />
-					  */}
                     <div className="pt-4 text-center">
                       <h5 className="title">
                         <span className="d-block mb-1">Not good with numbers?</span>
@@ -296,43 +325,44 @@ confidentiality you deserve.
                         </small>
                       </h5>
                       <div className="mt-3">
-                        <Button
-                            className="mt-4"
-                            color="warning"
-                             to="/services"
-							tag={Link}
-                          >
-                            Learn more
-                          </Button>
-				
+						   <Button
+                            className="round-cards-button
+									   mt-4 
+									   text-uppercase 
+									   landing-button-color-danger 
+									   border-0 
+									   shadow 
+									   btn-rollover-color-danger
+									   font-weight-bold
+									   py-2 px-4"
+								to="/services"
+								tag={Link}
+							 >
+							   Learn more                   
+                          </Button>				
                       </div>
                     </div>
                   </div>
+				  </ScrollAnimation>
                 </Col>
-				  
-		
               </Row>
             </Container>
           </section>
 			
-	
-          <section className="section section-lg bg-gradient-default">
-			
-            <section className="section  pt-lg-0 section-contact-us">
+		  <ScrollAnimation animateIn="fadeInUp">
+          <section className="landing-form">
+			<form onSubmit={this.handleSubmit}>
+            <section className="pt-lg-0 section-contact-us">
             <Container>
               <Row className="justify-content-center">
                 <Col lg="8">
                   <Card className="bg-gradient-secondary shadow">
                     <CardBody className="p-lg-5">
-                      <h4 className="mb-1">Got Questions?</h4>
+                      <h4 className="mb-1 landing-h4-p">Got Questions?</h4>
                       <p className="mt-0">
                         Contact us today for a free quote, no obligation. 
                       </p>
-                      <FormGroup
-                        className={classnames("mt-5", {
-                          focused: this.state.nameFocused
-                        })}
-                      >
+                      <FormGroup>
                         <InputGroup className="input-group-alternative">
                           <InputGroupAddon addonType="prepend">
                             <InputGroupText>
@@ -340,21 +370,19 @@ confidentiality you deserve.
                             </InputGroupText>
                           </InputGroupAddon>
                           <Input
-                            placeholder="Your name"
+                            placeholder="Your Name (required)"
                             type="text"
 							name="name"
 							value={this.state.name}
 							onChange={this.handleChange}
                             onFocus={e => this.setState({ nameFocused: true })}
                             onBlur={e => this.setState({ nameFocused: false })}
+							className="shadow-sm"
+							required
                           />
                         </InputGroup>
                       </FormGroup>
-                      <FormGroup
-                        className={classnames({
-                          focused: this.state.emailFocused
-                        })}
-                      >
+                      <FormGroup>
                         <InputGroup className="input-group-alternative">
                           <InputGroupAddon addonType="prepend">
                             <InputGroupText>
@@ -362,13 +390,15 @@ confidentiality you deserve.
                             </InputGroupText>
                           </InputGroupAddon>
                           <Input
-                            placeholder="Email address"
+                            placeholder="Email Address (required)"
                             type="email"
 							name="email"
 							value={this.state.email}
 							onChange={this.handleChange}
                             onFocus={e => this.setState({ emailFocused: true })}
                             onBlur={e => this.setState({ emailFocused: false })}
+							className="shadow-sm"
+							required
                           />
                         </InputGroup>
                       </FormGroup>
@@ -382,16 +412,31 @@ confidentiality you deserve.
                           placeholder="Type a message..."
                           rows="4"
                           type="textarea"
+						  className="shadow-sm"
                         />
-                      </FormGroup>
+					  </FormGroup>						
+					  {/* RECAPTCHA CODE*/}
+					  <div className="mb-3 justify-content-center row">
+						<div>
+						 <div className={this.state.verifyRequired ? `please-verify` : "please-verify-hide"}>Please verify</div>
+							 <div  className={this.state.verifyRequired ? `recaptcha-border` : ""}>
+								<div className="m-1">
+									 <Recaptcha
+										sitekey="6LdN0KQZAAAAAH104p0wqY4tUhL59v_BL2q7ZCXy"
+										render="explicit"
+										onloadCallback={this.recaptchaLoaded}
+										verifyCallback={this.verifyCallback}
+									  />
+								</div>
+							</div>
+						</div>
+					  </div>
                       <div>
                         <Button
                           block
-                          className="btn-round"
-                          color="default"
+                          className="btn-round landing-bg-color-default btn-rollover-color-default"
                           size="lg"
-                          type="button"
-						  onClick={this.handleSubmit}
+                          type="submit" 
                         >
                           Send Message
                         </Button>
@@ -402,40 +447,21 @@ confidentiality you deserve.
               </Row>
             </Container>
           </section>
-			  
-			  
-            {/* SVG separator */}
-            <div className="separator separator-bottom separator-skew zindex-100">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                preserveAspectRatio="none"
-                version="1.1"
-                viewBox="0 0 2560 100"
-                x="0"
-                y="0"
-              >
-                <polygon
-                  className="fill-white"
-                  points="2560 0 2560 100 0 100"
-                />
-              </svg>
-            </div>
+		</form>
           </section>
-          
-          
+          </ScrollAnimation>
         </main>
-   
       </>
     );
   }
 }
 
 Landing.propTypes={
-	isAuthenticated: PropTypes.bool
+	language: PropTypes.string
 }
 
 const mapStateToProps = state =>({
-	isAuthenticated: state.auth.isAuthenticated
+	language: state.language.language.language
 })
 
 export default connect(mapStateToProps)(Landing);
