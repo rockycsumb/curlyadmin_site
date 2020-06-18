@@ -1,30 +1,10 @@
-/*!
-
-=========================================================
-* Argon Design System React - v1.1.0
-=========================================================
-
-* Product Page: https://www.creative-tim.com/product/argon-design-system-react
-* Copyright 2020 Creative Tim (https://www.creative-tim.com)
-* Licensed under MIT (https://github.com/creativetimofficial/argon-design-system-react/blob/master/LICENSE.md)
-
-* Coded by Creative Tim
-
-=========================================================
-
-* The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
-
-*/
 import React from "react";
-import {Route, Redirect} from 'react-router-dom';
-// nodejs library that concatenates classes
+import {Redirect, Link} from 'react-router-dom';
+import '../../assets/css/confirmation.css';
 
 // reactstrap components
 import {
-  Badge,
   Button,
-  Card,
-  CardBody,
   Container,
   Row,
   Col
@@ -35,49 +15,76 @@ class Confirmation extends React.Component {
 		super(props);
 		
 	}
-  
-  componentDidMount() {
-    document.documentElement.scrollTop = 0;
-    document.scrollingElement.scrollTop = 0;
-    
-  }
+
   render() {
-	  console.log("these contact props", this.props.location.state);
+	  	let firstName = "";
+		if (this.props.location.state){
+			let fullName = this.props.location.state;
+			fullName = fullName.split(' ');
+			firstName = fullName[0];
+			let firstLetterName = firstName[0].toUpperCase();
+			firstName = firstLetterName + firstName.slice(1);
+	}
 	
     return (
 		<div>
-		{!this.props.location.state ? <Redirect to="/login" /> : 
-      <>
-        
-        <main ref="main">
-			<div style={{height: "80px"}}>
-                <span />
-                <span />
-                <span />
-                <span />
-                <span />
-                <span />
-                <span />
-              </div>
-        <Container className="contact-header pt-lg-5">
-			<div class="justify-content-center text-left row">
-					<div class="col-lg-8">
-						<h2>Dear {this.props.location.state},</h2>
-						<p class="mt-1 lead text-muted">
-							Thank you for your message!
- 							We will contact you shortly to go over the job details. 
-							For weekend requests, please allow 1-2 hours response time. 
-						</p>
+			{!this.props.location.state ? <Redirect to="/" /> : 
+		<>
+			 <main ref="main">
+				<div style={{height: "10em"}}>
+					<span />
+					<span />
+					<span />
+					<span />
+					<span />
+					<span />
+					<span />
+				</div>
+				<Container className="py-lg-md d-flex Confirmation-container">
+                	<div className="col px-0 justify-content-center">
+						<Row className="justify-content-center">
+							<Col lg="6" className="message-container">
+							  <h3 className="font-weight-bold text-black">
+								Dear {firstName},{" "} 
+							  </h3>
+		
+							  <span className="confirmation-lead-text">Thank you for your message!</span>
+							  
+							  <p className="confirmation-lead-text-2 text-black">
+								We will contact you shortly to go over the job details. 
+								For weekend requests, please allow 1-2 hours response time.
+								Please feel free to browse our site.
+							  </p>
+							  <div className="">
+								<Button
+								  outline
+								  className="btn btn-outline-dark mr-2 mb-3 mb-sm-0 shadow-sm"
+								  to="/about"
+								  tag={Link}
+								>
+								  <span className="">About</span>
+								</Button>
+								<Button
+								  outline
+								  className="btn btn-outline-dark mb-3 mb-sm-0 shadow-sm"
+								  to="/"
+								  tag={Link}
+								>
+								  <span className="">
+									Home
+								  </span>
+								</Button>
+							  </div>
+							</Col>
+                  		</Row>
 					</div>
-				</div>	
-		</Container>
-        </main>
-      </>
+				</Container>
+			</main>
+		</>
 		}
-			</div>
+		</div>
     );
-  }
-			
+  }	
 }
 
 export default Confirmation;

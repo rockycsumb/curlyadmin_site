@@ -105,11 +105,11 @@ class Landing extends React.Component {
 	  }
 	}
   
-  componentDidMount() {
-    document.documentElement.scrollTop = 0;
-    document.scrollingElement.scrollTop = 0;
-    this.refs.main.scrollTop = 0;	  
-  }
+  // componentDidMount() {
+  //   document.documentElement.scrollTop = 0;
+  //   document.scrollingElement.scrollTop = 0;
+  //   this.refs.main.scrollTop = 0;	  
+  // }
 	
 	verifyCallback(response){
 	  if(response){
@@ -142,6 +142,8 @@ class Landing extends React.Component {
               </div>
             </section>
           </div>
+			
+			
 		  
 		  {/*  THREE CARDS */}
 		 <ScrollAnimation animateIn="fadeIn">
@@ -155,12 +157,12 @@ class Landing extends React.Component {
                         <CardBody className="py-5">
                           <div className="mb-4">
                             <i className="fa fa-table 
-										  landing-bg-color-primary 
+										  bg-color-primary 
 										  rounded-circle p-3
-										  landing-text-color-primary" 
+										  text-color-primary" 
 								/>
                           </div>
-                          <h6 className="landing-text-color-primary 
+                          <h6 className="text-color-primary 
 										 text-uppercase 
 										 font-weight-bold"
 							  >
@@ -172,7 +174,7 @@ class Landing extends React.Component {
                           <Button
                             className="mt-4 
 									   text-uppercase 
-									   landing-button-color-primary 
+									   button-color-primary 
 									   border-0 
 									   shadow 
 									   btn-rollover-color-primary
@@ -192,12 +194,12 @@ class Landing extends React.Component {
                         <CardBody className="py-5">
                           <div className="mb-4">
                             <i className="fa fa-clock-o 
-										  landing-bg-color-success
-										  landing-text-color-success 
+										  bg-color-success
+										  text-color-success 
 										  rounded-circle p-3" 
 								/>
                           </div>
-                          <h6 className="landing-text-color-success 
+                          <h6 className="text-color-success 
 										 text-uppercase 
 										 font-weight-bold"
 							  >
@@ -211,7 +213,7 @@ class Landing extends React.Component {
                             className="mt-4
 									   card-space 
 									   text-uppercase 
-									   landing-button-color-success 
+									   button-color-success 
 									   border-0 
 									   shadow 
 									   btn-rollover-color-success
@@ -230,11 +232,11 @@ class Landing extends React.Component {
                         <CardBody className="py-5">
                           <div className="mb-4">
                             <i className="fa fa-laptop 
-										  landing-bg-color-danger 
-										  landing-text-color-danger 
+										  bg-color-danger 
+										  text-color-danger 
 										  rounded-circle p-3" />
                           </div>
-                          <h6 className="landing-text-color-danger 
+                          <h6 className="text-color-danger 
 										 text-uppercase 
 										 font-weight-bold">
                             IT Support
@@ -246,7 +248,7 @@ class Landing extends React.Component {
                           <Button
                             className="mt-4 
 									   text-uppercase 
-									   landing-button-color-danger 
+									   button-color-danger 
 									   border-0 
 									   shadow 
 									   btn-rollover-color-danger
@@ -289,7 +291,7 @@ class Landing extends React.Component {
                         <Button
                             className="mt-4 
 									   text-uppercase 
-									   landing-button-color-primary 
+									   button-color-primary 
 									   border-0 
 									   shadow 
 									   btn-rollover-color-primary
@@ -329,7 +331,7 @@ confidentiality you deserve.
                             className="round-cards-button
 									   mt-4 
 									   text-uppercase 
-									   landing-button-color-danger 
+									   button-color-danger 
 									   border-0 
 									   shadow 
 									   btn-rollover-color-danger
@@ -434,7 +436,7 @@ confidentiality you deserve.
                       <div>
                         <Button
                           block
-                          className="btn-round landing-bg-color-default btn-rollover-color-default"
+                          className="btn-round bg-color-default btn-rollover-color-default"
                           size="lg"
                           type="submit" 
                         >
@@ -448,8 +450,8 @@ confidentiality you deserve.
             </Container>
           </section>
 		</form>
-          </section>
-          </ScrollAnimation>
+         </section>
+        </ScrollAnimation>
         </main>
       </>
     );

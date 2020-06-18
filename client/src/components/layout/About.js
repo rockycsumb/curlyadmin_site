@@ -1,46 +1,13 @@
-/*!
-
-=========================================================
-* Argon Design System React - v1.1.0
-=========================================================
-
-* Product Page: https://www.creative-tim.com/product/argon-design-system-react
-* Copyright 2020 Creative Tim (https://www.creative-tim.com)
-* Licensed under MIT (https://github.com/creativetimofficial/argon-design-system-react/blob/master/LICENSE.md)
-
-* Coded by Creative Tim
-
-=========================================================
-
-* The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
-
-*/
 import React from "react";
-// nodejs library that concatenates classes
+import ScrollAnimation from 'react-animate-on-scroll';
+import '../../assets/css/about.css';
 
 // reactstrap components
-import {
-  Badge,
-  Button,
-  Card,
-  CardBody,
-  Container,
-  Row,
-  Col
-} from "reactstrap";
-
 class About extends React.Component {
-  state = {};
-  componentDidMount() {
-    document.documentElement.scrollTop = 0;
-    document.scrollingElement.scrollTop = 0;
-    this.refs.main.scrollTop = 0;
-  }
-  render() {
+   render() {
     return (
       <>
-        
-        <main ref="main">
+        <main ref="main" className="services-background">
 			<div style={{height: "80px"}}>
                 <span />
                 <span />
@@ -50,49 +17,72 @@ class About extends React.Component {
                 <span />
                 <span />
               </div>
-        <section className="section  bg-secondary">
+        <section className="">
 			<div className="container pt-5">
-				<div className="row-grid align-items-center row">
+				<div className="row-grid row">
 					<div className="col-md-6">
-						<div className="bg-default shadow border-0 card">
-							{/*<img alt="..." src={require("../../assets/img/theme/aboutpic.jpg")} className="card-img-top" />*/}
+						<ScrollAnimation animateIn="fadeIn">
+						<div className="bg-color-default shadow border-0 card about-card">
+							<img alt="..." src={require("../../assets/images/aboutpic.jpg")} className="card-img-top" />
 								<blockquote className="card-blockquote" >
-									<svg xmlns="http://www.w3.org/2000/svg" className="svg-bg" preserveAspectRatio="none" viewBox="0 0 583 95">
-										<polygon className="fill-default" points="0,52 583,95 0,95"></polygon>
-										<polygon className="fill-default" opacity=".2" points="0,42 583,95 683,0 0,95"></polygon>
-									</svg>
-									<h4 className="display-3 font-weight-bold text-white">A Virtual System</h4>
-									<p className="lead text-italic text-white pb-5">
-										
-										<p className="pb-5">
-							CurlyAdmin is a service that provides its customers administrative and IT support. We believe no task is too big or too smal to be handled with importance, attention to detail and accuracy.  Our small business was inspired by our highly desire to serve others. Our mindset is to provide individuals with quality support allowing them to be more productive and efficient. 
-										</p>
-										
-									</p>
+									<ScrollAnimation animateIn="fadeIn">
+									<div className="card-body">
+										<h2 className="font-weight-bold text-white card-title">A Virtual System</h2>
+											<p className="lead text-white pb-5 card-text-size">
+													CurlyAdmin is a service that provides its customers administrative and IT 												support. We believe no task is too big or too small to be handled with importance, attention to detail and accuracy. Our small business was inspired by our desire to serve others. Our mindset is to provide individuals with quality support allowing them to be more productive and efficient. 
+											</p>
+									</div>
+									</ScrollAnimation>
 								</blockquote>
 						</div>
+						</ScrollAnimation>
 					</div>
 					<div className="col-md-6">
-						<div className="pl-md-5">
-							<div className="icon icon-lg icon-shape icon-shape-warning shadow rounded-circle mb-5">
-								<i class="fas fa-user-friends"></i>
+						<ScrollAnimation animateIn="fadeInUp">
+						<div className="text-color-default about-card">
+							<div className="mb-3">
+								<i className="fas fa-user-friends
+										  bg-color-danger
+										  rounded-circle p-3
+										  text-color-danger
+										  shadow-sm
+										  about-icon
+										  "
+								/>
 								{/*<i className="ni ni-settings"></i>*/}
 							</div>
 							<h3>Who We Are</h3>
-							<p>
-							<span className="font-weight-bold">Stef</span> is an Executive Assistant for an environmental program in the City of Campbell and holds a Bachelors degree in business administration and information technology management. Over 10 years in administrative support experience, positive attitude, and very goal oriented. She is constantly motivated by "new" projects, and is ambitious in gaining new knowledge. She believes there are no problems only solutions and when it comes to work, she is persistent with prioritization, organization and perfection. Stef is bilingual fluent in both English and Spanish.
-							</p>
-							<p>
-								<span className="font-weight-bold">Rocky</span> graduated recently with a Bachelors Degree in Computer Science. He currently works on web projects and prefers a MERN stack. Technical, but yet can explain information technology in a way that can be easily understood. He is always taking online tutorials to build skills and knowledge in Computer Science.
-							</p>
-							{/*
-							<p class="lead">Don't let your uses guess by attaching tooltips and popoves to any element. Just make sure you enable them first via JavaScript.
-							</p>
-							<p>The kit comes with three pre-built pages to help you get started faster. You can change the text and images and you're good to go.
-							</p>
-							<p>The kit comes with three pre-built pages to help you get started faster. You can change the text and images and you're good to go.</p> 
-							<a class="font-weight-bold text-warning mt-5" href="#pablo">A beautiful UI Kit for impactful websites</a>*/}
-						</div>
+							<div className="about-text">
+								<p>
+								<span className="font-weight-bold">Rocky</span> and <span className="font-weight-bold">Stef</span>, a dynamic duo. They combined their knowledge, expertise and ideas to
+								create CurlyAdmin.
+								</p>
+
+								<div>
+								<span className="font-weight-bold">Stef </span>is an executive assistant with an extensive background providing administrative
+								support in both the private and public sector. Her experience includes calendar management, document drafting, reporting, budgeting	and forecasting as well as payroll and human resources support.<br />
+									<div className="my-2" />
+								She has a Bachelor’s degree in business administration with a concentration in
+								information technology management and she is also fluent in English and Spanish.<br />
+									<div className="my-2" />
+								Her passionate personality reflects in her work as she performs her administrative tasks
+								with care, accuracy and attention to detail.
+								</div>
+								<div className="my-2" />
+								<div>
+									<span className="font-weight-bold">Rocky</span> on the other hand is the brains behind the website development of CurlyAdmin.<br />
+									<div className="my-2" />
+								He’s a software developer with a Bachelor’s in Computer Science from California State
+								University Monterey Bay. His programing experience include Java, PHP, JavaScript, C++ and Python with a concentration in MERN stack development.<br />
+									<div className="mt-2" />
+								He takes delight in front-end development but can take projects that include both front
+								and back end coding. His problem solving skills and steady diligence contribute to the
+								success needed to carry out desired results.
+								</div>
+						
+							</div>
+							</div>
+							</ScrollAnimation>
 					</div>
 				</div>
 			</div>

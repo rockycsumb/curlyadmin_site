@@ -52,31 +52,35 @@
   transition: all 0.15s ease; 
 }
 
-.landing-text-color-primary {
+.text-color-default{
+	color: #172B4D;
+}
+
+.text-color-primary {
 	color: #5E72E4;
 }
 
-.landing-text-color-success {
+.text-color-success {
 	color: #2DCE89;
 }
 
-.landing-text-color-danger {
+.text-color-danger {
 	color: #FB6340;
 }
 
-.landing-bg-color-primary {
+.bg-color-primary {
 	background-color: #C4CBF5;
 }
 
-.landing-bg-color-success {
+.bg-color-success {
 	background-color: #A9ECD0;
 }
 
-.landing-bg-color-danger {
+.bg-color-danger {
 	background-color: #FDC5B8;
 }
 
-.landing-bg-color-default {
+.bg-color-default {
 	background-color: #172B4D;
 }
 
@@ -90,15 +94,15 @@
 }
 
 
-.landing-button-color-primary {
+.button-color-primary {
 	background-color: #5E72E4;
 }
 
-.landing-button-color-success {
+.button-color-success {
 	background-color: #2DCE89;
 }
 
-.landing-button-color-danger {
+.button-color-danger {
 	background-color: #FB6340;
 }
 

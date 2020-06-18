@@ -1,0 +1,31 @@
+.Confirmation-container {
+	margin-bottom: 5em;
+}
+
+.Confirmation-body {
+	height: 15em;
+	background-color: white;
+}
+
+.section-body {
+	
+	background-color: white;
+}
+
+.message-container {
+	
+}
+
+.message-buttons {
+	margin: 2em 0 !important;
+}
+
+.confirmation-lead-text {
+	font-size: 2.5em;
+	font-weight: 400;
+}
+
+.confirmation-lead-text-2 {
+	font-size: 1.5em;
+	font-weight: 400;
+}

@@ -1,0 +1,46 @@
+.Services-task-amount {
+	font-size: 3rem;
+	color: #525F7F;
+	margin:40px 0;
+	margin-bottom:50px;
+}
+
+div.Services-description {
+	line-height: 0;
+}
+
+p.lead-text {
+	font-size: 1.25em;
+	font-weight: 400;
+	line-height: 1.7;
+	color: #8898aa!important;
+	
+}
+
+p em {
+	font-size: .75em;
+}
+
+.Services-card-h3 {
+	font-weight: 400 !important;
+}
+
+.card-button-text {
+	margin: 0 5em;
+}
+
+.card-text-description {
+	width: 100%;
+	display: flex;
+	justify-content: center;
+	text-align: initial;
+}
+
+.card-paragraph-description {
+	margin-right: 10px;
+	color: #525F7F;
+}
+
+.card-list-bullet {
+	margin-right: 5px;
+}

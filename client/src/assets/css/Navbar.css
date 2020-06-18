@@ -82,10 +82,23 @@
   transition: width 100ms 0ms, opacity 50ms 50ms;
 }
 
-.hide-dropdown {
-  transition: width 100ms 100ms, opacity 100ms 0ms;
-  opacity: 0.0;
-  width: 0;
+.dd-enter {
+  opacity: 0;
+  transform: scale(0.9);
+}
+
+.dd-enter-active {
+  opacity: 1;
+  transform: translateX(0);
+  transition: opacity 300ms, transform 300ms;
+}
+.dd-exit {
+  opacity: 1;
+}
+.dd-exit-active {
+  opacity: 0;
+  transform: scale(0.9);
+  transition: opacity 300ms, transform 300ms;
 }
 
 .dropdown-navbar-header {
@@ -117,13 +130,6 @@
   transition: height 100ms 0ms, opacity 50ms 50ms;
 }
 
-.hide {
-  transition: height 300ms 300ms, opacity 300ms 0ms;
-  opacity: 0.0;
-  height: 0px;
-  
-}
-
 /* Links inside the dropdown */
 .dropdown-content a {
   color: black;
@@ -140,9 +146,6 @@
   display: flex;
   justify-content: flex-end;  
 }
-
-
-
 
 @media only screen and (max-width: 992px){
 	.toggler {

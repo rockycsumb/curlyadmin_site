@@ -4,8 +4,9 @@ import { NavLink as NavLinkRRD, Link } from "react-router-dom";
 import {connect} from 'react-redux';
 import PropTypes from 'prop-types';
 import {logout} from '../../actions/auth';
-import './Navbar.css';
+import '../../assets/css/Navbar.css';
 import Headroom from "headroom.js";
+import {CSSTransition} from 'react-transition-group';
 
 import {
   Button,
@@ -41,15 +42,19 @@ const NavBar = ({auth: {isAuthenticated, loading}, logout}) => {
 	
 	return(
 		<div>
-			<div className={isOpen ? "dropdown"
-						: "dropdown "}>
+			<CSSTransition
+			  in={isOpen}
+			  timeout={300}
+			  classNames="dd"
+			  unmountOnExit
+			>
+			<div className="dropdown">
 				<div 
 					id="myDropdown" 
-					className={isOpen ? "dropdown-content"
-						: "dropdown-content "}
+					className="dropdown-content"
 				>
-					<div className="dropdown-navbar-header">
-						<NavbarBrand to="/" tag={Link} onClick={toggler} >
+					<div className="dropdown-navbar-header ">
+						<NavbarBrand to="/" tag={Link} onClick={toggler}>
 							<span>
 							<i 
 								className="fas fa-glasses" 
@@ -58,18 +63,14 @@ const NavBar = ({auth: {isAuthenticated, loading}, logout}) => {
 							<span className="curlyName">Curly</span>
 							<span className="adminName">ADMIN</span>
 						</NavbarBrand>
-						  
 						<div>
 							<Button onClick={toggler} className="dropdown-toggler bg-transparent" >
 								<i className="fas fa-times" />
 							</Button>
 						</div>
 					</div>
-				
 						<hr className="mx-3" />
-					  
-					<Nav vertical className={isOpen ? ""
-						: "nav-links"}>
+					<Nav vertical>
 						<NavItem>
 							<NavLink 
 								to="/" 
@@ -109,6 +110,7 @@ const NavBar = ({auth: {isAuthenticated, loading}, logout}) => {
 					</Nav>
 				  </div>
 			</div>
+				</CSSTransition>
 			
 			<Navbar 
 				className="headroom fixed-top navbar-main navbar-dark bg-color"

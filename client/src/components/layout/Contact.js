@@ -1,32 +1,13 @@
-/*!
 
-=========================================================
-* Argon Design System React - v1.1.0
-=========================================================
-
-* Product Page: https://www.creative-tim.com/product/argon-design-system-react
-* Copyright 2020 Creative Tim (https://www.creative-tim.com)
-* Licensed under MIT (https://github.com/creativetimofficial/argon-design-system-react/blob/master/LICENSE.md)
-
-* Coded by Creative Tim
-
-=========================================================
-
-* The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
-
-*/
 import React from "react";
-
-import './contact.css';
+import '../../assets/css/contact.css';
 import emailjs from 'emailjs-com';
-// nodejs library that concatenates classes
+import ScrollAnimation from 'react-animate-on-scroll';
+import Recaptcha from 'react-recaptcha';
 
 // reactstrap components
 import {
-  Badge,
   Button,
-  Card,
-  CardBody,
   Container,
   Row,
   Col,
@@ -35,7 +16,7 @@ import {
   Label
 } from "reactstrap";
 
-
+const EMAIL_JS_KEY = process.env.REACT_APP_EMAIL;
 
 class Contact extends React.Component {
 	constructor(props){
@@ -52,11 +33,15 @@ class Contact extends React.Component {
 			besttime: "",
 			prefercall: "",
 			both: "",
-			preferemail: ""
+			preferemail: "",
+			isVerified: false,
+			verifyRequired: false
 		}
-		
+
 		this.handleChange = this.handleChange.bind(this);
 		this.handleSubmit = this.handleSubmit.bind(this);
+		this.recaptchaLoaded = this.recaptchaLoaded.bind(this);
+		this.verifyCallback = this.verifyCallback.bind(this);
 	}
 	
 	handleChange(evt){
@@ -65,11 +50,18 @@ class Contact extends React.Component {
 		})
 	}
 	
-	
+	recaptchaLoaded() {
+		// console.log("captcha loaded succesfully")
+	}
 	
 	handleSubmit(evt){
 		evt.preventDefault();
-		console.log(this.state);
+		
+		if(!this.state.isVerified) {
+			this.setState({
+				verifyRequired: true
+			})
+		} else {
 		
 		const {
 			plan,
@@ -84,9 +76,6 @@ class Contact extends React.Component {
 			both,
 			preferemail
 		} = this.state
-		
-		
-		
 		
 		let templateParams = {
 			plan: plan,
@@ -104,10 +93,9 @@ class Contact extends React.Component {
 			
 		var service_id = "default_service";
 		var template_id = "formpage";
-		var user_id = "user_XKRqgVmkTkoqnvfTpqZSo"
+		var user_id = EMAIL_JS_KEY;
 		
-		// emailjs.send(service_id, template_id, templateParams, user_id);
-		
+		emailjs.send(service_id, template_id, templateParams, user_id);
 		
 		this.setState({
 			plan: "basic",
@@ -127,20 +115,21 @@ class Contact extends React.Component {
 			pathname: '/confirmation',
 			state: templateParams.name
 		})
+	  }
 	}
 	
-  
-  componentDidMount() {
-    document.documentElement.scrollTop = 0;
-    document.scrollingElement.scrollTop = 0;
-    this.refs.main.scrollTop = 0;
+	 verifyCallback(response){
+	  if(response){
+		  this.setState({
+			  isVerified: true,
+			  verifyRequired: false
+		  })
+	  }
   }
   render() {
-	  
-    return (
+	 return (
       <>
-        
-        <main ref="main">
+        <main ref="main" className="">
 			<div style={{height: "80px"}}>
                 <span />
                 <span />
@@ -150,17 +139,17 @@ class Contact extends React.Component {
                 <span />
                 <span />
               </div>
-	 
-		<Container className="contact-header pt-lg-5">
-			<div class="justify-content-center text-center row">
-					<div class="col-lg-8">
-						<h2 class="display-3">Contact Us</h2>
-						<p class="lead text-muted">
-							Prices are based on price per task. Select how many tasks you will like, then assign your task details. Tasks are an average of 20 minutes, price for projects or more complex items can be separated into tasks. Please contact us, we are happy to assist you for your next plan or project.
-						</p>
+		<section className="mt-4 py-lg-4 services-background">
+            <Container>
+				<div className="justify-content-center text-center mb-lg-1 row">
+					<div className="col-lg-8">
+						<h2 className="font-weight-bold mb-4 text-color-default">Contact Us</h2>
 					</div>
-				</div>	
-		</Container>
+				</div>
+			</Container>
+		</section>
+	
+		<ScrollAnimation animateIn="fadeInUp">
 	   <form onSubmit={this.handleSubmit}>
        <section class="section pt-lg-0 section-contact-us">
 		   <div class="container">
@@ -168,13 +157,10 @@ class Contact extends React.Component {
 				   <div class="col-lg-10">
 					   <div class="bg-gradient-secondary shadow card">
 						   <div class="p-lg-5 card-body">
-							   <h4 class="mb-1">Enter Task Details</h4>
-							   <p class="mt-0">Or just message us</p>
-							   <div class="mt-5 form-group">
+							   <h4 class="mb-0">Task Details</h4>
+							   <div class="mt-3 form-group">
 								   <hr className="my-2" />
 								   <h6 class="heading-small text-muted mb-4">Type of Task</h6>
-								   
-						
 								   <FormGroup>
 									<Label for="ServiceLevel">Service Level</Label>
 									<Input 
@@ -184,14 +170,13 @@ class Contact extends React.Component {
 										onChange={this.handleChange}
 										id="ServiceLevel"
 									>
-									  <option value="basic" >Basic $35.00 - $ 7/Request</option>
-									  <option value="premium" >Premium $90.00 - $ 6/Request</option>
-									  <option value="daily" >Daily $150.00 - $ 5/Request</option>
+									  <option value="basic" >Basic $35</option>
+									  <option value="premium" >Super $90</option>
+									  <option value="daily" >Curly $150</option>
 									  <option value="One-time" >One-time $8.00/Request</option>
 									</Input>
 								  </FormGroup>
-								   
-								   <FormGroup>
+								  <FormGroup>
 									<Label for="taskcategory">Task</Label>
 									<Input 
 										type="select" 
@@ -203,17 +188,15 @@ class Contact extends React.Component {
 									  <option value="write_emails" >Place Telephone Call</option>
 									  <option value="take_notes" >Make Travel Arrangements</option>
 									  <option value="zoom_setup" >Draft Document</option>
-									  <option value="other" >Reply to Correspondence</option>
-									  <option value="other" >Schedule Meeting</option>
-									  <option value="other" >Make a Payment</option>
+									  <option value="reply_to_correspondence" >Reply to Correspondence</option>
+									  <option value="schedule_meeting" >Schedule Meeting</option>
+									  <option value="make_a_payment" >Make a Payment</option>
 									  <option value="other" >Other</option>
 									</Input>
 								  </FormGroup>
-								   
-								   
 								   <hr className="my-3" />
 								   <h6 class="heading-small text-muted mb-4">Deadline</h6>
-								   <FormGroup>
+								  <FormGroup>
 									<Label for="deadlinedate">Deadline Date</Label>
 									<Input 
 										type="date" 
@@ -222,17 +205,12 @@ class Contact extends React.Component {
 										onChange={this.handleChange}
 										id="deadlinedate"
 									/>
-									  
-									   
-									   {/*<input type="date" name="from" value={from} onChange={e => onChange(e)}/>*/}
 								  </FormGroup>
-								   
 							   </div>
-								   
 								<hr className="my-3" />
 								<h6 class="heading-small text-muted mb-4">Task Description</h6>
 								<div class="mb-4 form-group">
-								 	<Label for="deadlinedate">Task Details</Label>
+								   <Label for="deadlinedate">Task Details</Label>
 								   <textarea 
 									   cols="80" 
 									   name="taskdescription" 
@@ -241,18 +219,17 @@ class Contact extends React.Component {
 									   placeholder="Type a message..." 
 									   rows="4" 
 									   class="form-control-alternative form-control"
+									   maxlength="500"
 									>
 								   </textarea>
+									<div>
+										Limit: {this.state.taskdescription.length} / 500
+									</div>
 							   </div>
-							 
+							  							 
 								<hr className="my-3" />
 								<h6 class="heading-small text-muted mb-4">Your Contact Info</h6>
-								   {/*needs to include 
-								   name, phone, 
-								   email 
-								   and 
-								   best time to reach
-									Prefer, phone call or text or email */}
+								  
 							<Container className="pl-0">
 								<Row className="">
 									<Col className="col-md-6">
@@ -260,13 +237,14 @@ class Contact extends React.Component {
 											<Label for="name">Your Name</Label>
 										   <div class="input-group-alternative input-group">
 											   <input 
-												   placeholder="Your name" 
+												   placeholder="Your Name (required)" 
 												   type="text" 
 												   id="name"
 												   name="name"
 												   value={this.state.name}
 												   onChange={this.handleChange}
 												   class="form-control" 
+												   required
 												/>
 										   </div>
 									   </div>
@@ -277,19 +255,19 @@ class Contact extends React.Component {
 										   <Label for="phonenumber">Phone Number</Label>
 										   <div class="input-group-alternative input-group">
 											   <input 
-												   placeholder="Phone Number" 
+												   placeholder="Phone Number (required)" 
 												   type="text" 
 												   id="phonenumber"
 												   name="phonenumber"
 												   value={this.state.phonenumber}
 												   onChange={this.handleChange}
 												   class="form-control" 
+												   required
 												/>
 										   </div>
 									   </div>
 									</Col>
 								</Row>
-								   
 							</Container>
 								
 							<Container className="pl-0">
@@ -298,13 +276,14 @@ class Contact extends React.Component {
 										<div class="form-group">
 										   <div class="input-group-alternative input-group">
 											   <input 
-												   placeholder="Email address" 
+												   placeholder="Email Address (required)" 
 												   type="email"
 												   id="email"
 												   name="email"
 												   value={this.state.email}
 												   onChange={this.handleChange}
 												   class="form-control" 
+												   required
 												 />
 										   </div>
 							   			</div>
@@ -328,9 +307,10 @@ class Contact extends React.Component {
 								
 								</Row>   
 							</Container>
+							   <h6 class="heading-small text-muted mb-2 mt-4">Preferred way to contact</h6>
 
 							   <Container>
-								<h6 class="heading-small text-muted mb-4">Preferred way to contact</h6>
+								
 							   	<Row>
 									<div className="custom-control custom-checkbox mb-3">
 										  <input
@@ -340,6 +320,7 @@ class Contact extends React.Component {
 											value={"prefercall"}
 											onChange={this.handleChange}
 											type="checkbox"
+											  
 										  />
 										  <label className="custom-control-label mr-4" htmlFor="prefercall">
 											Phone Call
@@ -377,16 +358,30 @@ class Contact extends React.Component {
 								   </div>
 								</Row>
 							   </Container>
-							   
-							   
+							 <div className="mb-3 justify-content-center row">
+								<div>
+								 <div className={this.state.verifyRequired ? `please-verify` : "please-verify-hide"}>Please verify</div>
+									 <div  className={this.state.verifyRequired ? `recaptcha-border` : ""}>
+										<div className="m-1">
+											 <Recaptcha
+												sitekey="6LdN0KQZAAAAAH104p0wqY4tUhL59v_BL2q7ZCXy"
+												render="explicit"
+												onloadCallback={this.recaptchaLoaded}
+												verifyCallback={this.verifyCallback}
+											  />
+										</div>
+									</div>
+								</div>
+							  </div>
 							   <div>
-								   <button 
-									   type="button" 
-									   class="btn-round btn btn-default btn-lg"
-									   onClick={this.handleSubmit}
+								   <Button
+									  block
+									  className="btn-round bg-color-default btn-rollover-color-default"
+									  size="lg"
+									  type="submit" 
 									>
-									   Send Message
-								   </button>
+									  Send Message
+									</Button>
 							   </div>
 							
 						   </div>
@@ -396,6 +391,7 @@ class Contact extends React.Component {
 		   </div>
 		</section>
 			</form>
+			</ScrollAnimation>
         </main>
       </>
     );
