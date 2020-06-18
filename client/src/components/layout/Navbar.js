@@ -1,5 +1,4 @@
-
-import React, {useEffect, useState, Fragment} from "react";
+import React, {useEffect, useState} from "react";
 import { NavLink as NavLinkRRD, Link } from "react-router-dom";
 import {connect} from 'react-redux';
 import PropTypes from 'prop-types';
@@ -10,27 +9,18 @@ import {CSSTransition} from 'react-transition-group';
 
 import {
   Button,
-  Collapse,
   Container,
   Navbar,
-  NavbarToggler,
   NavbarBrand,
   Nav,
   NavItem,
   NavLink,
-  Dropdown,
-  DropdownToggle,
-  DropdownMenu,
-  DropdownItem,
   NavbarText
 } from 'reactstrap';
 
 const NavBar = ({auth: {isAuthenticated, loading}, logout}) => {
 	const [isOpen, setIsOpen] = useState(false);
-	const [fadeOut, setFadeOut] = useState("");
-	
 	const toggler = () => {
-		
 		setIsOpen(!isOpen)
 	};
 	
@@ -56,9 +46,9 @@ const NavBar = ({auth: {isAuthenticated, loading}, logout}) => {
 					<div className="dropdown-navbar-header ">
 						<NavbarBrand to="/" tag={Link} onClick={toggler}>
 							<span>
-							<i 
+								{/*<i 
 								className="fas fa-glasses" 
-								style={{fontSize: "50px", marginRight: "5px"}} />
+								style={{fontSize: "50px", marginRight: "5px"}} />*/}
 							</span>
 							<span className="curlyName">Curly</span>
 							<span className="adminName">ADMIN</span>
@@ -110,7 +100,7 @@ const NavBar = ({auth: {isAuthenticated, loading}, logout}) => {
 					</Nav>
 				  </div>
 			</div>
-				</CSSTransition>
+			</CSSTransition>
 			
 			<Navbar 
 				className="headroom fixed-top navbar-main navbar-dark bg-color"
@@ -121,9 +111,9 @@ const NavBar = ({auth: {isAuthenticated, loading}, logout}) => {
 				<NavbarBrand to="/" tag={Link}>
 					<div className="navbarBrand">
 						<div>
-							<i 
+							{/*<i 
 								className="fas fa-glasses" 
-								style={{fontSize: "50px", marginRight: "5px"}}></i>
+								style={{fontSize: "50px", marginRight: "5px"}}></i>*/}
 						</div>
 						<div>
 								<span className="curlyName">Curly</span>
@@ -136,8 +126,6 @@ const NavBar = ({auth: {isAuthenticated, loading}, logout}) => {
 					<i className="fas fa-bars icon-toggler" />
 				</Button>
 					
-					
-				
 					<Nav className="ml-auto nav-links" navbar>
 						<NavItem>
 							<NavLinkRRD

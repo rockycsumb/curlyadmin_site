@@ -406,7 +406,7 @@ confidentiality you deserve.
                       </FormGroup>
                       <FormGroup className="mb-4">
                         <Input
-                          className="form-control-alternative"
+                          className="form-control-alternative shadow-sm"
                           cols="80"
 						  name="message"
 						  value={this.state.message}
@@ -414,7 +414,6 @@ confidentiality you deserve.
                           placeholder="Type a message..."
                           rows="4"
                           type="textarea"
-						  className="shadow-sm"
                         />
 					  </FormGroup>						
 					  {/* RECAPTCHA CODE*/}

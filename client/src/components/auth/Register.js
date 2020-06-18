@@ -1,29 +1,8 @@
-/*!
-
-=========================================================
-* Argon Design System React - v1.1.0
-=========================================================
-
-* Product Page: https://www.creative-tim.com/product/argon-design-system-react
-* Copyright 2020 Creative Tim (https://www.creative-tim.com)
-* Licensed under MIT (https://github.com/creativetimofficial/argon-design-system-react/blob/master/LICENSE.md)
-
-* Coded by Creative Tim
-
-=========================================================
-
-* The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
-
-*/
 import React, {useState} from "react";
 import {Link, Redirect} from 'react-router-dom';
 import {connect} from 'react-redux';
 import {setAlert} from '../../actions/alert';
 import {register} from '../../actions/auth';
-import Facebook from './Facebook';
-import Google from './Google';
-
-
 import PropTypes from 'prop-types';
 import Alert from '../layout/Alert';
 
@@ -46,11 +25,8 @@ import {
 } from "reactstrap";
 
 import './Auth.css';
-// core components
 
-
-const Register = ({setAlert, register, isAuthenticated}) => {
-	
+const Register = ({setAlert, register, isAuthenticated}) => {	
 	const [formData, setFormData] = useState({
 		name:'',
 		email: '',
@@ -64,16 +40,12 @@ const Register = ({setAlert, register, isAuthenticated}) => {
 	const onChange = e =>{
 		
 		setFormData({...formData, [e.target.name]: e.target.value})
-		
 	}
 	
 	const handleCheckbox = e =>{
 		console.log("this is from handlebox before setform ", e.target.checked);
-		
 		setFormData({...formData, privacy: e.target.checked.toString()})
-		
 	}
-	
 	
 	const onSubmit = async e =>{
 		e.preventDefault();
@@ -95,9 +67,6 @@ const Register = ({setAlert, register, isAuthenticated}) => {
 	if(isAuthenticated){
 		return <Redirect to="/dashboard/overview" />
 	}
-	
-	
-
     return (
       <>
         <main>
@@ -124,24 +93,11 @@ const Register = ({setAlert, register, isAuthenticated}) => {
                       <div className="text-muted text-center mb-3">
                         <small>Sign up with</small>
                       </div>
-                      <div className="text-center">
-						  
-                       {/*----GOOGLE LOGIN----*/}             
-                          <Google />
-						  
-						  
-						{/*----FACEBOOK LOGIN----*/}
-						  <Facebook />
-						  
-						  
-                      </div>
                     </CardHeader>
                     <CardBody className="px-lg-5 py-lg-5">
                       <div className="text-center text-muted mb-4">
                         <small>Or sign up with credentials</small>
-                      </div>
-						
-						
+                      </div>						
                       <Form role="form" onSubmit={e => onSubmit(e)}>
                         <FormGroup>
                           <InputGroup className="input-group-alternative mb-3">

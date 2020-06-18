@@ -11,7 +11,6 @@ import Confirmation from '../layout/Confirmation';
 import Login from '../auth/Login';
 import Register from '../auth/Register';
 import Dashboard from '../dashboard/Dashboard';
-import Spinner from '../layout/Spinner.js';
 import PrivateRoute from './PrivateRoute';
 import Footer from "../Footers/Footer.js";
 
@@ -36,7 +35,6 @@ const NavRoutes = ({auth: {isAuthenticated}}) => {
 					</Switch>
 				</section>
 				{isAuthenticated ? <Fragment /> : <Footer />}
-				
 			</Fragment>	
 		</Router>
 	)

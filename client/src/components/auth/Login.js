@@ -4,9 +4,6 @@ import {connect} from 'react-redux';
 import PropTypes from 'prop-types';
 import Alert from '../layout/Alert';
 import {login} from '../../actions/auth';
-import Facebook from './Facebook';
-import Google from './Google';
-
 
 // reactstrap components
 import {
@@ -78,14 +75,7 @@ const Login = ({login, isAuthenticated}) => {
                         <small>Sign in with</small>
                       </div>
                       <div className="btn-wrapper text-center">
-						  
-						  
-           {/*----GOOGLE LOGIN----*/}             
-                          <Google />
-						  
-						  
-			{/*----FACEBOOK LOGIN----*/}
-						  <Facebook />
+						
 						  
 						
                       </div>
