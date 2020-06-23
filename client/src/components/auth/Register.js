@@ -5,6 +5,7 @@ import {setAlert} from '../../actions/alert';
 import {register} from '../../actions/auth';
 import PropTypes from 'prop-types';
 import Alert from '../layout/Alert';
+import './register.css';
 
 // reactstrap components
 import {
@@ -14,6 +15,8 @@ import {
   CardBody,
   FormGroup,
   Form,
+  Label, 
+  FormFeedback,
   NavLink,
   Input,
   InputGroupAddon,
@@ -35,10 +38,17 @@ const Register = ({setAlert, register, isAuthenticated}) => {
 		privacy: ''
 	});
 	
+	const [formDataValidation, setFormDataValidation] = useState({
+		nameValidation:'',
+		emailValidation: '',
+		passwordValidation: '',
+		password2Validation:'',
+		privacyValidation: ''
+	});
+	
 	const {name, email, password, password2, privacy} = formData;
 	
 	const onChange = e =>{
-		
 		setFormData({...formData, [e.target.name]: e.target.value})
 	}
 	
@@ -47,15 +57,26 @@ const Register = ({setAlert, register, isAuthenticated}) => {
 		setFormData({...formData, privacy: e.target.checked.toString()})
 	}
 	
+	const checkEmail = (f_email) =>{
+		// checks for format _@_._
+		if (/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(f_email)){
+		  return true;
+		} 
+	}
+	
+
+	
 	const onSubmit = async e =>{
+		
 		e.preventDefault();
 		console.log("from onSubmit privacy check ", formData.privacy);
+		
 		
 		// if(!privacy){
 		// 	setAlert('Privacy needs to be agreed to', 'danger');
 		// 	console.log("Privacy agreement must be confirmed")
-		// } else 
-		
+		// } else
+				
 		if(password !== password2){
 			setAlert('Passwords dont match', 'danger');
 		} else {
@@ -68,174 +89,145 @@ const Register = ({setAlert, register, isAuthenticated}) => {
 		return <Redirect to="/dashboard/overview" />
 	}
     return (
-      <>
-        <main>
-          <section className="section section-shaped section-lg">
-            <div className="shape registerBackground">
-              <span />
-              <span />
-              <span />
-              <span />
-              <span />
-              <span />
-              <span />
-              <span />
+          <main className="Login-main">
+          <section className="">
+            <div className="space">
             </div>
-            <Container className="pt-lg-7">
-				
-				<Alert />
-				
-			  
-              <Row className="justify-content-center">
-                <Col lg="5">
-                  <Card className="bg-secondary shadow border-0">
-                    <CardHeader className="bg-white pb-5">
-                      <div className="text-muted text-center mb-3">
-                        <small>Sign up with</small>
-                      </div>
-                    </CardHeader>
-                    <CardBody className="px-lg-5 py-lg-5">
-                      <div className="text-center text-muted mb-4">
-                        <small>Or sign up with credentials</small>
-                      </div>						
-                      <Form role="form" onSubmit={e => onSubmit(e)}>
-                        <FormGroup>
-                          <InputGroup className="input-group-alternative mb-3">
-                            <InputGroupAddon addonType="prepend">
-                              <InputGroupText>
-                                <i className="ni ni-hat-3" />
-                              </InputGroupText>
-                            </InputGroupAddon>
-                            <Input 
-								placeholder="Name" 
-								type="text" 
-								name='name' 
-								value={name}
-								onChange={e =>onChange(e)}
-							
-							/>
-                          </InputGroup>
-                        </FormGroup>
-                        <FormGroup>
-                          <InputGroup className="input-group-alternative mb-3">
-                            <InputGroupAddon addonType="prepend">
-                              <InputGroupText>
-                                <i className="ni ni-email-83" />
-                              </InputGroupText>
-                            </InputGroupAddon>
-                            <Input 
-								placeholder="Email" 
-								type="email"
-								name='email'
-								value={email}
-								onChange={e =>onChange(e)}
-								
-							/>
-                          </InputGroup>
-                        </FormGroup>
-                        <FormGroup>
-                          <InputGroup className="input-group-alternative">
-                            <InputGroupAddon addonType="prepend">
-                              <InputGroupText>
-                                <i className="ni ni-lock-circle-open" />
-                              </InputGroupText>
-                            </InputGroupAddon>
-                            <Input
-                              placeholder="Password"
-                              type="password"
-                              autoComplete="off"
-							  name='password'
-							  value={password}
-							  onChange={e =>onChange(e)}
-							  
-                            />
-                          </InputGroup>
-                        </FormGroup>
-						  <FormGroup>
-                          <InputGroup className="input-group-alternative">
-                            <InputGroupAddon addonType="prepend">
-                              <InputGroupText>
-                                <i className="ni ni-lock-circle-open" />
-                              </InputGroupText>
-                            </InputGroupAddon>
-                            <Input
-                              placeholder="Confirm Password"
-                              type="password"
-							  name='password2'
-                              autoComplete="off"
-							  value={password2}
-							  onChange={e =>onChange(e)}
-							  
-                            />
-                          </InputGroup>
-                        </FormGroup>
-						{/*
-                        <div className="text-muted font-italic">
-                          <small>
-                            password strength:{" "}
-                            <span className="text-success font-weight-700">
-                              strong
-                            </span>
-                          </small>
-                        </div>
-						*/}
-                        <Row className="my-4">
-                          <Col xs="12">
-                            <div className="custom-control custom-control-alternative custom-checkbox">
-                              <input
-                                className="custom-control-input"
-                                id="customCheckRegister"
-                                type="checkbox"
-								name='privacy'
-								
-								
-								onClick={e =>handleCheckbox(e)}
-                              />
-								
-                              <label
-                                className="custom-control-label"
-                                htmlFor="customCheckRegister"
-                              >
-                                <span>
-                                  I agree with the{" "}
-                                  <a
-                                    href="#pablo"
-                                    onClick={e => e.preventDefault()}
-                                  >
-                                    Privacy Policy
-                                  </a>
-                                </span>
-                              </label>
-                            </div>
-                          </Col>
-                        </Row>
-						  
-                        <div className="text-center">
-                          <Button
-                            className="mt-4"
-                            color="primary"
-                            type="submit"
-                          >
-                            Create account
-                          </Button>
-                        </div>
-                      </Form>
-						
-						
-						<div className="text-muted text-center mt-2">
-                          <small>
-                            Already have an account? <span><NavLink to="/login" tag={Link}>Sign In</NavLink></span>
-                          </small>
-                        </div>
-                    </CardBody>
-                  </Card>
-                </Col>
-              </Row>
-            </Container>
+            <div className="container">
+				<div className="d-flex justify-content-center">
+					<div className="alert-box-register">
+						<Alert />
+					</div>
+				</div>
+				<div className="d-flex justify-content-center h-100">
+					<div className="register-card shadow border-2">
+							<div className="card-header text-center">
+								<h3>Sign Up</h3>
+								<div className="d-flex justify-content-end social_icon">
+									{/*<span><i class="fab fa-facebook-square"></i></span>
+									<span><i class="fab fa-google-plus-square"></i></span>
+									<span><i class="fab fa-twitter-square"></i></span>*/}
+								</div>
+							</div>
+							<div className="card-body">
+								<form onSubmit={e => onSubmit(e)}>
+									<div className="input-group form-group mt-3">
+										<div className="input-group-prepend">
+											<span className="input-group-text"><i className="fas fa-user"></i></span>
+										</div>
+										<input 
+											placeholder="Name"
+											className="form-control"
+											type="text" 
+											name='name' 
+											value={name}
+											onChange={e =>onChange(e)}
+											required
+										/>										
+									</div>
+																
+									<div class="input-group form-group">
+										<div class="input-group-prepend">
+											<span class="input-group-text"><i class="fas fa-user"></i></span>
+										</div>
+										<input 
+											placeholder="Email"
+											className="form-control"
+											type="email"
+											name='email'
+											value={email}
+											onChange={e =>onChange(e)}
+											required
+										/>
+									</div>
+									<div class="input-group form-group">
+										<div class="input-group-prepend">
+											<span class="input-group-text"><i class="fas fa-key"></i></span>
+										</div>
+										<input 
+											placeholder="Password"
+											className="form-control"
+											type="password"
+											autoComplete="off"
+											name='password'
+											value={password}
+											onChange={e =>onChange(e)}
+											minLength="7"
+											required
+										/>
+									</div>
+									<div class="input-group form-group">
+										<div class="input-group-prepend">
+											<span class="input-group-text"><i class="fas fa-key"></i></span>
+										</div>
+										<input 
+											placeholder="Confirm Password"
+											className="form-control"
+											type="password"
+											name='password2'
+											autoComplete="off"
+											value={password2}
+											onChange={e =>onChange(e)}
+											minLength="7"
+											required
+										/>
+									</div>
+									<div className="custom-control custom-control-alternative custom-checkbox">
+									  <input
+										className="custom-control-input"
+										id="customCheckRegister"
+										type="checkbox"
+										name='privacy'
+										onClick={e =>handleCheckbox(e)}
+									  />	
+									  <label
+										className="custom-control-label"
+										htmlFor="customCheckRegister"
+									  >
+										<span>
+										  I agree with the{" "}
+										  <a
+											href="#pablo"
+											onClick={e => e.preventDefault()}
+										  >
+											Privacy Policy
+										  </a>
+										</span>
+									  </label>
+									</div>
+
+									<div className="form-group d-flex justify-content-center mt-3 mb-1">
+									  <Button
+										className="btn register-create-btn mt-4"
+										color="primary"
+										type="submit"
+									  >
+										Create account
+									  </Button>
+									</div>
+								</form>
+							</div>
+								<div class="card-footer card-footer-space">
+									<div className="d-flex justify-content-center align-items-center links">
+										  <small>
+											Already have an account? 
+											  <span>
+												  <NavLink
+													  className="signin"
+													  to="/login" 
+													  tag={Link}
+													  >Sign In
+												  </NavLink>
+											  </span>
+										  </small>
+									</div>
+								</div>
+					</div>
+				</div>
+			  </div>
           </section>
         </main>
-        
-      </>
+      
     );
   }
 
@@ -247,6 +239,7 @@ Register.propTypes = {
 };
 
 const mapStateToProps = state =>({
+	
 	isAuthenticated: state.auth.isAuthenticated
 })
 

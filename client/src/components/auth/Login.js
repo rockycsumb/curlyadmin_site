@@ -4,6 +4,7 @@ import {connect} from 'react-redux';
 import PropTypes from 'prop-types';
 import Alert from '../layout/Alert';
 import {login} from '../../actions/auth';
+import './login.css';
 
 // reactstrap components
 import {
@@ -35,7 +36,6 @@ const Login = ({login, isAuthenticated}) => {
 	const {name, email, password} = formData;
 	
 	const onChange = e =>{
-		
 		setFormData({...formData, [e.target.name]: e.target.value})
 	}
 	
@@ -48,132 +48,95 @@ const Login = ({login, isAuthenticated}) => {
 	if(isAuthenticated){
 		return <Redirect to="/dashboard/overview" />
 	}
-	
-	
-
     return (
       <>
-        <main>
-          <section className="section section-shaped section-lg">
-            <div className="shape  registerBackground">
-              <span />
-              <span />
-              <span />
-              <span />
-              <span />
-              <span />
-              <span />
-              <span />
+        <main className="Login-main">
+          <section className="">
+            <div className="space">
             </div>
-            <Container className="pt-lg-7">
-				<Alert />
-              <Row className="justify-content-center">
-                <Col lg="5">
-                  <Card className="bg-secondary shadow border-0">
-                    <CardHeader className="bg-white pb-5">
-                      <div className="text-muted text-center mb-3">
-                        <small>Sign in with</small>
-                      </div>
-                      <div className="btn-wrapper text-center">
-						
-						  
-						
-                      </div>
-                    </CardHeader>
-                    <CardBody className="px-lg-5 py-lg-5">
-                      <div className="text-center text-muted mb-4">
-                        <small>Or sign in with credentials</small>
-                      </div>
-						
-						
-                      <Form role="form" onSubmit={e => onSubmit(e)}>
-                        <FormGroup className="mb-3">
-                          <InputGroup className="input-group-alternative">
-                            <InputGroupAddon addonType="prepend">
-                              <InputGroupText>
-                                <i className="ni ni-email-83" />
-                              </InputGroupText>
-                            </InputGroupAddon>
-                            <Input 
-								placeholder="Email" 
-								type="email"
-								name='email'
-								value={email}
-								onChange={e => onChange(e)}
-								required
-							/>
-                          </InputGroup>
-                        </FormGroup>
-                        <FormGroup>
-                          <InputGroup className="input-group-alternative">
-                            <InputGroupAddon addonType="prepend">
-                              <InputGroupText>
-                                <i className="ni ni-lock-circle-open" />
-                              </InputGroupText>
-                            </InputGroupAddon>
-                            <Input
-                              placeholder="Password"
-                              type="password"
-                              autoComplete="off"
-							  name='password'
-							  value={password}
-							  onChange={e =>onChange(e)}
-							  minLength='7'
-							  required
-                            />
-                          </InputGroup>
-                        </FormGroup>
-						  {/*<div className="custom-control custom-control-alternative custom-checkbox">
-                          <input
-                            className="custom-control-input"
-                            id=" customCheckLogin"
-                            type="checkbox"
-                          />
-                          <label
-                            className="custom-control-label"
-                            htmlFor=" customCheckLogin"
-                          >
-                            <span>Remember me</span>
-                          </label>
-                        </div>*/}
-                        <div className="text-center">
-                          <Button
-                            className="my-4"
-                            color="primary"
-                            type="submit"
-                          >
-                            Sign in
-                          </Button>
-                        </div>
-                      </Form>
-						
-						
-						
-                    </CardBody>
-                  </Card>
-                  <Row>
-					  {/*<Col xs="6">
-                      <a
-                        className="text-light"
-                        href="#pablo"
-                        onClick={e => e.preventDefault()}
-                      >
-                        <small>Forgot password?</small>
-                      </a>
-                    </Col>*/}
-                    <Col xs="6">
-                      <NavLink 
-                        className="text-light"
-                        to="/register"
-						tag={Link}
-                      >
-                        <small>Create new account</small>
-                      </NavLink>
-                    </Col>
-                  </Row>
-                </Col>
-              </Row>
-            </Container>
+            <div class="container">
+			<div className="d-flex justify-content-center">
+				<div className="alert-box-register">
+					<Alert />
+				</div>
+			</div>
+			<div class="d-flex justify-content-center h-100">
+				<div class="Login-card shadow border-2">
+					<div class="card-header text-center">
+						<h3>Sign In</h3>
+						<div class="d-flex justify-content-end social_icon">
+							{/*<span><i class="fab fa-facebook-square"></i></span>
+							<span><i class="fab fa-google-plus-square"></i></span>
+							<span><i class="fab fa-twitter-square"></i></span>*/}
+						</div>
+					</div>
+					<div class="card-body">
+						<form onSubmit={e => onSubmit(e)}>
+							<div class="input-group form-group">
+								<div class="input-group-prepend">
+									<span class="input-group-text"><i class="fas fa-user"></i></span>
+								</div>
+								<input 
+									placeholder="Email" 
+									className="form-control"
+									type="email"
+									name='email'
+									value={email}
+									onChange={e => onChange(e)}
+									required
+								/>
+
+							</div>
+							<div class="input-group form-group">
+								<div class="input-group-prepend">
+									<span class="input-group-text"><i class="fas fa-key"></i></span>
+								</div>
+								<input 
+									placeholder="Password"
+									className="form-control"
+									type="password"
+									autoComplete="off"
+									name='password'
+									value={password}
+									onChange={e =>onChange(e)}
+									minLength='7'
+									required
+								/>
+							</div>
+
+							<div className="form-group d-flex justify-content-center mt-3 mb-1">
+								  <Button
+									className="btn login_btn"
+									color="primary"
+									type="submit"
+								  >
+									Sign in
+								  </Button>
+							</div>
+
+						</form>
+					</div>
+					<div class="card-footer Login-card-footer">
+						<div class="d-flex justify-content-center align-items-center links">
+							Don't have an account?
+							<NavLink 
+									className="text-secondary signup"
+									to="/register"
+									tag={Link}
+								  >
+									<small>Sign Up</small>
+							</NavLink>
+						</div>
+
+						{/*
+						<div class="d-flex justify-content-center">
+							<a href="#">Forgot your password?</a>
+						</div>
+						*/}
+					</div>
+				</div>
+			</div>
+</div>
           </section>
         </main>
         

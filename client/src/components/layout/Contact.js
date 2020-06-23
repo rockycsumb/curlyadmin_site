@@ -219,7 +219,7 @@ class Contact extends React.Component {
 									   placeholder="Type a message..." 
 									   rows="4" 
 									   class="form-control-alternative form-control"
-									   maxlength="500"
+									   maxLength="500"
 									>
 								   </textarea>
 									<div>

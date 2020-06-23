@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from "react";
+import React, {useEffect, useState, Fragment} from "react";
 import { NavLink as NavLinkRRD, Link } from "react-router-dom";
 import {connect} from 'react-redux';
 import PropTypes from 'prop-types';
@@ -29,6 +29,20 @@ const NavBar = ({auth: {isAuthenticated, loading}, logout}) => {
 			var headroom = new Headroom(myElement);
 			headroom.init();
 	},[]);
+	
+	const authLinks = (
+		<Fragment>
+			<NavItem>
+				<NavLink 
+					to="/login" 
+					tag={Link}
+					onClick={toggler}
+				>
+					Login
+				</NavLink>
+			</NavItem>
+		</Fragment>
+	)
 	
 	return(
 		<div>
@@ -97,6 +111,24 @@ const NavBar = ({auth: {isAuthenticated, loading}, logout}) => {
 								Contact
 							</NavLink>
 						</NavItem>
+						<NavItem>
+							<NavLink 
+								to="/login" 
+								tag={Link}
+								onClick={toggler}
+							>
+								Login
+							</NavLink>
+						</NavItem>
+						<NavItem>
+							<NavLink 
+								to="/register" 
+								tag={Link}
+								onClick={toggler}
+							>
+								Sign Up
+							</NavLink>
+						</NavItem>
 					</Nav>
 				  </div>
 			</div>
@@ -158,7 +190,7 @@ const NavBar = ({auth: {isAuthenticated, loading}, logout}) => {
 								About
 							</NavLinkRRD>
 						</NavItem>
-						<NavItem>
+						<NavItem className="mr-4">
 							<NavLinkRRD 
 								className="navbar-navlink"
 								activeClassName={"active-navbar"}
@@ -166,6 +198,27 @@ const NavBar = ({auth: {isAuthenticated, loading}, logout}) => {
 								tag={Link}
 							>
 								Contact
+							</NavLinkRRD>
+						</NavItem>
+						<NavItem>
+							<NavLinkRRD 
+								className="navbar-navlink pr-1"
+								activeClassName={"active-navbar"}
+								to="/Login" 
+								tag={Link}
+							>
+								Login
+							</NavLinkRRD>
+						</NavItem>
+						<span className="text-white">|</span>
+						<NavItem>
+							<NavLinkRRD 
+								className="navbar-navlink pl-1"
+								activeClassName={"active-navbar"}
+								to="/register" 
+								tag={Link}
+							>
+								Sign Up
 							</NavLinkRRD>
 						</NavItem>
 					</Nav>

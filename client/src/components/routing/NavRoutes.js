@@ -20,6 +20,7 @@ const NavRoutes = ({auth: {isAuthenticated}}) => {
 			<Fragment>				
 				{isAuthenticated ? <Redirect id="navbar-main" to="/dashboard/overview" /> : <NavBar />}
 						<Route exact path="/" component={Landing} />
+						<Route render={() => <Redirect to={{pathname: "/"}} />} />
 				<section>
 					<Switch>
 						<Route exact path="/home" component={Landing} />
@@ -29,7 +30,6 @@ const NavRoutes = ({auth: {isAuthenticated}}) => {
 						<Route exact path="/services" component={Services} />
 						<Route exact path="/contact" render={(props)=><Contact {...props} />} />
 						<Route exact path="/confirmation" component={Confirmation} />
-						
 						<PrivateRoute exact path="/dashboard/overview" component={Dashboard} />
 						<Route exact path="/dashboard/login" component={()=><Redirect to="/" />} />
 					</Switch>

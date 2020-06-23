@@ -6,6 +6,6 @@ import "../node_modules/animate.css/animate.min.css";
 
 ReactDOM.render(
   	
-	<App />, document.getElementById('root')
+		<App />	, document.getElementById('root')
 );
 

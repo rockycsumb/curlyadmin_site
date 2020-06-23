@@ -12,7 +12,7 @@ const config = require('config');
 router.post('/', [
 	check('name', "Name is required").not().isEmpty(),
 	check('email', "Include a valid email").isEmail(),
-	check('password', "Please enter a password with 7 or more characters").isLength({min: 7}),
+	check('password', "Password: 7 or more characters").isLength({min: 7}),
 	check('privacy', "Agreement must be confirmed").isIn("true").not().isEmpty()
 	
 ], 

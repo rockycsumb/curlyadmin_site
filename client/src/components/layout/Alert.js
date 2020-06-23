@@ -5,11 +5,9 @@ import {removeAlert} from '../../actions/alert';
 import {Alert as AlertMsg } from 'reactstrap';
 import './Alert.css';
 
-
-
 const Alert = ({alerts, removeAlert}) => { 
 	  
-	  const onDismiss = (id) => {
+	const onDismiss = (id) => {
 		  removeAlert(id);
 	  };
 	 
@@ -17,15 +15,12 @@ const Alert = ({alerts, removeAlert}) => {
 		
 	  alerts !== null && alerts.length > 0 &&
 	  alerts.map(alert =>(
-		  
 	  	<div key={alert.id}>
 			  <AlertMsg 
 				  color={`${alert.alertType}`} 
 				  toggle={e => onDismiss(alert.id)}
 				  className={ alert.fade ? 'alertFadeOut' : ""}
-				  
 				>
-				  
 				  	{alert.msg} 
 			  </AlertMsg>
 		  </div>
@@ -36,8 +31,6 @@ Alert.propTypes ={
 	alerts: PropTypes.array.isRequired,
 	removeAlert: PropTypes.func.isRequired
 }
-
-
 
 const mapStateToProps = state =>({
 	alerts: state.alert
