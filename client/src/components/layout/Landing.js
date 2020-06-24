@@ -435,7 +435,10 @@ confidentiality you deserve.
                       <div>
                         <Button
                           block
-                          className="btn-round bg-color-default btn-rollover-color-default"
+                          className="btn-round 
+									 bg-color-default 
+									 btn-rollover-color-default
+									 landing-form-submit-text"
                           size="lg"
                           type="submit" 
                         >

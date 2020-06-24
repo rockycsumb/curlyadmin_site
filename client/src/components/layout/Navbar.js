@@ -111,6 +111,7 @@ const NavBar = ({auth: {isAuthenticated, loading}, logout}) => {
 								Contact
 							</NavLink>
 						</NavItem>
+						{/*
 						<NavItem>
 							<NavLink 
 								to="/login" 
@@ -129,6 +130,7 @@ const NavBar = ({auth: {isAuthenticated, loading}, logout}) => {
 								Sign Up
 							</NavLink>
 						</NavItem>
+						*/}
 					</Nav>
 				  </div>
 			</div>
@@ -200,6 +202,7 @@ const NavBar = ({auth: {isAuthenticated, loading}, logout}) => {
 								Contact
 							</NavLinkRRD>
 						</NavItem>
+						{/*
 						<NavItem>
 							<NavLinkRRD 
 								className="navbar-navlink pr-1"
@@ -221,6 +224,7 @@ const NavBar = ({auth: {isAuthenticated, loading}, logout}) => {
 								Sign Up
 							</NavLinkRRD>
 						</NavItem>
+						*/}
 					</Nav>
 				</Container>
 			</Navbar>
