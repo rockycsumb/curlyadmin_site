@@ -8,11 +8,29 @@
 }
 
 .landing-shape {
-	/* border: solid yellow 2px; */
+	/* border: solid yellow 2pcurx; */
+}
+
+.landing-card {
+}
+
+.description {
+	font-size: .925rem;
+	color: #525F7F;
+}
+
+.round-card-title {
+	color: #32325D;
+	font-weight: 400;
+}
+
+.round-card-description {
+	color: #8898aa !important;
+	font-weight: 400;
 }
 
 .landing-h4-p {
-	color: #32325d;
+	color: #32325D;
 }
 
 .bg-gradient-secondary {
@@ -135,6 +153,20 @@
 	top: -3em;
 	padding: 5em 0;
 	background-color: #172B4D;
+}
+
+.landing-form-icon {
+	margin-left: 5px;
+}
+
+.landing-form-h4 {
+	color: #32325D;
+	font-weight: 400;
+}
+
+.landing-form-p {
+	color: #525F7F;
+	/* font-weight: 400; */
 }
 
 .recaptcha-border {

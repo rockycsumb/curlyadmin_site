@@ -151,9 +151,9 @@ class Landing extends React.Component {
             <Container>
               <Row className="justify-content-center">
                 <Col lg="12">
-                  <Row className="row-grid">
+                  <Row className="row-grid justify-content-center">
                     <Col lg="4">
-                      <Card className="card-up-hover shadow mb-5 border-0">
+                      <Card className="card-up-hover landing-card shadow mb-5 border-0">
                         <CardBody className="py-5">
                           <div className="mb-4">
                             <i className="fa fa-table 
@@ -168,7 +168,7 @@ class Landing extends React.Component {
 							  >
                             {administratives_support}
                           </h6>
-                          <p className="description mt-3 font-weight-light">
+                          <p className="description mt-3">
                             {administratives_support}
                           </p>
                           <Button
@@ -190,7 +190,7 @@ class Landing extends React.Component {
                       </Card>
                     </Col>
                     <Col lg="4">
-                      <Card className="card-up-hover shadow mb-5 border-0">
+                      <Card className="card-up-hover landing-card shadow mb-5 border-0">
                         <CardBody className="py-5">
                           <div className="mb-4">
                             <i className="fa fa-clock-o 
@@ -205,7 +205,7 @@ class Landing extends React.Component {
 							  >
                             Bookeeping
                           </h6>
-                          <p className="description mt-3 font-weight-light">
+                          <p className="description mt-3">
                             Budget Management
                           </p>
      
@@ -228,7 +228,7 @@ class Landing extends React.Component {
                       </Card>
                     </Col>
                     <Col lg="4">
-                      <Card className="card-up-hover shadow border-0">
+                      <Card className="card-up-hover landing-card shadow border-0">
                         <CardBody className="py-5">
                           <div className="mb-4">
                             <i className="fa fa-laptop 
@@ -241,7 +241,7 @@ class Landing extends React.Component {
 										 font-weight-bold">
                             IT Support
                           </h6>
-                          <p className="description mt-3 font-weight-light">
+                          <p className="description mt-3">
                             Maintenance, Updates and More
                           </p>
 	
@@ -284,8 +284,8 @@ class Landing extends React.Component {
                     />
                     <div className="pt-4 text-center">
                       <h5 className="title">
-                        <span className="d-block mb-1">Need administrative support?</span>
-                        <small className="h6 text-muted">We can take on any administrative task from big to small. We can make phone calls, prepare itineraries, draft documents, prepare reports based on research and much more! </small>
+                        <span className="d-block mb-1 round-card-title">Need administrative support?</span>
+                        <small className="h6 round-card-description">We can take on any administrative task from big to small. We can make phone calls, prepare itineraries, draft documents, prepare reports based on research and much more! </small>
                       </h5>
                       <div className="mt-3">
                         <Button
@@ -319,8 +319,8 @@ class Landing extends React.Component {
                     />
                     <div className="pt-4 text-center">
                       <h5 className="title">
-                        <span className="d-block mb-1">Not good with numbers?</span>
-                        <small className="h6 text-muted">
+                        <span className="d-block mb-1 round-card-title">Not good with numbers?</span>
+                        <small className="h6 round-card-description">
                           No problem! We can create a budget report and assist you to be a
 better stewart of your finances all with the
 confidentiality you deserve.
@@ -360,16 +360,16 @@ confidentiality you deserve.
                 <Col lg="8">
                   <Card className="bg-gradient-secondary shadow">
                     <CardBody className="p-lg-5">
-                      <h4 className="mb-1 landing-h4-p">Got Questions?</h4>
-                      <p className="mt-0">
+                      <h4 className="mb-2 landing-form-h4">Got Questions?</h4>
+                      <p className="mt-0 mb-5 landing-form-p">
                         Contact us today for a free quote, no obligation. 
                       </p>
                       <FormGroup>
                         <InputGroup className="input-group-alternative">
                           <InputGroupAddon addonType="prepend">
                             <InputGroupText>
-                              <i className="ni ni-user-run" />
-                            </InputGroupText>
+                            	 <i class="fas fa-running landing-form-icon" /> 
+                          	</InputGroupText>
                           </InputGroupAddon>
                           <Input
                             placeholder="Your Name (required)"
@@ -388,8 +388,8 @@ confidentiality you deserve.
                         <InputGroup className="input-group-alternative">
                           <InputGroupAddon addonType="prepend">
                             <InputGroupText>
-                              <i className="ni ni-email-83" />
-                            </InputGroupText>
+                            	 <i class="fas fa-envelope landing-form-icon" /> 
+                          	</InputGroupText>
                           </InputGroupAddon>
                           <Input
                             placeholder="Email Address (required)"
@@ -439,7 +439,7 @@ confidentiality you deserve.
                           size="lg"
                           type="submit" 
                         >
-                          Send Message
+                          SEND MESSAGE
                         </Button>
                       </div>
                     </CardBody>

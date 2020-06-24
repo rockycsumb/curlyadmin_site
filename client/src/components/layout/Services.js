@@ -51,7 +51,7 @@ class Services extends React.Component {
 				<div className="justify-content-center text-center mb-lg-1 row">
 					<div className="col-lg-8">
 					
-						<h2 className="font-weight-bold mb-4 text-color-default">Service Pricing</h2>
+						<h2 className="font-weight-bold mb-4 text-color-default services-header-h2">Service Pricing</h2>
 						
 						<ScrollAnimation animateIn="fadeIn">
 						<p className="text-muted lead-text">

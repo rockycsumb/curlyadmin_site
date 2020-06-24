@@ -1,3 +1,7 @@
+.services-header-h2 {
+	font-size: 2.25em;
+}
+
 .Services-task-amount {
 	font-size: 3rem;
 	color: #525F7F;
@@ -10,11 +14,10 @@ div.Services-description {
 }
 
 p.lead-text {
-	font-size: 1.25em;
+	font-size: 1.30em;
 	font-weight: 400;
 	line-height: 1.7;
 	color: #8898aa!important;
-	
 }
 
 p em {
