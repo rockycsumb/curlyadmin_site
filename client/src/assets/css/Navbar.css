@@ -5,6 +5,9 @@
 .nav-links a {
 	color: rgba(255,255,255,1);
 	font-size: 1.05em;
+	padding: .325em;
+	margin: .325em;
+	
 }
 
 .navbar-navlink.active-navbar {
