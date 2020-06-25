@@ -142,9 +142,7 @@ class Landing extends React.Component {
               </div>
             </section>
           </div>
-			
-			
-		  
+					  
 		  {/*  THREE CARDS */}
 		 <ScrollAnimation animateIn="fadeIn">
           <section className="landing-cards">
@@ -172,13 +170,13 @@ class Landing extends React.Component {
                             {administratives_support}
                           </p>
                           <Button
-                            className="mt-4 
+                            className="mt-4
+									   landing-card-button-font-size
 									   text-uppercase 
 									   button-color-primary 
 									   border-0 
 									   shadow 
 									   btn-rollover-color-primary
-									  
 									   font-weight-bold
 									   py-2 px-4"
 							to="/services"
@@ -211,6 +209,7 @@ class Landing extends React.Component {
      
                           <Button
                             className="mt-4
+									   landing-card-button-font-size
 									   card-space 
 									   text-uppercase 
 									   button-color-success 
@@ -246,7 +245,8 @@ class Landing extends React.Component {
                           </p>
 	
                           <Button
-                            className="mt-4 
+                            className="mt-4
+									   landing-card-button-font-size
 									   text-uppercase 
 									   button-color-danger 
 									   border-0 
@@ -289,7 +289,8 @@ class Landing extends React.Component {
                       </h5>
                       <div className="mt-3">
                         <Button
-                            className="mt-4 
+                            className="mt-4
+									   landing-card-button-font-size
 									   text-uppercase 
 									   button-color-primary 
 									   border-0 
@@ -329,7 +330,8 @@ confidentiality you deserve.
                       <div className="mt-3">
 						   <Button
                             className="round-cards-button
-									   mt-4 
+									   mt-4
+									   landing-card-button-font-size
 									   text-uppercase 
 									   button-color-danger 
 									   border-0 

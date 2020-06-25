@@ -1,5 +1,7 @@
 .contact-header {
 	margin-bottom: 20em;
+	font-weight: 600;
+	font-size: 2.1875rem;
 }
 
 @media only screen and (max-width: 991px) {

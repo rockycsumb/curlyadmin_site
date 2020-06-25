@@ -14,8 +14,8 @@ div.Services-description {
 }
 
 p.lead-text {
-	font-size: 1.30em;
-	font-weight: 400;
+	font-size: 1.25em;
+	font-weight: 200 !important;
 	line-height: 1.7;
 	color: #8898aa!important;
 }
@@ -25,11 +25,14 @@ p em {
 }
 
 .Services-card-h3 {
-	font-weight: 400 !important;
+	font-weight: 300 !important;
 }
 
 .card-button-text {
 	margin: 0 5em;
+	font-size: .875em;
+	font-weight: 600;
+	letter-spacing: .025em;
 }
 
 .card-text-description {

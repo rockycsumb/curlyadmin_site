@@ -14,6 +14,10 @@
 .landing-card {
 }
 
+.landing-card-button-font-size {
+	font-size: .875em;
+}
+
 .description {
 	font-size: .925rem;
 	color: #525F7F;
