@@ -143,7 +143,7 @@ class Contact extends React.Component {
             <Container>
 				<div className="justify-content-center text-center mb-lg-1 row">
 					<div className="col-lg-8">
-						<h2 className="font-weight-bold mb-4 text-color-default">Contact Us</h2>
+						<h2 className="contact-header mb-3 text-color-default">Contact Us</h2>
 					</div>
 				</div>
 			</Container>

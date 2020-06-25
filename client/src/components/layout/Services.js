@@ -63,6 +63,9 @@ class Services extends React.Component {
 						</ScrollAnimation>
 					</div>
 				</div>
+				
+				
+			{/* PRICING CARDS  */}
 			<ScrollAnimation animateIn="fadeInUp">
               <Row className="justify-content-center mt-4 services-cards mb-5 pb-5">
                 <Col lg="12">

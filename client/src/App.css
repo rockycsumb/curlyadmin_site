@@ -1,3 +1,7 @@
+body {
+	font-family: sans-serif !important
+}
+
 .App-container {
   max-width: 1100px;
   margin: auto;
