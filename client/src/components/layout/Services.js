@@ -49,7 +49,7 @@ class Services extends React.Component {
           <section className="mt-4 pt-lg-5 services-background">
             <Container>
 				<div className="justify-content-center text-center mb-lg-1 row">
-					<div className="col-lg-8">
+					<div className="col-lg-10">
 					
 						<h2 className="font-weight-bold mb-4 text-color-default services-header-h2">Service Pricing</h2>
 						
