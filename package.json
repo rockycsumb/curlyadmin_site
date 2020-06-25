@@ -1,5 +1,5 @@
 {
-  "name": "virtualadmin",
+  "name": "curlyadmin",
   "version": "1.0.0",
   "description": "virtual admin services",
   "main": "server.js",
