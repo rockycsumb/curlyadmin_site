@@ -155,10 +155,6 @@ class Landing extends React.Component {
 			  		</div>
 
                 <Col lg="12">
-					<div className="text-white">
-						<h2>Hi There, welcome! this is an edit</h2>
-						<h2>Hi There, welcome! this is an edit</h2>
-			  		</div>
                   <Row className="row-grid justify-content-center">
                     <Col lg="4">
                       <Card className="card-up-hover landing-card shadow mb-5 border-0">
