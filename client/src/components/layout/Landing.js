@@ -150,6 +150,9 @@ class Landing extends React.Component {
           <section className="landing-cards">
             <Container>
               <Row className="justify-content-center">
+				  <div className="text-white">
+						<h2>Hi There, welcome! </h2>
+			  		</div>
                 <Col lg="12">
                   <Row className="row-grid justify-content-center">
                     <Col lg="4">
