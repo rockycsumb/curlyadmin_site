@@ -4,7 +4,7 @@ import {connect} from 'react-redux';
 import PropTypes from 'prop-types';
 import Alert from '../layout/Alert';
 import {login} from '../../actions/auth';
-import './login.css';
+import '../../assets/css/login.css';
 
 // reactstrap components
 import {
@@ -54,27 +54,27 @@ const Login = ({login, isAuthenticated}) => {
           <section className="">
             <div className="space">
             </div>
-            <div class="container">
+            <div className="container">
 			<div className="d-flex justify-content-center">
 				<div className="alert-box-register">
 					<Alert />
 				</div>
 			</div>
-			<div class="d-flex justify-content-center h-100">
-				<div class="Login-card shadow border-2">
-					<div class="card-header text-center">
+			<div className="d-flex justify-content-center h-100">
+				<div className="Login-card shadow border-2">
+					<div className="card-header text-center">
 						<h3>Sign In</h3>
-						<div class="d-flex justify-content-end social_icon">
+						<div className="d-flex justify-content-end social_icon">
 							{/*<span><i class="fab fa-facebook-square"></i></span>
 							<span><i class="fab fa-google-plus-square"></i></span>
 							<span><i class="fab fa-twitter-square"></i></span>*/}
 						</div>
 					</div>
-					<div class="card-body">
+					<div className="card-body">
 						<form onSubmit={e => onSubmit(e)}>
-							<div class="input-group form-group">
-								<div class="input-group-prepend">
-									<span class="input-group-text"><i class="fas fa-user"></i></span>
+							<div className="input-group form-group">
+								<div className="input-group-prepend">
+									<span className="input-group-text"><i className="fas fa-user"></i></span>
 								</div>
 								<input 
 									placeholder="Email" 
@@ -87,9 +87,9 @@ const Login = ({login, isAuthenticated}) => {
 								/>
 
 							</div>
-							<div class="input-group form-group">
-								<div class="input-group-prepend">
-									<span class="input-group-text"><i class="fas fa-key"></i></span>
+							<div className="input-group form-group">
+								<div className="input-group-prepend">
+									<span className="input-group-text"><i className="fas fa-key"></i></span>
 								</div>
 								<input 
 									placeholder="Password"
@@ -116,8 +116,8 @@ const Login = ({login, isAuthenticated}) => {
 
 						</form>
 					</div>
-					<div class="card-footer Login-card-footer">
-						<div class="d-flex justify-content-center align-items-center links">
+					<div className="card-footer Login-card-footer">
+						<div className="d-flex justify-content-center align-items-center links">
 							Don't have an account?
 							<NavLink 
 									className="text-secondary signup"
@@ -136,9 +136,9 @@ const Login = ({login, isAuthenticated}) => {
 					</div>
 				</div>
 			</div>
-</div>
+	</div>
           </section>
-        </main>
+        </main>	
         
       </>
     );

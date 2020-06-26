@@ -42,7 +42,6 @@ export const register = ({name, email, password, privacy}) => async dispatch => 
 	}
 	
 	const body = JSON.stringify({name, email, password, privacy});
-	console.log("from actions ", body);
 	
 	try {
 		
@@ -77,7 +76,6 @@ export const login = (email, password) => async dispatch => {
 	}
 	
 	const body = JSON.stringify({email, password});
-	console.log("from actions ", body);
 	
 	try {
 		
@@ -111,7 +109,6 @@ export const loginSocialMedia = (email, password) => async dispatch => {
 	}
 	
 	const body = JSON.stringify({email, password});
-	
 	
 	try {
 		

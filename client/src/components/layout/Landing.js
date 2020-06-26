@@ -148,9 +148,6 @@ class Landing extends React.Component {
           <section className="landing-cards">
             <Container>
               <Row className="justify-content-center">
-				  <div>
-				   <h2>Message 2 welcome</h2>
-				  </div>
                 <Col lg="12">
                   <Row className="row-grid justify-content-center">
                     <Col lg="4">
@@ -373,7 +370,7 @@ confidentiality you deserve.
                         <InputGroup className="input-group-alternative">
                           <InputGroupAddon addonType="prepend">
                             <InputGroupText>
-                            	 <i class="fas fa-running landing-form-icon" /> 
+                            	 <i className="fas fa-running landing-form-icon" /> 
                           	</InputGroupText>
                           </InputGroupAddon>
                           <Input
@@ -393,7 +390,7 @@ confidentiality you deserve.
                         <InputGroup className="input-group-alternative">
                           <InputGroupAddon addonType="prepend">
                             <InputGroupText>
-                            	 <i class="fas fa-envelope landing-form-icon" /> 
+                            	 <i className="fas fa-envelope landing-form-icon" /> 
                           	</InputGroupText>
                           </InputGroupAddon>
                           <Input

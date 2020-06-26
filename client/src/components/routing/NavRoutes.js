@@ -18,8 +18,7 @@ const NavRoutes = ({auth: {isAuthenticated}}) => {
 	return (
 		<Router>
 			<Fragment>				
-			{/*	{isAuthenticated ? <Redirect id="navbar-main" to="/dashboard/overview" /> : <NavBar />}*/}
-						<NavBar />
+			{isAuthenticated ? <Redirect id="navbar-main" to="/dashboard/overview" /> : <NavBar />}
 						<Route exact path="/" component={Landing} />
 						<Route render={() => <Redirect to={{pathname: "/"}} />} />
 				<section>

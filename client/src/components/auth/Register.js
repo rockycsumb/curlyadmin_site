@@ -5,26 +5,12 @@ import {setAlert} from '../../actions/alert';
 import {register} from '../../actions/auth';
 import PropTypes from 'prop-types';
 import Alert from '../layout/Alert';
-import './register.css';
+import '../../assets/css/register.css';
 
 // reactstrap components
 import {
   Button,
-  Card,
-  CardHeader,
-  CardBody,
-  FormGroup,
-  Form,
-  Label, 
-  FormFeedback,
-  NavLink,
-  Input,
-  InputGroupAddon,
-  InputGroupText,
-  InputGroup,
-  Container,
-  Row,
-  Col
+  NavLink
 } from "reactstrap";
 
 import './Auth.css';
@@ -38,14 +24,6 @@ const Register = ({setAlert, register, isAuthenticated}) => {
 		privacy: ''
 	});
 	
-	const [formDataValidation, setFormDataValidation] = useState({
-		nameValidation:'',
-		emailValidation: '',
-		passwordValidation: '',
-		password2Validation:'',
-		privacyValidation: ''
-	});
-	
 	const {name, email, password, password2, privacy} = formData;
 	
 	const onChange = e =>{
@@ -53,24 +31,11 @@ const Register = ({setAlert, register, isAuthenticated}) => {
 	}
 	
 	const handleCheckbox = e =>{
-		console.log("this is from handlebox before setform ", e.target.checked);
 		setFormData({...formData, privacy: e.target.checked.toString()})
 	}
-	
-	const checkEmail = (f_email) =>{
-		// checks for format _@_._
-		if (/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(f_email)){
-		  return true;
-		} 
-	}
-	
-
-	
+		
 	const onSubmit = async e =>{
-		
-		e.preventDefault();
-		console.log("from onSubmit privacy check ", formData.privacy);
-		
+		e.preventDefault();		
 		
 		// if(!privacy){
 		// 	setAlert('Privacy needs to be agreed to', 'danger');
@@ -126,9 +91,9 @@ const Register = ({setAlert, register, isAuthenticated}) => {
 										/>										
 									</div>
 																
-									<div class="input-group form-group">
-										<div class="input-group-prepend">
-											<span class="input-group-text"><i class="fas fa-user"></i></span>
+									<div className="input-group form-group">
+										<div className="input-group-prepend">
+											<span className="input-group-text"><i className="fas fa-user"></i></span>
 										</div>
 										<input 
 											placeholder="Email"
@@ -140,9 +105,9 @@ const Register = ({setAlert, register, isAuthenticated}) => {
 											required
 										/>
 									</div>
-									<div class="input-group form-group">
-										<div class="input-group-prepend">
-											<span class="input-group-text"><i class="fas fa-key"></i></span>
+									<div className="input-group form-group">
+										<div className="input-group-prepend">
+											<span className="input-group-text"><i className="fas fa-key"></i></span>
 										</div>
 										<input 
 											placeholder="Password"
@@ -156,9 +121,9 @@ const Register = ({setAlert, register, isAuthenticated}) => {
 											required
 										/>
 									</div>
-									<div class="input-group form-group">
-										<div class="input-group-prepend">
-											<span class="input-group-text"><i class="fas fa-key"></i></span>
+									<div className="input-group form-group">
+										<div className="input-group-prepend">
+											<span className="input-group-text"><i className="fas fa-key"></i></span>
 										</div>
 										<input 
 											placeholder="Confirm Password"
@@ -207,7 +172,7 @@ const Register = ({setAlert, register, isAuthenticated}) => {
 									</div>
 								</form>
 							</div>
-								<div class="card-footer card-footer-space">
+								<div className="card-footer card-footer-space">
 									<div className="d-flex justify-content-center align-items-center links">
 										  <small>
 											Already have an account? 
