@@ -1,4 +1,5 @@
 import axios from 'axios';
+import apiURL from './apiURL';
 import {setAlert} from './alert';
 import {
 	GET_PROFILE,
@@ -10,7 +11,7 @@ import {
 //Get current users profile
 export const getCurrentProfile = () => async dispatch => {
 	try {
-		const res = await axios.get('https://mernstack-shrnu.run-us-west2.goorm.io/api/profile/me');
+		const res = await axios.get(`${apiURL}api/profile/me`);
 		dispatch({
 			type: GET_PROFILE,
 			payload: res.data
@@ -35,7 +36,7 @@ export const createProfile = (formData, history, edit = false) => async dispatch
 		
 		
 		
-		const res = await axios.post('https://mernstack-shrnu.run-us-west2.goorm.io/api/profile', formData, config);
+		const res = await axios.post(`${apiURL}api/profile`, formData, config);
 		dispatch({
 			type: GET_PROFILE,
 			payload: res.data
@@ -66,7 +67,7 @@ export const createProfile = (formData, history, edit = false) => async dispatch
 export const deleteAccount = () => async dispatch => {
 	if(window.confirm('Are you sure? This cannot be undone!')) {
 		try {
-			const res = await axios.delete('https://mernstack-shrnu.run-us-west2.goorm.io/api/profile');
+			const res = await axios.delete(`${apiURL}api/profile`);
 			dispatch({type: CLEAR_PROFILE});
 			dispatch({type: ACCOUNT_DELETED});
 			

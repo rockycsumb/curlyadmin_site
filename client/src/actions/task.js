@@ -1,4 +1,5 @@
 import axios from 'axios';
+import apiURL from './apiURL';
 import {setAlert} from './alert';
 import {
 	GET_TASKS,
@@ -9,7 +10,7 @@ import {
 //GET TASK
 export const getTasks = () => async dispatch => {
 	try {
-		const res = await axios.get('https://mernstack-shrnu.run-us-west2.goorm.io/api/task');
+		const res = await axios.get(`${apiURL}api/task`);
 		dispatch({
 			type: GET_TASKS,
 			payload: res.data

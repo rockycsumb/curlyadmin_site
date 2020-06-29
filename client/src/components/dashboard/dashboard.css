@@ -8,7 +8,7 @@
 	height: 100%;
 	flex: 0 0 250px;
 	margin-right: 20px;
-	padding-right: 20px;
+	/* padding-right: 20px; */
 	/* border: solid red 2px; */
 }
 
@@ -42,16 +42,21 @@
 }
 
 .EditProfile-close-x{
-	color: white;
-	font-size: 1.5em;
+	color: rgb(220,53,69);
+	font-size: 1em;
+	margin-left: 10px;
+	padding: 5px;
 	font-weight: bold;
 }
 
 .EditProfile-close-x:hover{
-	color: white;
-	font-size: 1.5em;
+	color: rgba(220,53,69,.7);
+	font-size: 1em;
+	margin-left: 10px;
+	padding: 5px;
 	font-weight: bold;
 }
+
 
 .EditProfile-update-delete {
 	display: flex;
@@ -63,7 +68,7 @@
 .EditProfile-update-delete-buttons {
 	/* border: 2px solid red; */
 	font-size: .60em !important;
-	width: 9em;
+	/* width: 9em; */
 	margin: 0 5px;
 	
 }
@@ -103,15 +108,14 @@
 			margin-right: 16px;
 		}
 	
-		.EditProfile-close-x{
-			color: white;
+		/* .EditProfile-close-x{
+			color: black;
 			font-size: 1em;
 			font-weight: bold;
-			
 			position: absolute;
 			right: 10px;
 			top: 3em;
-		}
+		} */
 }
 
 

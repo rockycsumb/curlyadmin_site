@@ -8,19 +8,10 @@ import './sidebar.css';
 import './icons8-menu.svg';
 
 import {
-  UncontrolledCollapse,
-  Collapse,
-  DropdownMenu,
-  DropdownItem,
-  UncontrolledDropdown,
   NavbarBrand,
-  Navbar,
   NavItem,
   NavLink,
-  Nav,
-  Container,
-  Row,
-  Col
+  Nav
 } from "reactstrap";
 
 const Sidebar = ({auth: isAuthenticated, logout, props, userInfo}) =>{
@@ -51,15 +42,18 @@ const Sidebar = ({auth: isAuthenticated, logout, props, userInfo}) =>{
 							</span>
 							<span className="curlyName">Curly</span>
 							<span className="adminName">ADMIN</span>
-						  <br />
-						  {userInfo.rights === "admin" ? "Admin Control" : ""}
+						  
+						  	<div>
+								{userInfo.rights === "admin" ? "Admin Control" : ""}
+						  	</div>
+						  
 						</NavbarBrand>
 					  	
 				  </div>
 				
 				 <div className="Sidebar-item-user">
 					<span className="">
-						<i className="fa fa-user Sidebar-item-user-logo" />{userInfo && userInfo.name}
+						<i className="fa fa-user" />{userInfo && userInfo.name}
 					</span>
 				  </div>
 				

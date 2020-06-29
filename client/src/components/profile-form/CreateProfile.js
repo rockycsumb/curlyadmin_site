@@ -1,32 +1,15 @@
-import React, {useState, Fragment} from 'react';
+import React, {useState} from 'react';
 import {Link, withRouter, NavLink as NavLinkRRD} from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import {createProfile} from '../../actions/profile';
-
 import '../dashboard/dashboard.css';
 
-
 // reactstrap components
-import {
-  Button,
-  Card,
-  CardHeader,
-  CardBody,
-  NavItem,
-  NavLink,
-  Nav,
-  Progress,
-  Table,
-  Container,
-  Row,
-  Col,
-  Navbar,
-  Media
-} from "reactstrap";
+import { Button } from "reactstrap";
 
 const CreateProfile = ({props, profile, createProfile, history}) =>{
-	
+
 	const [formData, setFormData] = useState({
 		company: '',
 		location: '',
@@ -57,83 +40,37 @@ const CreateProfile = ({props, profile, createProfile, history}) =>{
 						Dashboard Profile
 					</div>
 					<div className="Dashboard-user">
-						<span >
-							<NavLinkRRD className="EditProfile-close-x" to="/dashboard/profile">
-								X
-							</NavLinkRRD>
-						</span>
 						<span className="ml-1 mb-0 text-sm font-weight-bold">{profile && profile.user.name}</span>
 					</div>
 				</div>
 				
-				<div className="order-xl-1 col-xl-8 container-fluid">
-					<div className="bg-secondary shadow card">
+				<div className="col-xl-8 container-fluid mb-3">
+					<div className="shadow card">
 						<div className="bg-white border-0 card-header">
 							<div className="align-items-center row">
-								<div className="col-8">
+								<div className="col-6 pr-0">
 									<h3 className="mb-0">My account</h3>
 								</div>
-								<div className="text-right col-4">
-									<Button className="btn btn-primary btn-sm" type="submit" onClick={e => onSubmit(e)} >Create Profile</Button>
+								<div className="text-right col-6">
+									<Button 
+										className="btn-round  bg-color-default btn-rollover-color-default"
+										type="submit" 
+										size="sm"
+										onClick={e => onSubmit(e)} >Create Profile</Button>
+									<NavLinkRRD
+										className="bg-transparent EditProfile-close-x"
+										size="sm"
+										to="/dashboard/profile"
+										tag={Link}
+										 >
+									<i class="fa fa-times" aria-hidden="true"></i>
+									</NavLinkRRD>
 								</div>
 							</div>
 						</div>
 						<div className="card-body">
 							<form className="" onSubmit={e => onSubmit(e)}>
 								<h6 className="heading-small text-muted mb-4">User information</h6>
-								<div className="pl-lg-4">
-									
-									{/*  UPDATE USERNAME AND EMAIL ADDRESS */}
-									{/*<div className="row">
-										<div className="col-lg-6">
-											<div className="form-group">
-												<label className="form-control-label" htmlFor="input-username">
-													Username
-												</label>
-												<input id="input-username" placeholder="Username" type="text" className="form-control-alternative form-control" value="lucky.jesse" />
-											</div>
-										</div>
-										<div className="col-lg-6">
-											<div className="form-group">
-												<label className="form-control-label" htmlFor="input-email">
-													Email address
-												</label>
-												<input id="input-email" placeholder="jesse@example.com" type="email" className="form-control-alternative form-control" />
-											</div>
-										</div>
-									</div> */}
-									{/*
-									<div className="row">
-										<div className="col-lg-6">
-											<div className="form-group">
-												<label className="form-control-label" htmlFor="input-first-name">
-													First name
-												</label>
-												<input 
-													id="input-first-name" 
-													placeholder="First name" 
-													type="text" 
-													className="form-control-alternative form-control" 
-													value="Lucky" 
-												/>
-											</div>
-										</div>
-										<div className="col-lg-6">
-											<div className="form-group">
-												<label className="form-control-label" htmlFor="input-last-name">
-													Last name
-												</label>
-												<input 
-													id="input-last-name" 
-													placeholder="Last name" 
-													type="text" 
-													className="form-control-alternative form-control" 
-													value="Jesse" />
-											</div>
-										</div>
-									</div>
-									*/}
-								</div>
 								<div className="pl-lg-4">
 										<div className="row">
 											<div className="col-md-12">
@@ -199,69 +136,6 @@ const CreateProfile = ({props, profile, createProfile, history}) =>{
 												</div>
 											</div>
 									</div>
-									{/*
-									<div className="pl-lg-4">
-										<div className="row">
-											<div className="col-md-12">
-												<div className="form-group">
-													<label className="form-control-label" htmlFor="input-address">
-														Address
-													</label>
-													<input id="input-address" placeholder="Home Address" type="text" className="form-control-alternative form-control" value="Apt 09" />
-												</div>
-											</div>
-										</div>
-										<div className="row">
-											<div className="col-lg-4">
-												<div className="form-group">
-													<label className="form-control-label" htmlFor="input-city">
-														City
-													</label>
-													<input 
-														className="form-control-alternative form-control"
-														id="input-city"
-														type="text" 
-														placeholder="City" 
-														name="city"
-														value={city}
-														onChange={e => onChange(e)}
-													/>
-												</div>
-											</div>
-											<div className="col-lg-4">
-												<div className="form-group">
-													<label className="form-control-label" htmlFor="input-state">
-														State
-													</label>
-													<input
-														className="form-control-alternative form-control" 
-														id="input-state"
-														type="text"
-														placeholder="State" 
-														name="state"
-														value={state}
-														onChange={e => onChange(e)}
-													/>
-												</div>
-											</div>
-											<div className="col-lg-4">
-												<div className="form-group">
-													<label className="form-control-label" htmlFor="input-country">
-														Country
-													</label>
-													<input
-														className="form-control-alternative form-control" 
-														id="input-country"
-														type="text" 
-														placeholder="Country" 
-														name="country"
-														value={country}
-														onChange={e => onChange(e)}
-													/>
-												</div>
-											</div>
-										</div>
-									</div>*/}
 									
 									<hr className="my-4" />
 										<h6 className="heading-small text-muted mb-4">
@@ -287,7 +161,6 @@ const CreateProfile = ({props, profile, createProfile, history}) =>{
 									</div>
 								</div>
 						</div>
-				
 			</div>
 		</div>
 	)

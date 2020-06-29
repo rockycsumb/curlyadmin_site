@@ -1,8 +1,7 @@
-import React, {Fragment, useEffect} from 'react';
+import React, {useEffect} from 'react';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 import {getTasks} from '../../actions/task';
-import Spinner from '../layout/Spinner';
 
 import './dashboard.css';
 
@@ -13,17 +12,11 @@ import {
   Button,
   Card,
   CardHeader,
-  CardBody,
-  NavItem,
-  NavLink,
-  Nav,
   Progress,
   Table,
   Container,
   Row,
-  Col,
-  Navbar,
-  Media
+  Col
 } from "reactstrap";
 
 const DashboardContent = ({props, getTasks, auth:{user}, task: {tasks, loading}}) => {

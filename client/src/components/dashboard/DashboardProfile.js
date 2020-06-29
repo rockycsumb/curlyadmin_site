@@ -69,9 +69,9 @@ const DashboardProfile = ({props, user, profile:{profile}}) => {
 					</Fragment> 
 						) : (
 					<Fragment>
-						<div className="d-flex align-items-center container-fluid">
+						<div className="d-flex align-items-center container-fluid m-3">
 							<div className="row">
-								<div className="col-md-10 col-lg-12">
+								<div className="">
 									<h1 className="display-2 text-white">Hello {user.name}</h1>
 									{console.log("from edit", user.name)}
 									

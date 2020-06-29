@@ -47,7 +47,7 @@ export const MenuPop = ({isCollapse, setMenuCollapse, logout}) =>{
 				className="dropdown-content"
 			>
 				<div className="dropdown-navbar-header ">
-					<NavbarBrand to="/" tag={Link} onClick={toggler}>
+					<NavbarBrand to="/dashboard/overview" tag={Link} onClick={toggler}>
 						<span>
 							{/*<i 
 							className="fas fa-glasses" 

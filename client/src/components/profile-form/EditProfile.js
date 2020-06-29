@@ -77,6 +77,7 @@ const EditProfile = ({
 					<div className="Dashboard-page-title">
 						Dashboard Profile
 					</div>
+					{/*
 					<div className="EditProfile-close-x text-align-right">
 						<span >
 							<NavLinkRRD className="EditProfile-close-x" to="/dashboard/profile">
@@ -84,27 +85,44 @@ const EditProfile = ({
 							</NavLinkRRD>
 						</span>
 					</div>
+					*/}
 				</div>
 				
-				<div className="order-xl-1 col-xl-8 container-fluid">
-					<div className="bg-secondary shadow card">
+				<div className="col-xl-8 container-fluid">
+					<div className="shadow card">
 						<div className="bg-white border-0 card-header">
 							<div className="align-items-center row">
-								<div className="col-5 col-md-7">
+								<div className="col-5">
 									<h3 className="mb-0">My account</h3>
 								</div>
-								<div className="text-right col-4">
-									<div className="EditProfile-update-delete" >
+								<div className="col-7 pr-0">
+									<div className="justify-content-end EditProfile-update-delete" >
 										<div className="">
-											<Button className="EditProfile-update-delete-buttons" color="primary " type="submit" onClick={e => onSubmit(e)}>
+											<Button 
+												className="EditProfile-update-delete-buttons" 
+												color="primary"
+												size="sm"
+												type="submit" 
+												onClick={e => onSubmit(e)}>
 												Update
 											</Button>
 										</div>
 										<div className="">
-											<Button className="btn btn-danger EditProfile-update-delete-buttons" onClick={()=> deleteAccount()}>
+											<Button 
+												className="btn btn-danger EditProfile-update-delete-buttons" 
+												size="sm"
+												onClick={()=> deleteAccount()}>
 												 Delete
 											</Button>
 										</div>
+										<NavLinkRRD
+										className="bg-transparent EditProfile-close-x"
+										size="sm"
+										to="/dashboard/profile"
+										tag={Link}
+										 >
+									<i class="fa fa-times" aria-hidden="true"></i>
+									</NavLinkRRD>
 									</div>
 								</div>
 							</div>
