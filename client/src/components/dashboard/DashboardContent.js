@@ -31,14 +31,14 @@ const DashboardContent = ({props, getTasks, auth:{user}, task: {tasks, loading}}
 		getTasks();
 	}, [getTasks]);
 	
+	console.log("from dashboard overview", user);
+	
 	return (
 		<div className="Dashboard-content">
-		
-			
-			
 			<div className="header bg-gradient-info pb-8 pt-5 pt-md-4">
 				<div className="Dashboard-header-container">
 					<div className="Dashboard-page-title">
+						
 						Dashboard Overview
 					</div>
 

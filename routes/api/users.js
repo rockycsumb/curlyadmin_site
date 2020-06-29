@@ -23,7 +23,7 @@ async (req, res)=> {
 	}
 	
 	//Deconstruct
-	const {name, email, password, privacy} = req.body;
+	const {name, email, password, rights, privacy} = req.body;
 	
 	try {
 		// See if user exists
@@ -36,6 +36,7 @@ async (req, res)=> {
 		name,
 		email,
 		password,
+		rights,
 		privacy
 		})
 	

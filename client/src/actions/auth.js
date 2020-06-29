@@ -1,5 +1,6 @@
 import axios from 'axios';
 import {setAlert} from './alert';
+import apiURL from './apiURL';
 import setAuthToken from '../utils/setAuthToken';
 import {
 	REGISTER_SUCCESS,
@@ -20,7 +21,7 @@ export const loadUser = () => async dispatch => {
 	 }
 	
 	try {
-		const res = await axios.get('https://mernstack-shrnu.run-us-west2.goorm.io/api/auth');
+		const res = await axios.get(`${apiURL}api/auth`);
 		
 		dispatch({
 			type: USER_LOADED,
@@ -45,7 +46,7 @@ export const register = ({name, email, password, privacy}) => async dispatch => 
 	
 	try {
 		
-		const res = await axios.post('https://mernstack-shrnu.run-us-west2.goorm.io/api/users', body, config);
+		const res = await axios.post(`${apiURL}api/users`, body, config);
 		
 		dispatch({
 			type: REGISTER_SUCCESS,
@@ -79,7 +80,7 @@ export const login = (email, password) => async dispatch => {
 	
 	try {
 		
-		const res = await axios.post('https://mernstack-shrnu.run-us-west2.goorm.io/api/auth', body, config);
+		const res = await axios.post(`${apiURL}api/auth`, body, config);
 		
 		dispatch({
 			type: LOGIN_SUCCESS,

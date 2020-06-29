@@ -24,13 +24,12 @@ const Dashboard = ({
 	useEffect(()=>{
 		getCurrentProfile();
 	},[]);
+	
+	console.log("this is the user info", user);
 
 		return (
-			
 			loading && profile === null ? <Spinner /> :  
-			
 			<Fragment>
-				
 					<Router>
 						<Fragment>
 							<div className="Dashboard-container">
@@ -38,17 +37,19 @@ const Dashboard = ({
 									<Sidebar userInfo={user} />
 								</div>
 								<div className="Dashboard-main">
-									<Route exact path="/dashboard/overview" render={(props)=><DashboardContent {...props} user={user} /> }/>
+									<Route 
+										exact 
+										path="/dashboard/overview" 
+										render={
+											(props)=><DashboardContent {...props} user={user} /> 
+										}/>
 									<Switch>
 										<PrivateRoute exact path="/dashboard/task" component={DashboardTask} />
 										<Route exact path="/dashboard/profile" render={props => <DashboardProfile {...props} user={user} /> } />
 										<PrivateRoute exact path="/dashboard/create-profile" component={CreateProfile} />
 										<PrivateRoute exact path="/dashboard/edit-profile" component={EditProfile} />
 									</Switch>
-									
-									
 								</div>
-								
 							</div>
 						</Fragment>
 					</Router>

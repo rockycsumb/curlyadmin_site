@@ -14,6 +14,10 @@
 	margin-bottom: 40px;
 }
 
+a.Sidebar-logo-not-collapsed{
+	color:black;
+}
+
 .Sidebar-item-title {
 	align-self: center;
 	font-size: 25px;
@@ -49,10 +53,12 @@ a {
 	color: #191919;
 	border-left: 3px solid #FB6340;
 	padding: 0.65rem 1.30rem;
+	
 }
 
 a:hover {
 	color: #191919;
+	text-decoration: none;
 }
 
 

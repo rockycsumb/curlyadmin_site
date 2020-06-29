@@ -3,6 +3,7 @@ import { NavLink as NavLinkRRD, Link} from "react-router-dom";
 import {connect} from 'react-redux';
 import PropTypes from 'prop-types';
 import {logout} from '../../actions/auth';
+import MenuPop from './MenuPop';
 import './sidebar.css';
 import './icons8-menu.svg';
 
@@ -26,92 +27,39 @@ const Sidebar = ({auth: isAuthenticated, logout, props, userInfo}) =>{
 	const [collapseClasses, setCollapseClasses] = useState("");
 	const [collapse, setCollapse] = useState(false);
 	const toggle = () => setCollapse(!collapse);
+	const setMenuCollapse = () => setCollapse(false);
 	
 	return(
 		<Fragment>
+			<MenuPop isCollapse={collapse} setMenuCollapse={()=>setMenuCollapse()} />
 			<div className="Sidebar-Container">
 				  <button className="hamburger" id="navbar_global" onClick={toggle}>
 					  <i className="fas fa-bars"></i>
 					 <span />
 				  </button>
-				<Collapse
-					isOpen={collapse}
-					navbar
-				  >
-					<div className="navbar-collapse-header">
-					  <Row>
-						<Col className="collapse-brand" xs="6">
-						  <Link to="/">
-							  <i className="fa fa-female"> </i> VirtualAdmin.io
-						  </Link>
-						</Col>
-						<Col className="collapse-close" xs="6">
-						  <button className="navbar-toggler" id="navbar_global"  onClick={toggle}>
-							<span />
-							<span />
-						  </button>
-						</Col>
-					  </Row>
-					</div>
-					<Nav className="align-items-lg-center ml-lg-auto" navbar >
-					  <NavItem  className="Sidebar-nav-item">
-						<NavLink
-						  className="nav-link-icon"
-						  to="/dashboard/overview"
-						  tag={Link}
-						  onClick={toggle}
-						>
+				
 
-						 <span className="nav-link-inner--text">Dashboard</span>
-						</NavLink>
-					  </NavItem>
-					  <NavItem  className="Sidebar-nav-item">
-						<NavLink
-						  className="nav-link-icon"
-						  to="/dashboard/task"
-						  tag={Link}
-						  onClick={toggle}
-						>
-
-						 <span className="nav-link-inner--text">Task</span>
-						</NavLink>
-					  </NavItem>
-					  <NavItem  className="Sidebar-nav-item">
-						<NavLink
-						  className="nav-link-icon"
-						  to="/dashboard/profile"
-						  tag={Link}
-						  onClick={toggle}
-						>
-
-						 <span className="nav-link-inner--text">Profile</span>
-						</NavLink>
-					  </NavItem>
-					  <NavItem  className="Sidebar-nav-item">
-						<NavLink
-						  className="nav-link-icon"
-						  to="/home"
-						  tag={Link}
-						  onClick={logout}
-						>
-
-						 <span className="nav-link-inner--text">Logout</span>
-						</NavLink>
-					  </NavItem>
-					</Nav>
-				</Collapse>
 				
 				{/* **********FOR SIDE NAV NOT COLLAPSES******* */}
 				
 				  <div className="Sidebar-item-logo">	  
-					  <div>
-						  <i className="fa fa-female" /> <span className="Sidebar-item-title">VirtualAdmin.io</span>
-					  </div>
+					  <NavbarBrand className="Sidebar-logo-not-collapsed" to="/dashboard/overview" tag={Link}>
+							<span>
+								{/*<i 
+								className="fas fa-glasses" 
+								style={{fontSize: "50px", marginRight: "5px"}} />*/}
+							</span>
+							<span className="curlyName">Curly</span>
+							<span className="adminName">ADMIN</span>
+						  <br />
+						  {userInfo.rights === "admin" ? "Admin Control" : ""}
+						</NavbarBrand>
+					  	
 				  </div>
 				
 				 <div className="Sidebar-item-user">
-					<span className="avaar avatar-sm rounded-circle">
-						<i className="fa fa-user" />{userInfo && userInfo.name}
+					<span className="">
+						<i className="fa fa-user Sidebar-item-user-logo" />{userInfo && userInfo.name}
 					</span>
 				  </div>
 				

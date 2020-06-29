@@ -17,22 +17,22 @@ const DashboardBio = (props) => {
 								</div>
 							</div>
 						</div>
-						
 							<div class="pt-0 pt-md-4 card-body">
 								<div class="text-center">
 									<h3>
-										{props.name}
+										Name: {props.name}
 									</h3>
 									<div class="h5 font-weight-300">
-										<i class="ni location_pin mr-2"></i> {props.location}
+										Location: <i class="ni location_pin mr-2"></i> {props.location}
 									</div>
 									<div class="h5 mt-4">
-										<i class="ni business_briefcase-24 mr-2"></i>{props.company}
+										Company: <i class="ni business_briefcase-24 mr-2"></i>{props.company}
 									</div>
 									<div>
-										<i class="ni education_hat mr-2"></i>{props.website}
+										Webste: <i class="ni education_hat mr-2"></i>{props.website}
 									</div>
 									<hr class="my-4" />
+									A Little about me:
 									<p>{props.bio}</p>
 									
 								</div>

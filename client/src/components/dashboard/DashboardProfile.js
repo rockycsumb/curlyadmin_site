@@ -4,7 +4,7 @@ import {connect} from 'react-redux';
 import PropTypes from 'prop-types';
 import {setAlert} from '../../actions/alert';
 import Alert from '../layout/Alert';
-import './dashboard.css';
+import './dashboardProfile.css';
 import DashboardBio from './DashboardBio';
 
 // reactstrap components
