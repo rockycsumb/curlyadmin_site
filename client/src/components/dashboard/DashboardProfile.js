@@ -47,7 +47,7 @@ const DashboardProfile = ({props, user, profile:{profile}}) => {
 					</div>
 					
 					
-					<div className="container-fluid  " xs="3" xl="5" style={{position: "absolute", zIndex: "3000"}}>
+					<div className="container-fluid  dashboardProfile-alert">
 						<Alert  />
 					</div>
 					

@@ -8,11 +8,11 @@ export const setAlert = (msg, alertType) => dispatch => {
 			payload: { msg, alertType, id}
 		})
 		
-		setTimeout(()=> 
-			dispatch({type: FADE_OUT, payload: id}), 7000);
+		// setTimeout(()=> 
+		// 	dispatch({type: FADE_OUT, payload: id}), 7000);
 	
-		setTimeout(()=> 
-			dispatch({type: REMOVE_ALERT, payload: id}), 7250);
+		// setTimeout(()=> 
+		// 	dispatch({type: REMOVE_ALERT, payload: id}), 7250);
 	
 }
 
