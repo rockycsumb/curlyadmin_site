@@ -24,7 +24,6 @@ const DashboardContent = ({props, getTasks, auth:{user}, task: {tasks, loading}}
 		getTasks();
 	}, [getTasks]);
 	
-	console.log("from dashboard overview", user);
 	
 	return (
 		<div className="Dashboard-content">

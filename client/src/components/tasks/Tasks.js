@@ -12,8 +12,12 @@ import {
 
 const Tasks = ({
 	auth,
-	taskData: {_id, status, urgency, description, name, title, user, comment, date}
+	taskData
 }) =>{
+	
+	console.log("from component tasks auth ", auth);
+	console.log("from component tasks ", taskData);
+
 	
 	const urgencyColor = (urgency) =>{
 		if (urgency === "low") {
@@ -27,17 +31,17 @@ const Tasks = ({
 		
 	return (
 		<Fragment>
-		{!auth.loading && user._id === auth.user._id && (
+		{!auth.loading && taskData.user._id === auth.user._id && (
 		 	<div className="col-lg-6 col-xl-3">
 			<div className="card-stats mb-4 mb-xl-0 card">
 				<div className="card-body">
 					<div>
-							Task Date: <Moment format='MM/DD/YYYY'>{date}</Moment>
+							Task Date: <Moment format='MM/DD/YYYY'>{taskData.date}</Moment>
 						</div>
 					<div className="row">
 						
 						<div className="col">
-							<h5 className="h2 font-weight-bold mb-0 card-title">{title}</h5>
+							<h5 className="h2 font-weight-bold mb-0 card-title">{taskData.title}</h5>
 						</div>
 						<div className="col-auto col">
 							<div className="icon icon-shape bg-danger text-white rounded-circle shadow">
@@ -48,12 +52,12 @@ const Tasks = ({
 					</div>
 					<hr />
 					<CardText>
-					  {description}
+					  {taskData.description}
 					</CardText>
 					<p className="mt-3 mb-0 text-muted text-sm">
 					
-						<Badge className="mr-1" color={urgencyColor(urgency)}>Urgency: {urgency}</Badge>
-						<Badge className="mr-2" color={status === "pending" ? "success" : "danger"}>Agreement: {status}</Badge>
+						<Badge className="mr-1" color={urgencyColor(taskData.urgency)}>Urgency: {taskData.urgency}</Badge>
+						<Badge className="mr-2" color={taskData.status === "pending" ? "success" : "danger"}>Agreement: {taskData.status}</Badge>
 					</p>
 					<hr />
 					<p>
@@ -75,7 +79,8 @@ Tasks.propTypes = {
 }
 
 const mapStateToProps = state => ({
-	auth: state.auth
+	auth: state.auth,
+	task: state.task
 })
 
 export default connect(mapStateToProps, {})(Tasks);

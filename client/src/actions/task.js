@@ -11,11 +11,15 @@ import {
 export const getTasks = () => async dispatch => {
 	try {
 		const res = await axios.get(`${apiURL}api/task`);
+		
+		console.log("from get tasks ", res);
 		dispatch({
 			type: GET_TASKS,
 			payload: res.data
 		})
 	} catch(err) {
+		
+		console.log("from task action ", err);
 		dispatch({
 			type: TASK_ERROR,
 			payload: {msg: err.response.statusText, status: err.response.status}
