@@ -23,8 +23,10 @@ import {
 } from "reactstrap";
 
 //EMAIL KEY
-const EMAIL_JS_KEY = `${process.env.REACT_APP_API_KEY}`;
+const EMAIL_JS_KEY = `${process.env.REACT_APP_EMAILJS_API_KEY}`;
+const recapKey = `${process.env.REACT_APP_RECAPTCHA}`;
 
+console.log("email js " + EMAIL_JS_KEY + " REACP KEY " + recapKey);
 const words = {
 	english: {
 		administratives_support: "Administrative Support",

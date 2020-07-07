@@ -3,6 +3,7 @@ import {Link} from 'react-router-dom';
 import {connect} from 'react-redux';
 import {setAlert} from '../../actions/alert';
 import PropTypes from 'prop-types';
+import apiURL from '../../utils/apiURL';
 import axios from "axios";
 
 import {
@@ -24,7 +25,7 @@ const ResetPassword = (props) => {
 			id: props.match.params.id
 		}
 		axios({
-			url: "https://mernstack-shrnu.run-us-west2.goorm.io/api/auth/resId",
+			url: `${apiURL}api/auth/resId`,
             data: body,
             method: "post"		
 		

@@ -1,5 +1,5 @@
 import axios from 'axios';
-import apiURL from './apiURL';
+import apiURL from '../utils/apiURL';
 import {setAlert} from './alert';
 import {
 	GET_TASKS,
