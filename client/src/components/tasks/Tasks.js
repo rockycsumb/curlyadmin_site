@@ -27,7 +27,7 @@ const Tasks = ({
 		
 	return (
 		<Fragment>
-		{!auth.loading && (
+		{!auth.loading &&  auth.user._id === taskData.user._id && (
 		 	<div className="col-lg-6 col-xl-3">
 			<div className="card-stats mb-4 mb-xl-0 card">
 				<div className="card-body">

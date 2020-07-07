@@ -54,7 +54,6 @@ const DashboardTasks = ({getTasks, auth:{user}, task: {tasks, loading}}) =>{
 							{/*********   START TASK CARDS *********/}
 							
 							{tasks.map(task =>(
-								
 								<Tasks key={task._id} taskData={task} />
 							))}
 															

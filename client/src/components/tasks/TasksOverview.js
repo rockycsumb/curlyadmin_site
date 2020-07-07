@@ -9,10 +9,10 @@ import {
 	CardText,
 	Badge
 } from 'reactstrap';
-// taskData: {status, urgency, description, name, title, user, comment, date},
+
 const TasksOverview = ({
 	auth,
-	task
+	taskData: {status, urgency, description, name, title, user, comment, date}
 }) =>{
 	
 	const urgencyColor = (urgency) =>{
@@ -24,21 +24,14 @@ const TasksOverview = ({
 			return "danger"
 		}
 	}
-	
-	console.log("auth from taskoverview auth ", auth.user._id);
-	// console.log("taskData from taskoverview user ", user);
-	// console.log("taskData from taskoverview user ", user._id);
-	console.log("taskData from taskoverview desc ", task);
 		
 	return (
 		<Fragment>
-			{!auth.loading &&  (
+			{!auth.loading &&  auth.user._id === user._id && (
 				<div className="col-lg-6 col-xl-3">
 					<div className="card-stats mb-4 mb-xl-0 card">
 						<div className="card-body">
-							{/*
 							<div className="row">
-								
 								<div className="col">
 									<h5 className="font-weight-bold mb-0 card-title">{title}</h5>
 									<span className="text-muted mb-0">{description}</span>
@@ -54,7 +47,7 @@ const TasksOverview = ({
 								<Badge className="mr-1" color={urgencyColor(urgency)}>Urgency: {urgency}</Badge>
 								<Badge className="mr-2" color={status === "pending" ? "success" : "danger"}>Agreement: {status}</Badge>
 							</p>
-							*/}
+							
 						</div>
 					</div>
 				</div>
