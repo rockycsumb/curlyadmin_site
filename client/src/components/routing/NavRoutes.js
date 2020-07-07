@@ -8,6 +8,8 @@ import About from '../layout/About';
 import Services from '../layout/Services';
 import Contact from '../layout/Contact';
 import Confirmation from '../layout/Confirmation';
+import ForgotPassword from '../auth/ForgotPassword';
+import ResetPassword from '../auth/ResetPassword';
 import Login from '../auth/Login';
 import Register from '../auth/Register';
 import Dashboard from '../dashboard/Dashboard';
@@ -20,9 +22,11 @@ const NavRoutes = ({auth: {isAuthenticated}}) => {
 			<Fragment>				
 			{isAuthenticated ? <Redirect id="navbar-main" to="/dashboard/overview" /> : <NavBar />}
 						<Route exact path="/" component={Landing} />
-						<Route render={() => <Redirect to={{pathname: "/"}} />} />
+				{/*<Route render={() => <Redirect to={{pathname: "/"}} />} /> */}
 				<section>
 					<Switch>
+						<Route exact path="/forgotpass" component={ForgotPassword} />
+						<Route exact path="/resetpass/:id" component={ResetPassword} />
 						<Route exact path="/home" component={Landing} />
 						<Route exact path="/login" component={Login} />
 						<Route exact path="/register" component={Register} />

@@ -28,7 +28,6 @@ const CreateProfile = ({props, profile, createProfile, history}) =>{
 	
 	const onSubmit = e => {
 		e.preventDefault();
-		console.log(formData);
 		createProfile(formData, history);
 	}
 	

@@ -33,8 +33,6 @@ const DashboardTasks = ({getTasks, auth:{user}, task: {tasks, loading}}) =>{
 		getTasks();
 	}, [getTasks]);
 	
-	console.log("from dashboard tasks ", tasks);
-	
 	return loading ? <Spinner /> : (
 		<div className="Dashboard-content">
 			<div className="header bg-gradient-info pb-8 pt-5 pt-md-4">

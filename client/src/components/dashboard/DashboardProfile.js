@@ -73,7 +73,6 @@ const DashboardProfile = ({props, user, profile:{profile}}) => {
 							<div className="row">
 								<div className="">
 									<h1 className="display-2 text-white">Hello {user.name}</h1>
-									{console.log("from edit", user.name)}
 									
 									<p className="text-white mt-0 mb-5">This is your profile page. </p>
 									<Link to='/dashboard/edit-profile' className="btn btn-info">Edit Profile</Link>

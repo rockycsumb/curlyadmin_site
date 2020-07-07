@@ -15,6 +15,14 @@ const UserSchema = new mongoose.Schema({
 		type: String,
 		required: true
 	},
+	reqRes: {
+		type: String
+	},
+	reqResStamp: {
+		type: Date,
+		default: Date.now
+	},
+	
 	privacy: {
 		type: String,
 		required: true

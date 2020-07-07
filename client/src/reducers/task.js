@@ -14,6 +14,7 @@ export default function(state = initialState, action){
 	const {type, payload} = action;
 	switch(type){
 		case GET_TASKS:
+			console.log("from get tasks red ", payload);
 			return {
 				...state,
 				tasks: payload,

@@ -6,6 +6,7 @@ import {logout} from '../../actions/auth';
 import MenuPop from './MenuPop';
 import './sidebar.css';
 import './icons8-menu.svg';
+import Spinner from '../layout/Spinner';
 
 import {
   NavbarBrand,
@@ -14,11 +15,13 @@ import {
   Nav
 } from "reactstrap";
 
-const Sidebar = ({auth: isAuthenticated, logout, props, userInfo}) =>{
+const Sidebar = ({auth: {isAuthenticated, user}, logout, props}) =>{
 	const [collapseClasses, setCollapseClasses] = useState("");
 	const [collapse, setCollapse] = useState(false);
 	const toggle = () => setCollapse(!collapse);
 	const setMenuCollapse = () => setCollapse(false);
+	
+	console.log("from sidebar user ", user);
 	
 	return(
 		<Fragment>
@@ -27,12 +30,8 @@ const Sidebar = ({auth: isAuthenticated, logout, props, userInfo}) =>{
 				  <button className="hamburger" id="navbar_global" onClick={toggle}>
 					  <i className="fas fa-bars"></i>
 					 <span />
-				  </button>
-				
-
-				
+				  </button>				
 				{/* **********FOR SIDE NAV NOT COLLAPSES******* */}
-				
 				  <div className="Sidebar-item-logo">	  
 					  <NavbarBrand className="Sidebar-logo-not-collapsed" to="/dashboard/overview" tag={Link}>
 							<span>
@@ -41,10 +40,9 @@ const Sidebar = ({auth: isAuthenticated, logout, props, userInfo}) =>{
 								style={{fontSize: "50px", marginRight: "5px"}} />*/}
 							</span>
 							<span className="curlyName">Curly</span>
-							<span className="adminName">ADMIN</span>
-						  
+							<span className="adminName">ADMIN</span>						  
 						  	<div>
-								{userInfo.rights === "admin" ? "Admin Control" : ""}
+								{user === null ? <Spinner /> : user.rights === "admin" ? "Admin Control" : ""}
 						  	</div>
 						  
 						</NavbarBrand>
@@ -53,7 +51,7 @@ const Sidebar = ({auth: isAuthenticated, logout, props, userInfo}) =>{
 				
 				 <div className="Sidebar-item-user">
 					<span className="">
-						<i className="fa fa-user" />{userInfo && userInfo.name}
+						<i className="fa fa-user" />{user && user.name}
 					</span>
 				  </div>
 				

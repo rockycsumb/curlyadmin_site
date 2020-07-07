@@ -19,7 +19,7 @@ import {
   Col
 } from "reactstrap";
 
-const DashboardContent = ({props, getTasks, auth:{user}, task: {tasks, loading}}) => {
+const DashboardOverview = ({props, getTasks, auth:{user}, task: {tasks, loading}}) => {
 	useEffect(()=>{
 		getTasks();
 	}, [getTasks]);
@@ -158,7 +158,7 @@ const DashboardContent = ({props, getTasks, auth:{user}, task: {tasks, loading}}
 	)
 }
 
-DashboardContent.propTypes = {
+DashboardOverview.propTypes = {
 	getTasks: PropTypes.func.isRequired,
 	task: PropTypes.object.isRequired,
 	auth: PropTypes.object.isRequired
@@ -169,4 +169,4 @@ const mapStateToProps = state => ({
 	auth: state.auth
 })
 
-export default connect(mapStateToProps, {getTasks})(DashboardContent);
+export default connect(mapStateToProps, {getTasks})(DashboardOverview);

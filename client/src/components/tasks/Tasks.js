@@ -15,10 +15,6 @@ const Tasks = ({
 	taskData
 }) =>{
 	
-	console.log("from component tasks auth ", auth);
-	console.log("from component tasks ", taskData);
-
-	
 	const urgencyColor = (urgency) =>{
 		if (urgency === "low") {
 			return "success";
@@ -31,7 +27,7 @@ const Tasks = ({
 		
 	return (
 		<Fragment>
-		{!auth.loading && taskData.user._id === auth.user._id && (
+		{!auth.loading && (
 		 	<div className="col-lg-6 col-xl-3">
 			<div className="card-stats mb-4 mb-xl-0 card">
 				<div className="card-body">

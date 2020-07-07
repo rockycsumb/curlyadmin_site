@@ -6,6 +6,12 @@ const User = require('../../models/User')
 const {check , validationResult } = require('express-validator');
 const config = require('config');
 const jwt = require('jsonwebtoken');
+const { v4: uuidv4 } = require('uuid');
+const { createUser, getUser, updateUser } = require("./passResetFunc/usersFunc");
+const { createResetRequest, getResetRequest } = require("./passResetFunc/resetRequests");
+const sendResetLink = require("./passResetFunc/sendEmail");
+// const cors = require('cors');
+// router.use(cors());
 
 // @route 	GET api/auth
 // @desc 	Test Router
@@ -13,6 +19,22 @@ const jwt = require('jsonwebtoken');
 router.get('/', auth, async (req, res)=> {
 	try {
 		const user = await User.findById(req.user.id).select('-password');
+		res.json(user)
+		
+	} catch(err){
+		console.error(err.message);
+		res.status(500).send("Server Error");
+	}
+	
+})
+
+// @route 	GET api/auth/resId
+// @desc 	Res Pass
+// @access 	Private
+router.post('/resId', async (req, res)=> {
+	console.log("from resID", req.body);
+	try {
+		const user = await User.findOne({reqRes: req.body.id});
 		res.json(user)
 		
 	} catch(err){
@@ -79,4 +101,53 @@ async (req, res)=> {
 );
 
 
+// @route 	POST api/auth/forgot
+// @desc 	Start Forgot pass flow
+// @access 	Public
+router.post("/forgot", async (req, res) => {
+	try {
+		const thisUser = await User.findOne({email: req.body.email});
+		if(thisUser) {
+			const id = uuidv4();
+			const request = {
+				id,
+				email: thisUser.email
+			};
+			let userInfo = await createResetRequest(request);
+			//createUser(request);
+			sendResetLink(thisUser.email, id);
+			res.status(200).json();
+		} else {
+			res.send("No account exists");
+		}
+		
+		
+	} catch(err){
+		console.error(err.message);
+		res.status(500).send("Server Error");
+	}
+	
+});
+
+// @route 	patch api/auth/forgot
+// @desc 	Update Pass
+// @access 	Public
+
+router.patch("/reset", async (req, res) => {
+	
+    const thisRequest = await getResetRequest(req.body.id);
+    if (thisRequest) {
+        const user = await getUser(thisRequest.email);
+        bcrypt.hash(req.body.password, 10).then(hashed => {
+            user.password = hashed;
+            updateUser(user);
+            res.status(204).json();
+        })
+    } else {
+        res.status(404).json();
+    }
+});
+
 module.exports = router;
+
+

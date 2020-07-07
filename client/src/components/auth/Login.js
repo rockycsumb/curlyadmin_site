@@ -27,7 +27,6 @@ import {
 import './Auth.css';
 
 const Login = ({login, isAuthenticated}) => {
-	
 	const [formData, setFormData] = useState({
 		email: '',
 		password: '',
@@ -125,6 +124,16 @@ const Login = ({login, isAuthenticated}) => {
 									tag={Link}
 								  >
 									<small>Sign Up</small>
+							</NavLink>
+						</div>
+						<div className="d-flex justify-content-center align-items-center links">
+							Forgot password? 
+							<NavLink 
+									className="text-secondary signup"
+									to="/forgotpass"
+									tag={Link}
+								  >
+									<small>Click Here</small>
 							</NavLink>
 						</div>
 

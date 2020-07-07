@@ -5,7 +5,7 @@ import {getCurrentProfile} from '../../actions/profile';
 import Spinner from '../layout/Spinner';
 import Sidebar from './Sidebar';
 import './dashboard.css';
-import DashboardContent from './DashboardContent';
+import DashboardOverview from './DashboardOverview';
 import DashboardTask from './DashboardTask';
 import DashboardProfile from './DashboardProfile';
 import CreateProfile from '../profile-form/CreateProfile';
@@ -17,14 +17,14 @@ import {BrowserRouter as Router, Route, Switch, Redirect} from 'react-router-dom
 
 const Dashboard = ({
 	getCurrentProfile, 
-	auth: { user}, 
+	auth: {user}, 
 	profile: {profile, loading }
 }) =>{
 	
 	useEffect(()=>{
 		getCurrentProfile();
 	},[]);
-
+	
 		return (
 			loading && profile === null ? <Spinner /> :  
 			<Fragment>
@@ -32,14 +32,14 @@ const Dashboard = ({
 						<Fragment>
 							<div className="Dashboard-container">
 								<div className="Dashboard-sidebar">
-									<Sidebar userInfo={user} />
+									<Sidebar />
 								</div>
 								<div className="Dashboard-main">
 									<Route 
 										exact 
 										path="/dashboard/overview" 
 										render={
-											(props)=><DashboardContent {...props} user={user} /> 
+											(props)=><DashboardOverview {...props} user={user} /> 
 										}/>
 									<Switch>
 										<PrivateRoute exact path="/dashboard/task" component={DashboardTask} />
