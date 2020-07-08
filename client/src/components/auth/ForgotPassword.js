@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import apiURL from '../../utils/apiURL';
 import {Link} from 'react-router-dom';
 import axios from "axios";
 
@@ -23,7 +24,7 @@ const ForgotPassword = () => {
             email,
         };
         axios({
-            url: "https://mernstack-shrnu.run-us-west2.goorm.io/api/auth/forgot",
+            url: `${apiURL}api/auth/forgot`,
             data: body,
             method: "post",
         }).then(res => {

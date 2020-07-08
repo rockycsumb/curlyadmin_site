@@ -1,6 +1,6 @@
 import axios from 'axios';
 import {setAlert} from './alert';
-import apiURL from './apiURL';
+import apiURL from '../utils/apiURL';
 import setAuthToken from '../utils/setAuthToken';
 import {
 	REGISTER_SUCCESS,

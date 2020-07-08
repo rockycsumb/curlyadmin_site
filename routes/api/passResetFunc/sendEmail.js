@@ -1,8 +1,10 @@
 // using Twilio SendGrid's v3 Node.js Library
 // https://github.com/sendgrid/sendgrid-nodejs
+require('dotenv').config();
 const sgMail = require('@sendgrid/mail');
-sgMail.setApiKey('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');
+const apiKey = `${process.env.SENDGRID_API_KEY}`;
 
+sgMail.setApiKey(apiKey);
 function sendResetLink(email, id){
 	const msg = {
 	  to: `${email}`,
