@@ -116,13 +116,13 @@ const EditProfile = ({
 											</Button>
 										</div>
 										<NavLinkRRD
-										className="bg-transparent EditProfile-close-x"
-										size="sm"
-										to="/dashboard/profile"
-										tag={Link}
-										 >
-									<i class="fa fa-times" aria-hidden="true"></i>
-									</NavLinkRRD>
+											className="bg-transparent EditProfile-close-x"
+											size="sm"
+											to="/dashboard/profile"
+											tag={Link}
+											 >
+											<i class="fa fa-times" aria-hidden="true"></i>
+										</NavLinkRRD>
 									</div>
 								</div>
 							</div>

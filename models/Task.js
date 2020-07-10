@@ -20,7 +20,7 @@ const TaskSchema = new mongoose.Schema({
 		type: String
 	},
 	status: {
-		type: String
+		type: String, default: 'pending'
 	},
 	comment: [
 		{

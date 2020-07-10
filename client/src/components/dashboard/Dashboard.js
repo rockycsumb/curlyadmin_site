@@ -9,11 +9,13 @@ import DashboardOverview from './DashboardOverview';
 import DashboardTask from './DashboardTask';
 import DashboardProfile from './DashboardProfile';
 import CreateProfile from '../profile-form/CreateProfile';
+import Task from '../task/Task';
+import TaskForm from '../task-form/TaskForm';
+import EditTask from '../task-form/EditTask';
 import EditProfile from '../profile-form/EditProfile';
 import PrivateRoute from '../routing/PrivateRoute';
 import Footer from "../Footers/Footer.js";
 import {BrowserRouter as Router, Route, Switch, Redirect} from 'react-router-dom';
-
 
 const Dashboard = ({
 	getCurrentProfile, 
@@ -23,7 +25,7 @@ const Dashboard = ({
 	
 	useEffect(()=>{
 		getCurrentProfile();
-	},[]);
+	},[getCurrentProfile]);
 	
 		return (
 			loading && profile === null ? <Spinner /> :  
@@ -35,17 +37,47 @@ const Dashboard = ({
 									<Sidebar />
 								</div>
 								<div className="Dashboard-main">
-									<Route 
-										exact 
-										path="/dashboard/overview" 
-										render={
-											(props)=><DashboardOverview {...props} user={user} /> 
-										}/>
 									<Switch>
-										<PrivateRoute exact path="/dashboard/task" component={DashboardTask} />
-										<Route exact path="/dashboard/profile" render={props => <DashboardProfile {...props} user={user} /> } />
-										<PrivateRoute exact path="/dashboard/create-profile" component={CreateProfile} />
-										<PrivateRoute exact path="/dashboard/edit-profile" component={EditProfile} />
+										<PrivateRoute 
+											exact 
+											path="/dashboard/overview" 
+											component={DashboardOverview}
+											/>
+										<PrivateRoute 
+											exact 
+											path="/dashboard/task" 
+											component={DashboardTask} 
+											/>
+										<PrivateRoute 
+											exact 
+											path="/dashboard/add-task" 
+											component={TaskForm} 
+											/>
+										<PrivateRoute 
+											exact 
+											path="/dashboard/edit-task" 
+											component={EditTask} 
+											/>
+										<PrivateRoute 
+											exact 
+											path="/dashboard/task/:id" 
+											component={Task} 
+											/>
+										<Route 
+											exact 
+											path="/dashboard/profile" 
+											render={props => <DashboardProfile {...props} user={user} /> } 
+											/>
+										<PrivateRoute 
+											exact 
+											path="/dashboard/create-profile" 
+											component={CreateProfile} 
+											/>
+										<PrivateRoute 
+											exact 
+											path="/dashboard/edit-profile" 
+											component={EditProfile} 
+											/>
 									</Switch>
 								</div>
 							</div>

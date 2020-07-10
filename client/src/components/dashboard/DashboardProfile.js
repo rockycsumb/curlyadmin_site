@@ -35,9 +35,9 @@ const DashboardProfile = ({props, user, profile:{profile}}) => {
 						<div className="Dashboard-page-title">
 							Dashboard Profile
 						</div>
-
-
-
+						<div className="ml-3">
+							<Alert  />
+						</div>
 						<div className="Dashboard-user">
 							<span className="avaar avatar-sm rounded-circle">
 								<i className="fa fa-user" />
@@ -47,9 +47,7 @@ const DashboardProfile = ({props, user, profile:{profile}}) => {
 					</div>
 					
 					
-					<div className="container-fluid  dashboardProfile-alert">
-						<Alert  />
-					</div>
+				
 					
 					<div style={{height: "4rem"}}>
 					</div>
@@ -57,28 +55,37 @@ const DashboardProfile = ({props, user, profile:{profile}}) => {
 
 					{!profile ? (
 					<Fragment> 
-						<div className="d-flex align-items-center container-fluid">
-							<div className="row">
-								<div className="col-md-10 col-lg-12">
-									<h1 className="display-2 text-white">Hello!</h1>
-									<p className="text-white mt-0 mb-5">Please create a profile by adding some info. </p>
-									<Link to='/dashboard/create-profile' className="btn btn-info">Create Profile</Link>
+						<div className="container-fluid">
+							<div className="d-flex align-items-center">
+								<div className="row">
+									<div className="col">
+										<div className="mb-2">
+											<h1 className="display-2 text-white">Hello!</h1>
+											<p className="text-white mt-0 mb-5">Please create a profile by adding some info. </p>
+											<Link to='/dashboard/create-profile' className="btn btn-info">Create Profile</Link>
+										</div>
+									</div>
 								</div>
 							</div>
 						</div>
 					</Fragment> 
 						) : (
 					<Fragment>
-						<div className="d-flex align-items-center container-fluid m-3">
-							<div className="row">
-								<div className="">
-									<h1 className="display-2 text-white">Hello {user.name}</h1>
+						<div className="container-fluid">
+							<div className="d-flex align-items-center">
+								<div className="row">
+									<div className="col">
+										<div className="mb-2">
+											<h1 className="display-2 text-white">Hello {user.name}</h1>
+											<p className="text-white mt-0 mb-5">Welcome to your profile page. </p>
+											<Link to='/dashboard/edit-profile' className="btn btn-info">Edit Profile</Link>
+										</div>
+									</div>
 									
-									<p className="text-white mt-0 mb-5">This is your profile page. </p>
-									<Link to='/dashboard/edit-profile' className="btn btn-info">Edit Profile</Link>
 								</div>
 							</div>
 						</div>
+						
 						
 					</Fragment>
 						

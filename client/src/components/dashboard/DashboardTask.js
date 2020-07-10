@@ -1,13 +1,13 @@
 import React, {Fragment, useEffect} from 'react';
+import {Link} from 'react-router-dom';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 import {getTasks} from '../../actions/task';
-import Spinner from '../layout/Spinner';
-
-
 import Tasks from '../tasks/Tasks';
-
-
+import TaskItem from '../tasks/TaskItem';
+import TaskForm from '../task-form/TaskForm';
+import Spinner from '../layout/Spinner';
+import Alert from '../layout/Alert';
 import './dashboard.css';
 
 // reactstrap components
@@ -28,19 +28,23 @@ import {
   Media
 } from "reactstrap";
 
-const DashboardTasks = ({getTasks, auth:{user}, task: {tasks, loading}}) =>{
+
+
+const DashboardTasks = ({auth:{user}, task:{tasks, loading}, getTasks}) =>{
 	useEffect(()=>{
 		getTasks();
-	}, [getTasks]);
+	}, [getTasks])
 	
-	return loading ? <Spinner /> : (
+	return (
 		<div className="Dashboard-content">
 			<div className="header bg-gradient-info pb-8 pt-5 pt-md-4">
 				<div className="Dashboard-header-container">
 					<div className="Dashboard-page-title">
-						Tasks
+						Dashboard Tasks
 					</div>
-
+					<div className="ml-3">
+						<Alert  />
+					</div>
 					<div className="Dashboard-user">
 						<span className="avaar avatar-sm rounded-circle">
 							<i className="fa fa-user" />
@@ -48,16 +52,22 @@ const DashboardTasks = ({getTasks, auth:{user}, task: {tasks, loading}}) =>{
 						<span className="ml-1 mb-0 text-sm font-weight-bold">{user.name}</span>
 					</div>
 				</div>
+				<div className="container mb-2">
+					<Link to='/dashboard/add-task' className="btn btn-info">Add Task</Link>
+				</div>
 				<div className="container-fluid">
 					<div className="header-body">
 						<div className="row">
+							
 							{/*********   START TASK CARDS *********/}
-							
-							{tasks.map(task =>(
-								<Tasks key={task._id} taskData={task} />
-							))}
-															
-							
+							  
+								{
+								tasks.map(task => (
+									<div key={task._id} className="col-lg-6">
+										<TaskItem key={task._id} task={task} />
+									</div>
+									))
+								}
 						</div>
 					</div>
 				</div>
@@ -164,14 +174,14 @@ const DashboardTasks = ({getTasks, auth:{user}, task: {tasks, loading}}) =>{
 }
 
 DashboardTasks.propTypes = {
+	auth: PropTypes.object.isRequired,
 	getTasks: PropTypes.func.isRequired,
-	task: PropTypes.object.isRequired,
-	auth: PropTypes.object.isRequired
+	task: PropTypes.object.isRequired
 }
 
 const mapStateToProps = state => ({
-	task: state.task,
-	auth: state.auth
+	auth: state.auth,
+	task: state.task
 })
 
 export default connect(mapStateToProps, {getTasks})(DashboardTasks);

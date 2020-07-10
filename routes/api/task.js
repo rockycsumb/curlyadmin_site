@@ -114,6 +114,25 @@ router.delete('/:id', auth, async (req, res)=>{
 });
 
 
+// @route 	PATCH api/task/:id
+// @desc 	Update task by id
+// @access 	Private
+router.patch('/:id', auth, async (req, res)=>{
+	try{
+		const filter = { _id: req.params.id}
+		const update = { title: req.body.title,
+						 description: req.body.description,
+						 urgency: req.body.urgency
+					   }
+		let taskUpdate = await Task.findOneAndUpdate(filter, update);
+		res.json(taskUpdate)
+		
+	} catch(err){
+		res.status(500).send('Server Error');
+	}
+});
+
+
 // @route 	POST api/task/comment/:id
 // @desc 	Comment on a task
 // @access 	Private

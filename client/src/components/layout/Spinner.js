@@ -6,9 +6,14 @@ import {Spinner} from 'reactstrap';
 export default () => (
 	
 	<Fragment>
-			<Spinner className="spinner-grow text-warning" />
-			<Spinner className="spinner-grow text-warning" />
-			<Spinner className="spinner-grow text-warning" />
+		<div className="d-flex justify-content-center">
+			<div className="align-items-center">
+				<Spinner className="spinner-grow text-warning" />
+				<Spinner className="spinner-grow text-warning" />
+				<Spinner className="spinner-grow text-warning" />
+			</div>
+		</div>
+			
 	</Fragment>
 	
 )

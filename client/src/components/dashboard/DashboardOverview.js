@@ -3,10 +3,8 @@ import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 import {getTasks} from '../../actions/task';
 import Spinner from '../layout/Spinner';
-
-import './dashboard.css';
-
 import TasksOverview from '../tasks/TasksOverview';
+import './dashboard.css';
 
 // reactstrap components
 import {
@@ -24,9 +22,8 @@ const DashboardOverview = ({props, getTasks, auth:{user}, task: {tasks, loading}
 	useEffect(()=>{
 		getTasks();
 	}, [getTasks]);
-	
-	console.log("from dash over tasks ", tasks);
-	console.log("from dash over auth user ", user);
+	// console.log("from dash over tasks ", tasks);
+	// console.log("from dash over auth user ", user);
 	return (
 		<div className="Dashboard-content">
 			<div className="header bg-gradient-info pb-8 pt-5 pt-md-4">
