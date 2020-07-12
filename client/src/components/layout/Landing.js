@@ -62,7 +62,7 @@ class Landing extends React.Component {
 	}
 	
 	recaptchaLoaded() {
-		// console.log("captcha loaded succesfully")
+		console.log("captcha loaded succesfully")
 	}
 	
 	handleSubmit(evt){
@@ -86,11 +86,11 @@ class Landing extends React.Component {
 			message: message	
 		}
 			
-		var service_id = "default_service";
+		var service_id = "gmail";
 		var template_id = "formpage";
-		var user_id = EMAIL_JS_KEY;
+		var user_id = 'user_XKRqgVmkTkoqnvfTpqZSo';
 		
-		// emailjs.send(service_id, template_id, templateParams, user_id);
+		emailjs.send(service_id, template_id, templateParams, user_id);
 		
 		this.setState({
 			name: "",
@@ -104,12 +104,6 @@ class Landing extends React.Component {
 		})
 	  }
 	}
-  
-  // componentDidMount() {
-  //   document.documentElement.scrollTop = 0;
-  //   document.scrollingElement.scrollTop = 0;
-  //   this.refs.main.scrollTop = 0;	  
-  // }
 	
 	verifyCallback(response){
 	  if(response){
@@ -419,6 +413,7 @@ confidentiality you deserve.
                         />
 					  </FormGroup>						
 					  {/* RECAPTCHA CODE*/}
+						
 					  <div className="mb-3 justify-content-center row">
 						<div>
 						 <div className={this.state.verifyRequired ? `please-verify` : "please-verify-hide"}>Please verify</div>
