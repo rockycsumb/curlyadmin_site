@@ -93,11 +93,11 @@ router.delete('/:id', auth, async (req, res)=>{
 		if(!task){
 			return res.status(404).json({msg: 'Task not found'});
 		}
-		
+		// console.log("user rights from db ", task.user);
 		//Check user
-		if (task.user.toString() !== req.user.id){
-			return res.status(401).json({msg: 'User not authorized'});
-		}
+		// if (task.user.toString() !== req.user.id || task.user.rights !== 'admin' ){
+		// 	return res.status(401).json({msg: 'User not authorized'});
+		// }
 		
 		await task.remove();
 		res.json({msg: "Task removed"});
@@ -122,7 +122,8 @@ router.patch('/:id', auth, async (req, res)=>{
 		const filter = { _id: req.params.id}
 		const update = { title: req.body.title,
 						 description: req.body.description,
-						 urgency: req.body.urgency
+						 urgency: req.body.urgency,
+						 status: req.body.agreement
 					   }
 		let taskUpdate = await Task.findOneAndUpdate(filter, update);
 		res.json(taskUpdate)

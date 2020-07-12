@@ -25,7 +25,7 @@ import {
 } from "reactstrap";
 
 
-const EditTask = ({history, deleteTask, getTaskById, editTask, task:{tasks}}) =>{
+const EditTask = ({auth, history, deleteTask, getTaskById, editTask, task:{tasks}}) =>{
 	
 	// console.log("this is task ", tasks)
 	
@@ -42,14 +42,16 @@ const EditTask = ({history, deleteTask, getTaskById, editTask, task:{tasks}}) =>
 	const [formData, setFormData] = useState({
 		title: thisTask.title,
 		description: thisTask.description,
-		urgency: thisTask.urgency	
+		urgency: thisTask.urgency,
+		agreement: thisTask.status
 	});
 
 	
 	const {
 		title,
 		description,
-		urgency
+		urgency,
+		agreement
 	} = formData;
 	
 	
@@ -68,7 +70,8 @@ const EditTask = ({history, deleteTask, getTaskById, editTask, task:{tasks}}) =>
 		let edit = true;
 		editTask(formData, history, edit, taskId);
 		
-		history.push("/dashboard/task")
+		{auth.user.rights === 'admin' ? history.push("/dashboard/overview") : history.push("/dashboard/task")}
+		
 	}	
 	return(
 		<div className="Dashboard-content">
@@ -96,6 +99,7 @@ const EditTask = ({history, deleteTask, getTaskById, editTask, task:{tasks}}) =>
 												Update
 											</Button>
 										</div>
+										{/*
 										<div className="">
 											<Button 
 												className="btn btn-danger EditProfile-update-delete-buttons" 
@@ -103,10 +107,11 @@ const EditTask = ({history, deleteTask, getTaskById, editTask, task:{tasks}}) =>
 												 Delete
 											</Button>
 										</div>
+										*/}
 										<NavLinkRRD
 											className="bg-transparent EditProfile-close-x"
 											size="sm"
-											to="/dashboard/task"
+											to={auth.user.rights === 'admin' ? ("/dashboard/overview") : ("/dashboard/task")}
 											tag={Link}
 											 >
 											<i class="fa fa-times" aria-hidden="true"></i>
@@ -166,6 +171,26 @@ const EditTask = ({history, deleteTask, getTaskById, editTask, task:{tasks}}) =>
 											  <option>high</option>
 											</select>
 										  </div>
+								
+								{ (!auth.loading && auth.user.rights === "admin") && 
+									(<div>
+									<hr className="my-4" />
+										  <div class="form-group">
+											<label htmlFor="agreement">Select Agreement</label>
+											<select class="form-control"
+												name='agreement'
+												value={agreement}
+												onChange={e => onChange(e)}
+												id="agreement"
+												>
+											  <option>pending</option>
+											  <option>locked</option>
+											</select>
+										  </div>
+									
+									</div>)
+								}
+								
 										</form>
 									</div>
 								</div>
@@ -178,10 +203,12 @@ EditTask.propTypes = {
 	getTaskById: PropTypes.func.isRequired,
 	deleteTask: PropTypes.func.isRequired,
 	editTask: PropTypes.func.isRequired,
-	task: PropTypes.object.isRequired
+	task: PropTypes.object.isRequired,
+	auth: PropTypes.object.isRequired
 }
 
 const mapStateToProps = state =>({
-	task: state.task
+	task: state.task,
+	auth: state.auth
 })
 export default connect(mapStateToProps, {getTaskById, deleteTask, editTask}) (withRouter(EditTask));

@@ -93,7 +93,7 @@ class Contact extends React.Component {
 			
 		var service_id = "default_service";
 		var template_id = "formpage";
-		var user_id = EMAIL_JS_KEY;
+		var user_id = 'user_XKRqgVmkTkoqnvfTpqZSo';
 		
 		emailjs.send(service_id, template_id, templateParams, user_id);
 		

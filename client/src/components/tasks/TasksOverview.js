@@ -24,10 +24,13 @@ const TasksOverview = ({
 			return "danger"
 		}
 	}
+	
+	console.log("from task over view auth ", auth);
 		
 	return (
 		<Fragment>
-			{!auth.loading &&  auth.user._id === user._id && (
+			{ (!auth.loading && auth.user._id === user._id || !auth.loading && auth.user.rights === "admin") &&
+				(
 				<div className="col-lg-6 col-xl-3">
 					<div className="card-stats mb-4 mb-xl-0 card">
 						<div className="card-body">
@@ -37,8 +40,8 @@ const TasksOverview = ({
 									<span className="text-muted mb-0">{description}</span>
 								</div>
 								<div className="col-auto col">
-									<div className="icon icon-shape bg-danger text-white rounded-circle shadow">
-										<i className="fas fa-chart-bar">
+									<div className="bg-danger text-white rounded-circle shadow">
+										<i className="fas fa-chart-bar m-1">
 										</i>
 									</div>
 								</div>
