@@ -16,7 +16,6 @@ import {
   Label
 } from "reactstrap";
 
-const EMAIL_JS_KEY = process.env.REACT_APP_EMAIL;
 
 class Contact extends React.Component {
 	constructor(props){
@@ -51,7 +50,7 @@ class Contact extends React.Component {
 	}
 	
 	recaptchaLoaded() {
-		// console.log("captcha loaded succesfully")
+		console.log("captcha loaded succesfully")
 	}
 	
 	handleSubmit(evt){
@@ -93,7 +92,7 @@ class Contact extends React.Component {
 			
 		var service_id = "default_service";
 		var template_id = "formpage";
-		var user_id = EMAIL_JS_KEY;
+		var user_id = 'user_XKRqgVmkTkoqnvfTpqZSo';
 		
 		emailjs.send(service_id, template_id, templateParams, user_id);
 		
@@ -359,6 +358,7 @@ class Contact extends React.Component {
 								</Row>
 							   </Container>
 							 <div className="mb-3 justify-content-center row">
+								 
 								<div>
 								 <div className={this.state.verifyRequired ? `please-verify` : "please-verify-hide"}>Please verify</div>
 									 <div  className={this.state.verifyRequired ? `recaptcha-border` : ""}>
@@ -373,6 +373,7 @@ class Contact extends React.Component {
 									</div>
 								</div>
 							  </div>
+							  
 							   <div>
 								   <Button
 									  block
