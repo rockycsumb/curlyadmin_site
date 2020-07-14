@@ -92,6 +92,15 @@ const Sidebar = ({auth: {isAuthenticated, user}, logout, props}) =>{
 					</NavItem>
 					<NavItem  className="Sidebar-nav-item">
 						<NavLinkRRD
+						  className="nav-link-icon  "
+						  to="/dashboard/account"
+						  tag={Link}
+						>
+						<i className="fa fa-usd mr-1" style={{color: "#228B22"}} /> 	<span className="nav-link-inner--text ml-3">Account</span>
+						</NavLinkRRD>
+					</NavItem>
+					<NavItem  className="Sidebar-nav-item">
+						<NavLinkRRD
 						  className="nav-link-icon "
 						  to="/home"
 						  onClick={logout}

@@ -29,6 +29,7 @@ async (req, res)=> {
 			description: req.body.description,
 			name: user.name,
 			urgency: req.body.urgency,
+			deadlinedate: req.body.deadlinedate,
 			status: req.body.status,
 			user: req.user.id
 		})
@@ -123,7 +124,8 @@ router.patch('/:id', auth, async (req, res)=>{
 		const update = { title: req.body.title,
 						 description: req.body.description,
 						 urgency: req.body.urgency,
-						 status: req.body.agreement
+						 status: req.body.agreement,
+						 duedate: req.body.duedate
 					   }
 		let taskUpdate = await Task.findOneAndUpdate(filter, update);
 		res.json(taskUpdate)

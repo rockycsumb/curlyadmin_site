@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 import {getTaskById, deleteTask, editTask} from '../../actions/task';
 import '../dashboard/dashboard.css';
+import moment from 'moment';
 
 
 // reactstrap components
@@ -37,21 +38,29 @@ const EditTask = ({auth, history, deleteTask, getTaskById, editTask, task:{tasks
 	
 	[thisTask] = thisTask;
 	
-	// console.log('this task ', thisTask );
+
+	let dueDateMod = new Date(thisTask.deadlinedate);
+
+		dueDateMod =  dueDateMod.getFullYear() + '-' + 
+					  ('0' + (dueDateMod.getMonth()+1)).slice(-2) + '-' +
+					  ('0' + dueDateMod.getUTCDate()).slice(-2)
+	
+	
 	
 	const [formData, setFormData] = useState({
 		title: thisTask.title,
 		description: thisTask.description,
 		urgency: thisTask.urgency,
-		agreement: thisTask.status
+		agreement: thisTask.status,
+		deadlinedate: dueDateMod
 	});
-
 	
 	const {
 		title,
 		description,
 		urgency,
-		agreement
+		agreement,
+		deadlinedate
 	} = formData;
 	
 	
@@ -171,6 +180,24 @@ const EditTask = ({auth, history, deleteTask, getTaskById, editTask, task:{tasks
 											  <option>high</option>
 											</select>
 										  </div>
+								<div class="form-group row">
+									  <label htmlFor="input-deadlinedate" class="col-2 col-form-label">
+										  Deadline Date
+									  </label>
+									  <div class="col-10">
+										<input 
+											class="form-control"
+											id="input-deadlinedate"
+											type="date"
+											
+											name="deadlinedate"
+											value={deadlinedate} 
+											onChange={e => onChange(e)}
+											required
+										/>
+									  </div>
+									</div>
+									<hr className="my-4" />	
 								
 								{ (!auth.loading && auth.user.rights === "admin") && 
 									(<div>
@@ -185,6 +212,7 @@ const EditTask = ({auth, history, deleteTask, getTaskById, editTask, task:{tasks
 												>
 											  <option>pending</option>
 											  <option>locked</option>
+											  <option>completed</option>
 											</select>
 										  </div>
 									

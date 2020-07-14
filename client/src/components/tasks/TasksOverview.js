@@ -2,7 +2,6 @@ import React, {Fragment, useEffect} from 'react';
 import PropTypes from 'prop-types';
 import Moment from 'react-moment';
 import {connect} from 'react-redux';
-
 import Spinner from '../layout/Spinner';
 
 import {
@@ -12,7 +11,7 @@ import {
 
 const TasksOverview = ({
 	auth,
-	taskData: {status, urgency, description, name, title, user, comment, date}
+	taskData: {status, urgency, description, name, title, user, comment, date, duedate}
 }) =>{
 	
 	const urgencyColor = (urgency) =>{
@@ -25,7 +24,7 @@ const TasksOverview = ({
 		}
 	}
 	
-	console.log("from task over view auth ", auth);
+	console.log("from task over view duedate ", duedate);
 		
 	return (
 		<Fragment>
@@ -45,6 +44,9 @@ const TasksOverview = ({
 										</i>
 									</div>
 								</div>
+							</div>
+							<div>
+								Due Date: <Moment format='MM/DD/YYYY' add={{day: 1}}>{duedate}</Moment>
 							</div>
 							<p className="mt-3 mb-0 text-muted text-sm">
 								<Badge className="mr-1" color={urgencyColor(urgency)}>Urgency: {urgency}</Badge>

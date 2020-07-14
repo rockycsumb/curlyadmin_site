@@ -28,7 +28,7 @@ class Services extends React.Component {
 		evt.preventDefault();
 		this.setState({serviceLevel: evt.target.name})
 		this.props.history.push({
-			pathname: '/contact',
+			pathname: '/register',
 			state: evt.target.name
 		});
 	}

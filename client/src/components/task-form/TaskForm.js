@@ -14,13 +14,15 @@ const TaskForm = ({addTask, history}) =>{
 		title: '',
 		description: '',
 		urgency: 'low',
+		deadlinedate: '',
 		status: 'pending'		
 	});
 	
 	const {
 		title,
 		description,
-		urgency
+		urgency,
+		deadlinedate
 	} = formData;
 	
 	const onChange = e => setFormData({...formData, [e.target.name]: e.target.value});
@@ -55,7 +57,7 @@ const TaskForm = ({addTask, history}) =>{
 									<NavLinkRRD
 										className="bg-transparent EditProfile-close-x"
 										size="sm"
-										to="/dashboard/profile"
+										to="/dashboard/task"
 										tag={Link}
 										 >
 									<i class="fa fa-times" aria-hidden="true"></i>
@@ -80,6 +82,7 @@ const TaskForm = ({addTask, history}) =>{
 														placeholder="title"
 														name="title"
 														value={title}
+														required
 														onChange={e => onChange(e)}
 													/>
 												</div>
@@ -100,13 +103,14 @@ const TaskForm = ({addTask, history}) =>{
 													placeholder="Say a few words of the task ..."
 													name="description"
 													value={description}
+													required
 													onChange={e => onChange(e)}
 												/>
 											</div>
 										</div>
 								
-								
 									<hr className="my-4" />
+								
 									  <div class="form-group">
 										<label htmlFor="urgency">Select Urgency</label>
 										<select class="form-control" id="urgency"
@@ -114,6 +118,7 @@ const TaskForm = ({addTask, history}) =>{
 											value={urgency}
 											onChange={e => onChange(e)}
 											id="urgency"
+											required
 											>
 										  <option>low</option>
 										  <option>medium</option>
@@ -122,7 +127,24 @@ const TaskForm = ({addTask, history}) =>{
 									  </div>
 									
 									<hr className="my-4" />
-										
+									<div class="form-group row">
+									  <label htmlFor="input-deadlinedate" class="col-2 col-form-label">
+										  Deadline Date
+									  </label>
+									  <div class="col-10">
+										<input 
+											class="form-control"
+											id="input-deadlinedate"
+											type="date"
+											placeholder="Deadline Date"
+											name="deadlinedate"
+											value={deadlinedate} 
+											onChange={e => onChange(e)}
+											required
+										/>
+									  </div>
+									</div>
+									<hr className="my-4" />	
 							</form>
 						</div>
 					</div>

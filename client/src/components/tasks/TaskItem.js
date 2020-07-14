@@ -15,7 +15,7 @@ import {
 
 const TaskItem = ({
 	auth, 
-	task:{_id, status, urgency, description, name, title, user, comment, date},
+	task:{_id, status, urgency, description, name, title, user, comment, date, deadlinedate},
 	deleteTask,
 	history,
 	setAlert
@@ -48,16 +48,20 @@ const TaskItem = ({
 								<div className="">
 									Task Date: <Moment format='MM/DD/YYYY'>{date}</Moment>
 								</div>
-								
+								<div>
+									Deadline Date: <Moment format='MM/DD/YYYY' add={{day: 1}}>{deadlinedate}</Moment>
+								</div>
 									<div className="">
 										{status === "locked" ? (
 											<Button color="secondary" size="sm" 
 												onClick={e => setAlert('Agreement is locked, cannot be deleted', 'danger')} >
-												<i className="fas fa-times" />
+												{/*<i className="fas fa-times" />*/}
+												Delete Task
 											</Button>
 										) : (
 											<Button color="danger" size="sm" onClick={e => deleteTask(_id)}>
-												<i className="fas fa-times" />
+												{/*<i className="fas fa-times" />*/}
+												Delete Task
 											</Button>
 										)}
 										

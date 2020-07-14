@@ -47,6 +47,8 @@ const Login = ({login, isAuthenticated}) => {
 	if(isAuthenticated){
 		return <Redirect to="/dashboard/overview" />
 	}
+	
+	
     return (
       <>
         <main className="Login-main">

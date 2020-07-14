@@ -13,7 +13,7 @@ import {
 	Button
 } from 'reactstrap';
 
-const TasksAdminOverview = ({
+const TasksUserCompleted = ({
 	auth, 
 	user, 
 	title, 
@@ -50,7 +50,6 @@ const TasksAdminOverview = ({
 		<tr>
             <td>{user}</td>
             <td>{title}</td>
-			<td><Moment format='MM/DD/YYYY' add={{day: 1}}>{deadlinedate}</Moment></td>
 			<td>{descriptionShort} ...</td>
 			<td>
 				<Badge 
@@ -66,35 +65,12 @@ const TasksAdminOverview = ({
 					Agreement: {status}
 				</Badge>
 			</td>
-			<td>
-				<Button 
-					className="text-nowrap mr-2" 
-					color="info" 
-					onClick={e => handleEdit(id)}
-					>
-					Edit
-				</Button>
-			</td>
-			<td>
-				<div className="">
-										{status === "locked" ? (
-											<Button color="secondary" size="sm" 
-												onClick={e => setAlert('Agreement is locked, cannot be deleted', 'danger')} >
-												<i className="fas fa-times" />
-											</Button>
-										) : (
-											<Button color="danger" size="sm" onClick={e => deleteTask(id)}>
-												<i className="fas fa-times" />
-											</Button>
-										)}
-										
-									</div>
-			</td>
+			<td><Moment format='MM/DD/YYYY' add={{day: 1}}>{deadlinedate}</Moment></td>
         </tr>		  
 	)
 }
 
-TasksAdminOverview.propTypes = {
+TasksUserCompleted.propTypes = {
 	task: PropTypes.object.isRequired,
 	auth: PropTypes.object.isRequired,
 	deleteTask: PropTypes.func.isRequired,
@@ -106,7 +82,7 @@ const mapStateToProps = state => ({
 	task: state.task
 })
 
-export default connect(mapStateToProps, {deleteTask, setAlert})(withRouter(TasksAdminOverview));
+export default connect(mapStateToProps, {deleteTask, setAlert})(withRouter(TasksUserCompleted));
 
 
 		
