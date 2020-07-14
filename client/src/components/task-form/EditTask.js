@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 import {getTaskById, deleteTask, editTask} from '../../actions/task';
 import '../dashboard/dashboard.css';
+import moment from 'moment';
 
 
 // reactstrap components
@@ -25,7 +26,7 @@ import {
 } from "reactstrap";
 
 
-const EditTask = ({history, deleteTask, getTaskById, editTask, task:{tasks}}) =>{
+const EditTask = ({auth, history, deleteTask, getTaskById, editTask, task:{tasks}}) =>{
 	
 	// console.log("this is task ", tasks)
 	
@@ -37,19 +38,29 @@ const EditTask = ({history, deleteTask, getTaskById, editTask, task:{tasks}}) =>
 	
 	[thisTask] = thisTask;
 	
-	// console.log('this task ', thisTask );
+
+	let dueDateMod = new Date(thisTask.deadlinedate);
+
+		dueDateMod =  dueDateMod.getFullYear() + '-' + 
+					  ('0' + (dueDateMod.getMonth()+1)).slice(-2) + '-' +
+					  ('0' + dueDateMod.getUTCDate()).slice(-2)
+	
+	
 	
 	const [formData, setFormData] = useState({
 		title: thisTask.title,
 		description: thisTask.description,
-		urgency: thisTask.urgency	
+		urgency: thisTask.urgency,
+		agreement: thisTask.status,
+		deadlinedate: dueDateMod
 	});
-
 	
 	const {
 		title,
 		description,
-		urgency
+		urgency,
+		agreement,
+		deadlinedate
 	} = formData;
 	
 	
@@ -68,7 +79,8 @@ const EditTask = ({history, deleteTask, getTaskById, editTask, task:{tasks}}) =>
 		let edit = true;
 		editTask(formData, history, edit, taskId);
 		
-		history.push("/dashboard/task")
+		{auth.user.rights === 'admin' ? history.push("/dashboard/overview") : history.push("/dashboard/task")}
+		
 	}	
 	return(
 		<div className="Dashboard-content">
@@ -96,6 +108,7 @@ const EditTask = ({history, deleteTask, getTaskById, editTask, task:{tasks}}) =>
 												Update
 											</Button>
 										</div>
+										{/*
 										<div className="">
 											<Button 
 												className="btn btn-danger EditProfile-update-delete-buttons" 
@@ -103,10 +116,11 @@ const EditTask = ({history, deleteTask, getTaskById, editTask, task:{tasks}}) =>
 												 Delete
 											</Button>
 										</div>
+										*/}
 										<NavLinkRRD
 											className="bg-transparent EditProfile-close-x"
 											size="sm"
-											to="/dashboard/task"
+											to={auth.user.rights === 'admin' ? ("/dashboard/overview") : ("/dashboard/task")}
 											tag={Link}
 											 >
 											<i class="fa fa-times" aria-hidden="true"></i>
@@ -166,6 +180,45 @@ const EditTask = ({history, deleteTask, getTaskById, editTask, task:{tasks}}) =>
 											  <option>high</option>
 											</select>
 										  </div>
+								<div class="form-group row">
+									  <label htmlFor="input-deadlinedate" class="col-2 col-form-label">
+										  Deadline Date
+									  </label>
+									  <div class="col-10">
+										<input 
+											class="form-control"
+											id="input-deadlinedate"
+											type="date"
+											
+											name="deadlinedate"
+											value={deadlinedate} 
+											onChange={e => onChange(e)}
+											required
+										/>
+									  </div>
+									</div>
+									<hr className="my-4" />	
+								
+								{ (!auth.loading && auth.user.rights === "admin") && 
+									(<div>
+									<hr className="my-4" />
+										  <div class="form-group">
+											<label htmlFor="agreement">Select Agreement</label>
+											<select class="form-control"
+												name='agreement'
+												value={agreement}
+												onChange={e => onChange(e)}
+												id="agreement"
+												>
+											  <option>pending</option>
+											  <option>locked</option>
+											  <option>completed</option>
+											</select>
+										  </div>
+									
+									</div>)
+								}
+								
 										</form>
 									</div>
 								</div>
@@ -178,10 +231,12 @@ EditTask.propTypes = {
 	getTaskById: PropTypes.func.isRequired,
 	deleteTask: PropTypes.func.isRequired,
 	editTask: PropTypes.func.isRequired,
-	task: PropTypes.object.isRequired
+	task: PropTypes.object.isRequired,
+	auth: PropTypes.object.isRequired
 }
 
 const mapStateToProps = state =>({
-	task: state.task
+	task: state.task,
+	auth: state.auth
 })
 export default connect(mapStateToProps, {getTaskById, deleteTask, editTask}) (withRouter(EditTask));

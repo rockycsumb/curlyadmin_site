@@ -93,6 +93,15 @@ export const MenuPop = ({isCollapse, setMenuCollapse, logout}) =>{
 					</NavItem>
 					<NavItem>
 						<NavLink 
+							to="/dashboard/account"
+							tag={Link}
+							onClick={toggler}
+						>
+							Account
+						</NavLink>
+					</NavItem>
+					<NavItem>
+						<NavLink 
 							to="/home" 
 							tag={Link}
 							onClick={logoutToggler}

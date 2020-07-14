@@ -22,6 +22,10 @@ const TaskSchema = new mongoose.Schema({
 	status: {
 		type: String, default: 'pending'
 	},
+	deadlinedate: {
+		type: Date,
+		require: true
+	},
 	comment: [
 		{
 			user: {

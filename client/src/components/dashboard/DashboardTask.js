@@ -4,6 +4,8 @@ import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 import {getTasks} from '../../actions/task';
 import Tasks from '../tasks/Tasks';
+import TasksCompleted from '../tasks/TasksCompleted';
+import TasksUserCompleted from '../tasks/TasksCompleted';
 import TaskItem from '../tasks/TaskItem';
 import TaskForm from '../task-form/TaskForm';
 import Spinner from '../layout/Spinner';
@@ -35,6 +37,40 @@ const DashboardTasks = ({auth:{user}, task:{tasks, loading}, getTasks}) =>{
 		getTasks();
 	}, [getTasks])
 	
+	const thisUsersTasks = (tasks) =>{
+		let thisUsersTasks = [];
+		tasks.map(task =>{
+			if(task.user._id === user._id) {
+				thisUsersTasks.push(task);
+			} 
+		})
+		return thisUsersTasks;
+	}
+	
+	const thisUsersTasksCompleted = (thisUsersTasks) =>{
+		let hasCompletedTasks = false;
+		
+		if(thisUsersTasks.length > 0){
+			thisUsersTasks.map(task =>{
+				if(task.status === 'completed'){
+					hasCompletedTasks = true;
+				}
+			})
+		}
+		return hasCompletedTasks;
+	}
+	
+	const thisUserHasNoTasksToCompleted = (thisUsersTasks) =>{
+		let hasNoTasksToComplete = true;
+		
+		thisUsersTasks.map(task =>{
+			if(task.status !== 'completed'){
+				hasNoTasksToComplete = false;
+			}
+		})
+		return hasNoTasksToComplete;
+	}
+	
 	return (
 		<div className="Dashboard-content">
 			<div className="header bg-gradient-info pb-8 pt-5 pt-md-4">
@@ -62,11 +98,15 @@ const DashboardTasks = ({auth:{user}, task:{tasks, loading}, getTasks}) =>{
 							{/*********   START TASK CARDS *********/}
 							  
 								{
-								tasks.map(task => (
-									<div key={task._id} className="col-lg-6">
-										<TaskItem key={task._id} task={task} />
-									</div>
-									))
+									tasks.map(task => {
+										if(task.status !== "completed"){
+											return(
+											<div key={task._id} className="col-lg-6">
+												<TaskItem key={task._id} task={task} />
+											</div>
+											)
+										}
+									})
 								}
 						</div>
 					</div>
@@ -75,100 +115,131 @@ const DashboardTasks = ({auth:{user}, task:{tasks, loading}, getTasks}) =>{
 			
 			
 			{/*********   PAST TASKS OVER VIEW ************/}
-        <Container className="mt--7" fluid>
-          <Row className="mt-5">
-            <Col className="mb-5 mb-xl-0" xl="8">
-              <Card className="shadow">
-                <CardHeader className="border-0">
-                  <Row className="align-items-center">
-                    <div className="col">
-                      <h3 className="mb-0">In Progress Tasks</h3>
-                    </div>
-                    <div className="col text-right">
-                      <Button
-                        color="primary"
-                        href="#pablo"
-                        onClick={e => e.preventDefault()}
-                        size="sm"
-                      >
-                        See all
-                      </Button>
-                    </div>
-                  </Row>
-                </CardHeader>
-                <Table className="align-items-center table-flush" responsive>
-                  <thead className="thead-light">
-                    <tr>
-                      <th scope="col">Page name</th>
-                      <th scope="col">Visitors</th>
-                      <th scope="col">Unique users</th>
-                      <th scope="col">Bounce rate</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <th scope="row">/argon/</th>
-                      <td>4,569</td>
-                      <td>340</td>
-                      <td>
-                        <i className="fas fa-arrow-up text-success mr-3" />{" "}
-                        46,53%
-                      </td>
-                    </tr>
-                  </tbody>
-                </Table>
-              </Card>
-            </Col>
-            <Col xl="4">
-              <Card className="shadow">
-                <CardHeader className="border-0">
-                  <Row className="align-items-center">
-                    <div className="col">
-                      <h3 className="mb-0">Past Tasks</h3>
-                    </div>
-                    <div className="col text-right">
-                      <Button
-                        color="primary"
-                        href="#pablo"
-                        onClick={e => e.preventDefault()}
-                        size="sm"
-                      >
-                        See all
-                      </Button>
-                    </div>
-                  </Row>
-                </CardHeader>
-                <Table className="align-items-center table-flush" responsive>
-                  <thead className="thead-light">
-                    <tr>
-                      <th scope="col">Referral</th>
-                      <th scope="col">Visitors</th>
-                      <th scope="col" />
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <th scope="row">Facebook</th>
-                      <td>1,480</td>
-                      <td>
-                        <div className="d-flex align-items-center">
-                          <span className="mr-2">60%</span>
-                          <div>
-                            <Progress
-                              max="100"
-                              value="60"
-                              barClassName="bg-gradient-danger"
-                            />
-                          </div>
-                        </div>
-                      </td>
-                    </tr>
-                  </tbody>
-                </Table>
-              </Card>
-            </Col>
-          </Row>
-        </Container>
+			{user.rights === 'admin' ? (
+				<Container className="mt--7" fluid>
+						  <Row className="mt-5">
+							<Col>
+							  <Card className="shadow">
+								<CardHeader className="border-0">
+								  <Row className="align-items-center">
+									<div className="col">
+									  <h3 className="mb-0">Tasks Completed</h3>
+									</div>
+									<div className="col text-right">
+									  <Button
+										color="primary"
+										href="#pablo"
+										to="/dashboard/task"
+										tag={Link}
+										size="sm"
+									  >
+										Task Dashboard
+									  </Button>
+									</div>
+								  </Row>
+								</CardHeader>
+								<Table className="align-items-center table-flush" responsive>
+								  <thead className="thead-light">
+									<tr>
+									  <th scope="col">User Name</th>
+									  <th scope="col">Title</th>
+									  <th scope="col">Description</th>
+									  <th scope="col">Urgency</th>
+									  <th scope="col">Status</th>
+									  <th scope="col">Deadline Date</th>
+									</tr>
+								  </thead>
+								  <tbody>
+									  {tasks.map(task => {
+										  if(task.status === "completed"){
+											  return(
+													<TasksCompleted
+														user={task.name}
+														title={task.title}
+														description={task.description}
+														urgency={task.urgency}
+														status={task.status}
+														deadlinedate={task.deadlinedate}
+														id={task._id}
+													/>
+											  )
+											}
+										}
+									)}
+								  </tbody>
+								</Table>
+							  </Card>
+							</Col>
+						</Row>
+				</Container>
+			
+			):(
+				<Fragment>
+				{/***********  USER OVER VIEW *************/}
+					
+					
+				{/***********  USER OVER VIEW *************/}
+				
+				<Container className="mt--7" fluid>
+						  <Row className="mt-5">
+							<Col>
+							  <Card className="shadow">
+								<CardHeader className="border-0">
+								  <Row className="align-items-center">
+									<div className="col">
+									  <h3 className="mb-0">Tasks Completed</h3>
+									</div>
+									<div className="col text-right">
+									  <Button
+										color="primary"
+										href="#pablo"
+										to="/dashboard/task"
+										tag={Link}
+										size="sm"
+									  >
+										Task Dashboard
+									  </Button>
+									</div>
+								  </Row>
+								</CardHeader>
+								<Table className="align-items-center table-flush" responsive>
+								  <thead className="thead-light">
+									<tr>
+									  <th scope="col">User Name</th>
+									  <th scope="col">Title</th>
+									  <th scope="col">Description</th>
+									  <th scope="col">Urgency</th>
+									  <th scope="col">Status</th>
+									  <th scope="col">Deadline Date</th>
+									</tr>
+								  </thead>
+								  <tbody>
+									  {thisUsersTasksCompleted(thisUsersTasks(tasks)) ? "" : <tr><td>No tasks</td></tr>}
+									  {tasks.map(task => {
+										  if(task.status === "completed" && user._id === task.user._id){
+											  return(
+													<TasksUserCompleted
+														user={task.name}
+														title={task.title}
+														description={task.description}
+														urgency={task.urgency}
+														status={task.status}
+														deadlinedate={task.deadlinedate}
+														id={task._id}
+													/>
+											  )
+											}
+										}
+									)}
+								  </tbody>
+								</Table>
+							  </Card>
+							</Col>
+						</Row>
+				</Container>
+				</Fragment>
+			)}
+			
 		</div>
 	)
 }

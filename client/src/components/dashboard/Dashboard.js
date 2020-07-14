@@ -7,6 +7,7 @@ import Sidebar from './Sidebar';
 import './dashboard.css';
 import DashboardOverview from './DashboardOverview';
 import DashboardTask from './DashboardTask';
+import DashboardAccount from './DashboardAccount';
 import DashboardProfile from './DashboardProfile';
 import CreateProfile from '../profile-form/CreateProfile';
 import Task from '../task/Task';
@@ -77,6 +78,11 @@ const Dashboard = ({
 											exact 
 											path="/dashboard/edit-profile" 
 											component={EditProfile} 
+											/>
+										<PrivateRoute 
+											exact 
+											path="/dashboard/account" 
+											component={DashboardAccount} 
 											/>
 									</Switch>
 								</div>

@@ -60,6 +60,7 @@ export const deleteTask = id => async dispatch => {
 		dispatch(getTasks());
 		
 		dispatch(setAlert('Task deleted', 'success'))
+		
 	} catch(err) {
 		dispatch({
 			type: TASK_ERROR,

@@ -2,7 +2,6 @@ import React, {Fragment, useEffect} from 'react';
 import PropTypes from 'prop-types';
 import Moment from 'react-moment';
 import {connect} from 'react-redux';
-
 import Spinner from '../layout/Spinner';
 
 import {
@@ -12,7 +11,7 @@ import {
 
 const TasksOverview = ({
 	auth,
-	taskData: {status, urgency, description, name, title, user, comment, date}
+	taskData: {status, urgency, description, name, title, user, comment, date, duedate}
 }) =>{
 	
 	const urgencyColor = (urgency) =>{
@@ -24,10 +23,13 @@ const TasksOverview = ({
 			return "danger"
 		}
 	}
+	
+	console.log("from task over view duedate ", duedate);
 		
 	return (
 		<Fragment>
-			{!auth.loading &&  auth.user._id === user._id && (
+			{ (!auth.loading && auth.user._id === user._id || !auth.loading && auth.user.rights === "admin") &&
+				(
 				<div className="col-lg-6 col-xl-3">
 					<div className="card-stats mb-4 mb-xl-0 card">
 						<div className="card-body">
@@ -37,11 +39,14 @@ const TasksOverview = ({
 									<span className="text-muted mb-0">{description}</span>
 								</div>
 								<div className="col-auto col">
-									<div className="icon icon-shape bg-danger text-white rounded-circle shadow">
-										<i className="fas fa-chart-bar">
+									<div className="bg-danger text-white rounded-circle shadow">
+										<i className="fas fa-chart-bar m-1">
 										</i>
 									</div>
 								</div>
+							</div>
+							<div>
+								Due Date: <Moment format='MM/DD/YYYY' add={{day: 1}}>{duedate}</Moment>
 							</div>
 							<p className="mt-3 mb-0 text-muted text-sm">
 								<Badge className="mr-1" color={urgencyColor(urgency)}>Urgency: {urgency}</Badge>

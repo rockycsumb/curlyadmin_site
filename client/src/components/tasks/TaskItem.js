@@ -4,6 +4,7 @@ import {NavLink, Link, withRouter} from 'react-router-dom';
 import Moment from 'react-moment';
 import {connect} from 'react-redux';
 import {deleteTask} from '../../actions/task';
+import {setAlert} from '../../actions/alert';
 import Spinner from '../layout/Spinner';
 
 import {
@@ -14,9 +15,10 @@ import {
 
 const TaskItem = ({
 	auth, 
-	task:{_id, status, urgency, description, name, title, user, comment, date},
+	task:{_id, status, urgency, description, name, title, user, comment, date, deadlinedate},
 	deleteTask,
-	history
+	history,
+	setAlert
 	}) => {
 	
 	const urgencyColor = (urgency) =>{
@@ -38,7 +40,7 @@ const TaskItem = ({
 	return (
 			<Fragment>
 			
-			{!auth.loading && auth.user._id === user._id && (
+			{(!auth.loading && auth.user._id === user._id || !auth.loading && auth.user.rights === "admin" ) && (
 					<div className="card-stats mb-4 card">
 			
 						<div className="card-body">
@@ -46,11 +48,23 @@ const TaskItem = ({
 								<div className="">
 									Task Date: <Moment format='MM/DD/YYYY'>{date}</Moment>
 								</div>
-								
+								<div>
+									Deadline Date: <Moment format='MM/DD/YYYY' add={{day: 1}}>{deadlinedate}</Moment>
+								</div>
 									<div className="">
-										<Button color="danger" size="sm" onClick={e => deleteTask(_id)}>
-											<i className="fas fa-times" />
-										</Button>
+										{status === "locked" ? (
+											<Button color="secondary" size="sm" 
+												onClick={e => setAlert('Agreement is locked, cannot be deleted', 'danger')} >
+												{/*<i className="fas fa-times" />*/}
+												Delete Task
+											</Button>
+										) : (
+											<Button color="danger" size="sm" onClick={e => deleteTask(_id)}>
+												{/*<i className="fas fa-times" />*/}
+												Delete Task
+											</Button>
+										)}
+										
 									</div>
 								
 							</div>
@@ -79,13 +93,25 @@ const TaskItem = ({
 							<hr />
 							
 								<p>
-									<Button 
-										className="text-nowrap mr-2" 
-										color="info" 
-										onClick={e => handleEdit(_id)}
-										>
-										Edit
-									</Button>
+									{status === 'locked' && auth.user.rights !== 'admin' ? (
+										<Button 
+											className="text-nowrap mr-2" 
+											color="secondary" 
+											onClick={e => setAlert('Agreement is locked, cannot be edited', 'danger')}
+											>
+											Edit
+										</Button>
+									
+									) : (
+										<Button 
+											className="text-nowrap mr-2" 
+											color="info" 
+											onClick={e => handleEdit(_id)}
+											>
+											Edit
+										</Button>
+									)}
+									
 									<Link to={`/dashboard/task/${_id}`} >See Comments...</Link>
 								</p>
 							
@@ -99,12 +125,13 @@ const TaskItem = ({
 TaskItem.propTypes = {
 	auth: PropTypes.object.isRequired,
 	task: PropTypes.object.isRequired,
-	deleteTask: PropTypes.func.isRequired
+	deleteTask: PropTypes.func.isRequired,
+	setAlert: PropTypes.func.isRequired
 }
 
 const mapStateToProps = state =>({
 	auth: state.auth
 })
 
-export default connect(mapStateToProps, {deleteTask})(withRouter(TaskItem));
+export default connect(mapStateToProps, {deleteTask, setAlert})(withRouter(TaskItem));
 		
