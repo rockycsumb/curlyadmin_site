@@ -11,7 +11,7 @@ import {
 
 const TasksOverview = ({
 	auth,
-	taskData: {status, urgency, description, name, title, user, comment, date, duedate}
+	taskData: {status, urgency, description, cost, name, title, user, comment, date, duedate}
 }) =>{
 	
 	const urgencyColor = (urgency) =>{
@@ -23,8 +23,6 @@ const TasksOverview = ({
 			return "danger"
 		}
 	}
-	
-	console.log("from task over view duedate ", duedate);
 		
 	return (
 		<Fragment>
@@ -37,6 +35,7 @@ const TasksOverview = ({
 								<div className="col">
 									<h5 className="font-weight-bold mb-0 card-title">{title}</h5>
 									<span className="text-muted mb-0">{description}</span>
+									<div>Cost: {cost === 0 ? <small><em>Pending</em></small> : cost}</div>
 								</div>
 								<div className="col-auto col">
 									<div className="bg-danger text-white rounded-circle shadow">

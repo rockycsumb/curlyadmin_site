@@ -1,6 +1,7 @@
 import axios from 'axios';
 import apiURL from '../utils/apiURL';
 import {setAlert} from './alert';
+import {updateAccount} from './auth';
 import {
 	GET_TASKS,
 	GET_TASK,
@@ -107,15 +108,21 @@ export const editTask = (formData, history, edit = true, taskId) => async dispat
 			}
 		}
 		let res = await axios.patch(`${apiURL}api/task/${taskId}`, formData, config);
-		// dispatch({
-		// 	type: UPDATE_TASK,
-		// 	payload: res.data
-		// })
+		
+		if(formData.agreement === 'locked'){
+			
+			let deductInfo = {
+				plan: 'none', 
+				method: 'minus', 
+				amount: formData.cost, 
+				taskId: taskId
+			}
+			dispatch(updateAccount(deductInfo, history));
+		}
 		
 		dispatch(getTasks());
-		
 		dispatch(setAlert('Task Edited', 'success'))
-
+		
 	} catch(err) {
 		dispatch({
 			type: TASK_ERROR,

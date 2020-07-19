@@ -3,12 +3,14 @@ import {Link, withRouter, NavLink as NavLinkRRD} from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import {addTask} from '../../actions/task';
+import DashboardHeader from '../dashboard/DashboardHeader';
+import Spinner from '../layout/Spinner';
 import '../dashboard/dashboard.css';
 
 // reactstrap components
 import { Button } from "reactstrap";
 
-const TaskForm = ({addTask, history}) =>{
+const TaskForm = ({addTask, history, auth:{user, loading}}) =>{
 
 	const [formData, setFormData] = useState({
 		title: '',
@@ -34,12 +36,12 @@ const TaskForm = ({addTask, history}) =>{
 	
 	return(
 		<div className="Dashboard-content">
-			<div className="header bg-gradient-info pb-8 pt-5 pt-md-4">
-				<div className="Dashboard-header-container">
-					<div className="Dashboard-page-title">
-						Dashboard Tasks
-					</div>
-				</div>
+			{loading ? <Spinner /> : 
+			<DashboardHeader 
+				user={user}
+				title="Dashboard Add Task"
+				/>
+			}
 				
 				<div className="col-xl-8 container-fluid mb-3">
 					<div className="shadow card">
@@ -150,12 +152,16 @@ const TaskForm = ({addTask, history}) =>{
 					</div>
 				</div>
 			</div>
-		</div>
 	)
 }
 
 TaskForm.propTypes = {
-	addTask: PropTypes.func.isRequired	
+	addTask: PropTypes.func.isRequired,	
+	auth: PropTypes.object.isRequired
 }
 
-export default connect(null, {addTask})(withRouter(TaskForm));
+const mapStateToProps = state =>({
+	auth: state.auth
+})
+
+export default connect(mapStateToProps, {addTask})(withRouter(TaskForm));

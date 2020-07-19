@@ -94,11 +94,6 @@ router.delete('/:id', auth, async (req, res)=>{
 		if(!task){
 			return res.status(404).json({msg: 'Task not found'});
 		}
-		// console.log("user rights from db ", task.user);
-		//Check user
-		// if (task.user.toString() !== req.user.id || task.user.rights !== 'admin' ){
-		// 	return res.status(401).json({msg: 'User not authorized'});
-		// }
 		
 		await task.remove();
 		res.json({msg: "Task removed"});
@@ -125,7 +120,8 @@ router.patch('/:id', auth, async (req, res)=>{
 						 description: req.body.description,
 						 urgency: req.body.urgency,
 						 status: req.body.agreement,
-						 duedate: req.body.duedate
+						 duedate: req.body.duedate,
+						 cost: req.body.cost
 					   }
 		let taskUpdate = await Task.findOneAndUpdate(filter, update);
 		res.json(taskUpdate)
@@ -152,7 +148,6 @@ async (req, res)=> {
 	try {
 		
 		const user = await User.findById(req.user.id).select('-password');
-		
 		const task = await Task.findById(req.params.id);
 		
 		const newComment = {
@@ -164,7 +159,6 @@ async (req, res)=> {
 		task.comment.unshift(newComment);
 		
 		await task.save();
-		
 		res.json(task.comment);
 		
 	} catch(err){

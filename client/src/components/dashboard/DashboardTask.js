@@ -3,6 +3,7 @@ import {Link} from 'react-router-dom';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 import {getTasks} from '../../actions/task';
+import DashboardHeader from './DashboardHeader';
 import Tasks from '../tasks/Tasks';
 import TasksCompleted from '../tasks/TasksCompleted';
 import TasksUserCompleted from '../tasks/TasksCompleted';
@@ -21,7 +22,6 @@ import {
   NavItem,
   NavLink,
   Nav,
-  Progress,
   Table,
   Container,
   Row,
@@ -32,7 +32,7 @@ import {
 
 
 
-const DashboardTasks = ({auth:{user}, task:{tasks, loading}, getTasks}) =>{
+const DashboardTasks = ({auth:{user, account}, task:{tasks, loading}, getTasks}) =>{
 	useEffect(()=>{
 		getTasks();
 	}, [getTasks])
@@ -73,25 +73,16 @@ const DashboardTasks = ({auth:{user}, task:{tasks, loading}, getTasks}) =>{
 	
 	return (
 		<div className="Dashboard-content">
-			<div className="header bg-gradient-info pb-8 pt-5 pt-md-4">
-				<div className="Dashboard-header-container">
-					<div className="Dashboard-page-title">
-						Dashboard Tasks
-					</div>
-					<div className="ml-3">
-						<Alert  />
-					</div>
-					<div className="Dashboard-user">
-						<span className="avaar avatar-sm rounded-circle">
-							<i className="fa fa-user" />
-						</span>
-						<span className="ml-1 mb-0 text-sm font-weight-bold">{user.name}</span>
-					</div>
-				</div>
-				<div className="container mb-2">
-					<Link to='/dashboard/add-task' className="btn btn-info">Add Task</Link>
-				</div>
+			{user.loading ? <Spinner /> : 
+				<DashboardHeader 
+				user={user}
+				title='Dashboard Task'
+				/>
+			}
 				<div className="container-fluid">
+					<div className="mb-2">
+						<Link to='/dashboard/add-task' className="btn btn-info">Add Task</Link>
+					</div>
 					<div className="header-body">
 						<div className="row">
 							
@@ -111,7 +102,7 @@ const DashboardTasks = ({auth:{user}, task:{tasks, loading}, getTasks}) =>{
 						</div>
 					</div>
 				</div>
-			</div>
+			
 			
 			
 			{/*********   PAST TASKS OVER VIEW ************/}
@@ -144,6 +135,7 @@ const DashboardTasks = ({auth:{user}, task:{tasks, loading}, getTasks}) =>{
 									  <th scope="col">User Name</th>
 									  <th scope="col">Title</th>
 									  <th scope="col">Description</th>
+									  <th scope="col">Cost</th>
 									  <th scope="col">Urgency</th>
 									  <th scope="col">Status</th>
 									  <th scope="col">Deadline Date</th>
@@ -161,6 +153,7 @@ const DashboardTasks = ({auth:{user}, task:{tasks, loading}, getTasks}) =>{
 														status={task.status}
 														deadlinedate={task.deadlinedate}
 														id={task._id}
+														cost={task.cost}
 													/>
 											  )
 											}
@@ -208,6 +201,7 @@ const DashboardTasks = ({auth:{user}, task:{tasks, loading}, getTasks}) =>{
 									  <th scope="col">User Name</th>
 									  <th scope="col">Title</th>
 									  <th scope="col">Description</th>
+									  <th scope="col">Cost</th>
 									  <th scope="col">Urgency</th>
 									  <th scope="col">Status</th>
 									  <th scope="col">Deadline Date</th>
@@ -222,6 +216,7 @@ const DashboardTasks = ({auth:{user}, task:{tasks, loading}, getTasks}) =>{
 														user={task.name}
 														title={task.title}
 														description={task.description}
+														cost={task.cost}
 														urgency={task.urgency}
 														status={task.status}
 														deadlinedate={task.deadlinedate}
@@ -239,7 +234,6 @@ const DashboardTasks = ({auth:{user}, task:{tasks, loading}, getTasks}) =>{
 				</Container>
 				</Fragment>
 			)}
-			
 		</div>
 	)
 }

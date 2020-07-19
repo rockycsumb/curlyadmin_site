@@ -21,8 +21,6 @@ const Sidebar = ({auth: {isAuthenticated, user}, logout, props}) =>{
 	const toggle = () => setCollapse(!collapse);
 	const setMenuCollapse = () => setCollapse(false);
 	
-	// console.log("from sidebar user ", user);
-	
 	return(
 		<Fragment>
 			<MenuPop isCollapse={collapse} setMenuCollapse={()=>setMenuCollapse()} />

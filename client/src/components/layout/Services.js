@@ -29,7 +29,7 @@ class Services extends React.Component {
 		this.setState({serviceLevel: evt.target.name})
 		this.props.history.push({
 			pathname: '/register',
-			state: evt.target.name
+			state: {service: evt.target.name, pay: true}
 		});
 	}
 
@@ -128,7 +128,7 @@ class Services extends React.Component {
                             className="mt-1  shadow-sm border-0 button-color-danger btn-rollover-color-danger"
 							  to="/contact"
 							  tag={Link}
-							  name="premium"
+							  name="super"
 							  onClick={this.handleClick}
                           >
 							  <span className="card-button-text">
@@ -162,7 +162,7 @@ class Services extends React.Component {
                             className="mt-1 shadow-sm border-0 button-color-success btn-rollover-color-success"
 							  to="/contact"
 							  tag={Link}
-							  name="daily"
+							  name="curly"
 							  onClick={this.handleClick}
                           >
 							  <span className="card-button-text">

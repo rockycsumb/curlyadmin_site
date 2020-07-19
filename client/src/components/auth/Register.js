@@ -15,7 +15,7 @@ import {
 
 import './Auth.css';
 
-const Register = ({setAlert, register, isAuthenticated}) => {	
+const Register = ({setAlert, register, isAuthenticated, history}) => {	
 	const [formData, setFormData] = useState({
 		name:'',
 		email: '',
@@ -33,6 +33,7 @@ const Register = ({setAlert, register, isAuthenticated}) => {
 	const handleCheckbox = e =>{
 		setFormData({...formData, privacy: e.target.checked.toString()})
 	}
+	
 		
 	const onSubmit = async e =>{
 		e.preventDefault();		
@@ -45,14 +46,20 @@ const Register = ({setAlert, register, isAuthenticated}) => {
 		if(password !== password2){
 			setAlert('Passwords dont match', 'danger');
 		} else {
-			register({name, email, password, privacy})
+			register({name, email, password, privacy}, history)
 		}
 	}
+	
+	
+	console.log("from register page ", history.location.state);
+	
 	
 	//Redirect if logged login
 	if(isAuthenticated){
 		return <Redirect to="/dashboard/overview" />
 	}
+	
+	
     return (
           <main className="Login-main">
           <section className="">

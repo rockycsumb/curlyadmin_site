@@ -9,6 +9,7 @@ import DashboardOverview from './DashboardOverview';
 import DashboardTask from './DashboardTask';
 import DashboardAccount from './DashboardAccount';
 import DashboardProfile from './DashboardProfile';
+import AccountAdjustAdminForm from '../account/AccountAdjustAdminForm';
 import CreateProfile from '../profile-form/CreateProfile';
 import Task from '../task/Task';
 import TaskForm from '../task-form/TaskForm';
@@ -20,17 +21,19 @@ import {BrowserRouter as Router, Route, Switch, Redirect} from 'react-router-dom
 
 const Dashboard = ({
 	getCurrentProfile, 
-	auth: {user}, 
+	auth: {user, fromService}, 
 	profile: {profile, loading }
 }) =>{
 	
 	useEffect(()=>{
 		getCurrentProfile();
 	},[getCurrentProfile]);
-	
+		
 		return (
 			loading && profile === null ? <Spinner /> :  
 			<Fragment>
+					
+					
 					<Router>
 						<Fragment>
 							<div className="Dashboard-container">
@@ -38,6 +41,7 @@ const Dashboard = ({
 									<Sidebar />
 								</div>
 								<div className="Dashboard-main">
+									{fromService !== null && <Redirect to="/dashboard/account" />}
 									<Switch>
 										<PrivateRoute 
 											exact 
@@ -83,6 +87,11 @@ const Dashboard = ({
 											exact 
 											path="/dashboard/account" 
 											component={DashboardAccount} 
+											/>
+										<PrivateRoute 
+											exact 
+											path="/dashboard/adjustaccount" 
+											component={AccountAdjustAdminForm} 
 											/>
 									</Switch>
 								</div>

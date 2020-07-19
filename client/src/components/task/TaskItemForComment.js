@@ -14,7 +14,7 @@ import {
 
 const TaskItem = ({
 	auth, 
-	task:{_id, status, urgency, description, name, title, user, comment, date},
+	task:{_id, status, urgency, description, name, title, user, comment, date, cost, deadlinedate},
 	deleteTask,
 	history,
 	showActions
@@ -46,24 +46,33 @@ const TaskItem = ({
 								<div className="">
 									Task Date: <Moment format='MM/DD/YYYY'>{date}</Moment>
 								</div>
-								{showActions && <Fragment>
-									<NavLinkRRD
-											className="bg-transparent Comment-close-x"
-											size="sm"
-											to="/dashboard/task"
-											activeStyle={{
-												borderLeft: "0",
-												color: "red"
-											  }}
-											tag={Link}
-											 >
-											<i class="fa fa-times" aria-hidden="true"></i>
-									</NavLinkRRD>
-								</Fragment>}	
+								<div>
+									Deadline Date: <Moment format='MM/DD/YYYY' add={{day: 1}}>{deadlinedate}</Moment>
+								</div>
+								<div>
+									{showActions && <Fragment>
+										<NavLinkRRD
+												className="bg-transparent Comment-close-x"
+												size="sm"
+												to="/dashboard/task"
+												activeStyle={{
+													borderLeft: "0",
+													color: "red"
+												  }}
+												tag={Link}
+												 >
+												<i class="fa fa-times" aria-hidden="true"></i>
+										</NavLinkRRD>
+									</Fragment>}	
+								</div>
 							</div>
+							
 							<div className="row">
 								<div className="col">
 									<h5 className="h2 font-weight-bold mb-0 card-title">{title}</h5>
+								</div>
+								<div>
+									<h5>Cost: {cost === 0 ? <small><em>Pending</em></small> : cost}</h5>
 								</div>
 							</div>
 							<hr />

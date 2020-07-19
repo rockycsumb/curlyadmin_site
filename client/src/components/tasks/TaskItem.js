@@ -15,7 +15,7 @@ import {
 
 const TaskItem = ({
 	auth, 
-	task:{_id, status, urgency, description, name, title, user, comment, date, deadlinedate},
+	task:{_id, status, urgency, description, name, title, user, comment, date, deadlinedate, cost},
 	deleteTask,
 	history,
 	setAlert
@@ -66,11 +66,15 @@ const TaskItem = ({
 										)}
 										
 									</div>
-								
 							</div>
 							<div className="row">
 								<div className="col">
-									<h5 className="h2 font-weight-bold mb-0 card-title">{title}</h5>
+									<h2 className="font-weight-bold mb-0 card-title">{title}</h2>
+								</div>
+								<div className="col">
+									<div className="d-flex justify-content-end mt-2">
+										<h5>Cost: {cost === 0 ? <small><em>Pending</em></small> : cost}</h5>
+									</div>
 								</div>
 							</div>
 							<hr />

@@ -17,7 +17,8 @@ const TasksUserCompleted = ({
 	auth, 
 	user, 
 	title, 
-	description, 
+	description,
+	cost,
 	urgency, 
 	status, 
 	id,
@@ -51,6 +52,7 @@ const TasksUserCompleted = ({
             <td>{user}</td>
             <td>{title}</td>
 			<td>{descriptionShort} ...</td>
+			<td>{cost}</td>
 			<td>
 				<Badge 
 					className="mr-1" 

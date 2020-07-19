@@ -3,9 +3,10 @@ import {Link} from 'react-router-dom';
 import {connect} from 'react-redux';
 import PropTypes from 'prop-types';
 import {setAlert} from '../../actions/alert';
-import Alert from '../layout/Alert';
 import './dashboardProfile.css';
+import Spinner from '../layout/Spinner';
 import DashboardBio from './DashboardBio';
+import DashboardHeader from './DashboardHeader';
 
 // reactstrap components
 import {
@@ -30,29 +31,15 @@ const DashboardProfile = ({props, user, profile:{profile}}) => {
 	return (
 		<Fragment>
 		<div className="Dashboard-content">
-				<div className="header bg-gradient-info pb-8 pt-5 pt-md-4">
-					<div className="Dashboard-header-container">
-						<div className="Dashboard-page-title">
-							Dashboard Profile
-						</div>
-						<div className="ml-3">
-							<Alert  />
-						</div>
-						<div className="Dashboard-user">
-							<span className="avaar avatar-sm rounded-circle">
-								<i className="fa fa-user" />
-							</span>
-							<span className="ml-1 mb-0 text-sm font-weight-bold">{user.name}</span>
-						</div>
-					</div>
-					
-					
-				
-					
+			
+			{user.loading ? <Spinner /> : 
+			<DashboardHeader 
+				user={user} 
+				title='Dashboard Profile'
+				/>
+			}
 					<div style={{height: "4rem"}}>
 					</div>
-					
-
 					{!profile ? (
 					<Fragment> 
 						<div className="container-fluid">
@@ -85,14 +72,10 @@ const DashboardProfile = ({props, user, profile:{profile}}) => {
 								</div>
 							</div>
 						</div>
-						
-						
 					</Fragment>
-						
 					)}
-				
-			</div>
-			{profile && 
+			
+			{user.loading && profile ? <Spinner /> : 
 			<DashboardBio 
 					name={user.name}
 					location={profile.location}
@@ -102,8 +85,8 @@ const DashboardProfile = ({props, user, profile:{profile}}) => {
 				/>
 			}
 		</div>
-			
 		</Fragment>	
+		
 	)	
 }
 

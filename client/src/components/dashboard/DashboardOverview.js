@@ -3,7 +3,9 @@ import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 import {Link} from 'react-router-dom';
 import {getTasks} from '../../actions/task';
+import {getAccountById} from '../../actions/auth'
 import Spinner from '../layout/Spinner';
+import DashboardHeader from './DashboardHeader';
 import TasksOverview from '../tasks/TasksOverview';
 import TasksAdminOverview from '../tasks/TasksAdminOverview';
 import TasksCompleted from '../tasks/TasksCompleted';
@@ -16,19 +18,23 @@ import {
   Button,
   Card,
   CardHeader,
-  Progress,
   Table,
   Container,
   Row,
   Col
 } from "reactstrap";
 
-const DashboardOverview = ({props, getTasks, auth:{user}, task: {tasks, loading}}) => {
+const DashboardOverview = ({
+	props, 
+	getTasks, 
+	auth:{user, account}, 
+	task: {tasks, loading}
+}) => {
 	useEffect(()=>{
 		getTasks();
 	}, [getTasks]);
+	
 	console.log("from dash over tasks ", tasks);
-	// console.log("from dash over auth user ", user);
 	
 	const isEmpty = (tasks) =>{
 		let noTasks = true;
@@ -81,21 +87,12 @@ const DashboardOverview = ({props, getTasks, auth:{user}, task: {tasks, loading}
 			
 			
 		<div className="Dashboard-content">
-			<div className="header bg-gradient-info pb-8 pt-5 pt-md-4">
-				<div className="Dashboard-header-container">
-					<div className="Dashboard-page-title">
-						
-						Dashboard Overview
-					</div>
-
-					<div className="Dashboard-user">
-						<span className="avaar avatar-sm rounded-circle">
-							<i className="fa fa-user" />
-						</span>
-						<span className="ml-1 mb-0 text-sm font-weight-bold">{user && user.name}</span>
-					</div>
-				</div>
-			</div>
+			{user.loading ? <Spinner /> : 
+			<DashboardHeader 
+				user={user}
+				title='Dashboard Overview'
+				/>
+			}
 			
 			{user.rights === 'admin' ? (
 				<Fragment>
@@ -125,9 +122,11 @@ const DashboardOverview = ({props, getTasks, auth:{user}, task: {tasks, loading}
 							  <thead className="thead-light">
 								<tr>
 								  <th scope="col">User Name</th>
+								  <th scope="col">Account Balance</th>
 								  <th scope="col">Title</th>
 								  <th scope="col">Deadline</th>
 								  <th scope="col">Description</th>
+								  <th scope="col">Cost</th>
 								  <th scope="col">Urgency</th>
 								  <th scope="col">Status</th>
 								  <th scope="col">Edit</th>
@@ -149,6 +148,7 @@ const DashboardOverview = ({props, getTasks, auth:{user}, task: {tasks, loading}
 												urgency={task.urgency}
 												status={task.status} 
 												id={task._id}
+											  	cost={task.cost}
 											/>
 										  )
 									  }
@@ -189,6 +189,7 @@ const DashboardOverview = ({props, getTasks, auth:{user}, task: {tasks, loading}
 								  <th scope="col">User Name</th>
 								  <th scope="col">Title</th>
 								  <th scope="col">Description</th>
+								  <th scope="col">Cost</th>
 								  <th scope="col">Urgency</th>
 								  <th scope="col">Status</th>
 								  <th scope="col">Deadline Date</th>
@@ -206,6 +207,7 @@ const DashboardOverview = ({props, getTasks, auth:{user}, task: {tasks, loading}
 													status={task.status}
 													deadlinedate={task.deadlinedate}
 													id={task._id}
+													cost={task.cost}
 												/>
 										  )
 										}
@@ -283,6 +285,7 @@ const DashboardOverview = ({props, getTasks, auth:{user}, task: {tasks, loading}
 								  <th scope="col">User Name</th>
 								  <th scope="col">Title</th>
 								  <th scope="col">Description</th>
+								  <th scope="col">Cost</th>
 								  <th scope="col">Urgency</th>
 								  <th scope="col">Status</th>
 								  <th scope="col">Deadline Date</th>
@@ -303,6 +306,7 @@ const DashboardOverview = ({props, getTasks, auth:{user}, task: {tasks, loading}
 													status={task.status}
 													deadlinedate={task.deadlinedate}
 													id={task._id}
+													cost={task.cost}
 												/>
 										  )
 										}
@@ -328,7 +332,8 @@ const DashboardOverview = ({props, getTasks, auth:{user}, task: {tasks, loading}
 DashboardOverview.propTypes = {
 	getTasks: PropTypes.func.isRequired,
 	task: PropTypes.object.isRequired,
-	auth: PropTypes.object.isRequired
+	auth: PropTypes.object.isRequired,
+	getAccountById: PropTypes.func.isRequired
 }
 
 const mapStateToProps = state => ({
@@ -336,5 +341,5 @@ const mapStateToProps = state => ({
 	auth: state.auth
 })
 
-export default connect(mapStateToProps, {getTasks})(DashboardOverview);
+export default connect(mapStateToProps, {getTasks, getAccountById})(DashboardOverview);
 

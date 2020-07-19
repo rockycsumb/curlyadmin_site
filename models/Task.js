@@ -22,6 +22,9 @@ const TaskSchema = new mongoose.Schema({
 	status: {
 		type: String, default: 'pending'
 	},
+	cost: {
+		type: Number, default: 0
+	},
 	deadlinedate: {
 		type: Date,
 		require: true

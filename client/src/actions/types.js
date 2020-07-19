@@ -21,7 +21,11 @@ export const DELETE_TASK = 'DELETE_TASK';
 export const ADD_TASK = 'ADD_TASK';
 export const ADD_COMMENT = 'ADD_COMMENT';
 export const DELETE_COMMENT = 'DELETE_COMMENT';
-
+export const FROM_SERVICE = 'FROM_SERVICE';
+export const REMOVE_FROM_SERVICE = 'REMOVE_FROM_SERVICE';
+export const UPDATE_ACCOUNT = 'UPDATE_ACCOUNT';
+export const GET_ACCOUNT = 'GET_ACCOUNT';
+export const GET_ALL_USERS = 'GET_ALL_USERS';
 
 
 

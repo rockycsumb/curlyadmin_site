@@ -22,6 +22,7 @@ const TasksAdminOverview = ({
 	status, 
 	id,
 	deadlinedate,
+	cost,
 	history,
 	deleteTask,
 	setAlert
@@ -52,6 +53,7 @@ const TasksAdminOverview = ({
             <td>{title}</td>
 			<td><Moment format='MM/DD/YYYY' add={{day: 1}}>{deadlinedate}</Moment></td>
 			<td>{descriptionShort} ...</td>
+			<td>{cost === 0 ? <small><em>Pending</em></small> : cost}</td>
 			<td>
 				<Badge 
 					className="mr-1" 
