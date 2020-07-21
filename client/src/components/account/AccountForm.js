@@ -7,11 +7,16 @@ import DashboardHeader from '../dashboard/DashboardHeader';
 import Spinner from '../layout/Spinner';
 import '../dashboard/dashboard.css';
 import { Button } from "reactstrap";
+import {Elements} from '@stripe/react-stripe-js';
+import {loadStripe} from '@stripe/stripe-js';
+import CheckoutForm from '../dashboard//stripeimplement/CheckoutForm';
+const stripePromise = loadStripe('pk_test_51H62FWIiuUqeL62ywTnBjodUtF9shVeMjB7UT2RYHpGCWHz8pcEO1mnt82TQX7beEnlFdpSuTsQv6uFajFzAucmG00LuyM3h41');
+
 
 const AccountForm = ({updateAccount, getAccountUpdate, history, fromServicePlan, auth:{account, loading, user}}) =>{
 
 	const [formData, setFormData] = useState({
-		plan: fromServicePlan,
+		plan: fromServicePlan !== null ? fromServicePlan.service : 'Basic',
 		method: 'add'
 	});
 	
@@ -24,17 +29,16 @@ const AccountForm = ({updateAccount, getAccountUpdate, history, fromServicePlan,
 		plan
 	} = formData;
 	
-	
-	console.log("from account ");
 	const onChange = e => setFormData({...formData, [e.target.name]: e.target.value});
-	
-	const onSubmit = e => {
-		e.preventDefault();
+	const handleUpdateAccount = () => {
+		
+		console.log("from handle update ")
 		updateAccount(formData, history);
 	}
 	
+		
 	return(
-		<div className="Dashboard-content">
+		<div>
 			{user.loading ? <Spinner /> : 
 			<DashboardHeader 
 				user={user}
@@ -47,39 +51,65 @@ const AccountForm = ({updateAccount, getAccountUpdate, history, fromServicePlan,
 							<div className="align-items-center row">
 								<div className="col-6 pr-0">
 									<h3 className="mb-0">Purchase Plans</h3>
+									<h6 className="heading-small text-muted">
+										Plans can only be purchased when your account has reached $0.00
+									</h6>
 								</div>
 							</div>
 						</div>
 						<div className="card-body">
-							<form className="" onSubmit={e => onSubmit(e)}>
-								<h6 className="heading-small text-muted mb-4">Service Level</h6>
-								<div className="pl-lg-4">
-										<div className="row">
-											<div className="col-md-12">
-												 <div class="form-group">
-													<label htmlFor="plan">Plan</label>
-													<select class="form-control" id="plan"
-														name='plan'
-														value={formData.plan}
-														onChange={e => onChange(e)}
-														id="plan"
-														required
-														>
-													   <option value="basic" >Basic $35</option>
-													   <option value="super" >Super $90</option>
-													   <option value="curly" >Curly $150</option>
-													</select>
-												  </div>
-											</div>
+							<h6 className="heading-small text-muted mb-4">
+								Service Level
+							</h6>
+							<div className="pl-lg-4">
+									<div className="row">
+										<div className="col-md-12">
+											 <div class="form-group">
+												<label htmlFor="plan">Plan</label>
+												<select class="form-control" id="plan"
+													name='plan'
+													value={formData.plan}
+													onChange={e => onChange(e)}
+													disabled={account > 0 ? true : false}
+													required
+													>
+												   <option value="Basic" disabled={account > 0 ? true : false} >Basic $35</option>
+												   <option value="Super" disabled={account > 0 ? true : false}>Super $90</option>
+												   <option value="Curly" disabled={account > 0 ? true : false}>Curly $150</option>
+												</select>
+											  </div>
 										</div>
-										<button type="submit" class="btn btn-primary">Submit</button>
+									</div>
+							</div>
+							<h6 className="heading-small text-muted mb-4">Payment Details: <small><em>(Payment processed through Stripe</em>)</small> </h6>
+							<div className="pl-lg-4">
+								<div className="row">
+										<div className="col-md-12">
+											{/******* STRIPE TEST ***********/}
+											{/******* STRIPE TEST ***********/}
+											{/******* STRIPE TEST ***********/}
+											{/******* STRIPE TEST ***********/}
+											
+											<Elements stripe={stripePromise} >
+													<CheckoutForm 
+														price={formData.plan} 
+														updateAccountProp={() =>
+														handleUpdateAccount()}
+														name={user.name}
+														email={user.email}
+														canpay={account > 0 ? false : true}
+														/>
+											</Elements>
+											
+										
+											
+										</div>
 								</div>
-							</form>
+							</div>
 						</div>
 					</div>
 				</div>
-			</div>
-		
+		</div>
 	)
 }
 

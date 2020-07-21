@@ -58,9 +58,9 @@ router.post('/updateAccount', auth, async (req, res)=> {
 	let updateValue = null;
 	
 	if(plan !== null){
-		if(plan === 'curly'){
+		if(plan === 'Curly'){
 			updateValue = 150
-		} else if(plan === 'super') {
+		} else if(plan === 'Super') {
 			updateValue = 90;
 		} else {
 			

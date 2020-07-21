@@ -73,7 +73,7 @@ const EditProfile = ({
 	}
 	
 	return(
-		<div className="Dashboard-content">
+		<div className="">
 			{profile.loading ? <Spinner /> :
 			<DashboardHeader 
 				user={profile.user}
@@ -103,7 +103,10 @@ const EditProfile = ({
 											<Button 
 												className="btn btn-danger EditProfile-update-delete-buttons" 
 												size="sm"
-												onClick={()=> deleteAccount()}>
+												onClick={()=> deleteAccount()}
+												to='/'
+												tag={Link}
+												>
 												 Delete
 											</Button>
 										</div>

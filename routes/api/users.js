@@ -6,6 +6,7 @@ const jwt = require('jsonwebtoken');
 const auth = require('../../middleware/auth');
 const User = require("../../models/User");
 const config = require('config');
+const stripe = require('stripe')('sk_test_51H62FWIiuUqeL62yXJoiuqzm7gvrGvFtYzW7wj4azLGhRLc8z9OaiFRH3f2hvGEErtk91c8AXcxymfwJiEMSKpwA00D39q96Wk');
 
 // @route 	POST api/users
 // @desc 	Register User
@@ -84,6 +85,45 @@ router.get("/allusers", auth, async (req, res)=>{
 		console.error(err.message);
 		res.status(500).send('Server Error');
 	}
+})
+
+// @route 	POST api/users/payment_intents"
+// @desc 	Post sec stripe
+// @access 	private
+router.post("/payment_intents", auth, async (req, res)=>{
+	
+	
+	
+	
+	if (req.method === "POST") {
+		
+    try {
+		console.log("from post", req.method);
+	console.log("from method", req.body);
+      let { amount } = req.body;
+		let updateValue = 0;
+		if(amount === 'Curly'){
+			updateValue = 150 * 100;
+		} else if(amount === 'Super') {
+			updateValue = 90 * 100;
+		} else {
+			updateValue = 35 * 100;
+		}
+		amount = updateValue;
+      const paymentIntent = await stripe.paymentIntents.create({
+        amount,
+        currency: "usd",
+		receipt_email: req.body.receiptEmail,
+      });
+		
+      res.status(200).send(paymentIntent.client_secret);
+    } catch (err) {
+      res.status(500).json({ statusCode: 500, message: err.message });
+    }
+  } else {
+    res.setHeader("Allow", "POST");
+    res.status(405).end("Method Not Allowed");
+  }
 
 })
 

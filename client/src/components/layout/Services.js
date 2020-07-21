@@ -91,15 +91,17 @@ class Services extends React.Component {
 								</div>
 							</div>
                           <Button
-                            className="mt-1 shadow-sm border-0 button-color-primary btn-rollover-color-primary"
+                            className="mt-1 
+									   shadow-sm border-0 
+									   button-color-primary 
+									   btn-rollover-color-primary 
+									   card-button-text"
 							  to="/contact"
 							  tag={Link}
-							  name="basic"
+							  name="Basic"
 							  onClick={this.handleClick}
                           >
-							  <span className="card-button-text">
 							  	SELECT
-							  </span>
                           </Button>
                         </CardBody>
                       </Card>
@@ -125,15 +127,17 @@ class Services extends React.Component {
 								</div>
 							</div>
                           <Button
-                            className="mt-1  shadow-sm border-0 button-color-danger btn-rollover-color-danger"
+                            className="mt-1  
+									   shadow-sm border-0 
+									   button-color-danger 
+									   btn-rollover-color-danger
+									   card-button-text"
 							  to="/contact"
 							  tag={Link}
-							  name="super"
+							  name="Super"
 							  onClick={this.handleClick}
                           >
-							  <span className="card-button-text">
 							  	SELECT
-							  </span>
                           </Button>
                         </CardBody>
                       </Card>
@@ -159,15 +163,17 @@ class Services extends React.Component {
 								</div>
 							</div>
                           <Button
-                            className="mt-1 shadow-sm border-0 button-color-success btn-rollover-color-success"
+                            className="mt-1 
+									   shadow-sm border-0 
+									   button-color-success 
+									   btn-rollover-color-success
+									   card-button-text"
 							  to="/contact"
 							  tag={Link}
-							  name="curly"
+							  name="Curly"
 							  onClick={this.handleClick}
                           >
-							  <span className="card-button-text">
 							  	SELECT
-							  </span>
                           </Button>
                         </CardBody>
                       </Card>

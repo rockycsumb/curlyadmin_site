@@ -86,7 +86,7 @@ const DashboardOverview = ({
 			<Fragment>
 			
 			
-		<div className="Dashboard-content">
+		<div className="Dashboard-bg">
 			{user.loading ? <Spinner /> : 
 			<DashboardHeader 
 				user={user}

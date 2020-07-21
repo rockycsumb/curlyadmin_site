@@ -30,7 +30,7 @@ const DashboardProfile = ({props, user, profile:{profile}}) => {
 	
 	return (
 		<Fragment>
-		<div className="Dashboard-content">
+		<div className="">
 			
 			{user.loading ? <Spinner /> : 
 			<DashboardHeader 
@@ -72,18 +72,19 @@ const DashboardProfile = ({props, user, profile:{profile}}) => {
 								</div>
 							</div>
 						</div>
+						{user.loading && profile === null ? "" : 
+							<DashboardBio 
+									name={user.name}
+									location={profile.location}
+									company={profile.company}
+									website={profile.website}
+									bio={profile.bio}
+								/>
+							}
 					</Fragment>
 					)}
 			
-			{user.loading && profile ? <Spinner /> : 
-			<DashboardBio 
-					name={user.name}
-					location={profile.location}
-					company={profile.company}
-					website={profile.website}
-					bio={profile.bio}
-				/>
-			}
+			
 		</div>
 		</Fragment>	
 		

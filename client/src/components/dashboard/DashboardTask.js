@@ -173,7 +173,7 @@ const DashboardTasks = ({auth:{user, account}, task:{tasks, loading}, getTasks})
 					
 				{/***********  USER OVER VIEW *************/}
 				
-				<Container className="mt--7" fluid>
+				<Container className="mt--7 pb-5" fluid>
 						  <Row className="mt-5">
 							<Col>
 							  <Card className="shadow">

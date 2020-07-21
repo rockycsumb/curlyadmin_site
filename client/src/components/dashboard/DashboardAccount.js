@@ -9,6 +9,11 @@ import AccountForm from '../account/AccountForm';
 import AccountAdminForm from '../account/AccountAdminForm';
 import DashboardHeader from './DashboardHeader';
 import './dashboard.css';
+import {Elements} from '@stripe/react-stripe-js';
+import {loadStripe} from '@stripe/stripe-js';
+import CheckoutForm from './stripeimplement/CheckoutForm';
+
+
 
 // reactstrap components
 import {
@@ -28,9 +33,12 @@ import {
   Media
 } from "reactstrap";
 
+const stripePromise = loadStripe('pk_test_51H62FWIiuUqeL62ywTnBjodUtF9shVeMjB7UT2RYHpGCWHz8pcEO1mnt82TQX7beEnlFdpSuTsQv6uFajFzAucmG00LuyM3h41');
+
 
 const DashboardAccount = ({history, auth: {user, fromService, loading, users}, getAllUsers}) =>{
-	
+
+		
 	useEffect(()=>{
 		getAllUsers();
 	},[getAllUsers])
@@ -43,22 +51,20 @@ const DashboardAccount = ({history, auth: {user, fromService, loading, users}, g
 	}
 	
 	return (
-		<div className="Dashboard-content">
-			{user.loading ? <Spinner /> : 
-			<DashboardHeader 
-				user={user}
-				title='Dashboard Account'
-				/>
-			}
+		<div>
+			
 			{loading ? <Spinner /> :
 				user.rights !== 'admin' ? (
-				<AccountForm fromServicePlan='curly' /> 
+				<AccountForm fromServicePlan={fromService} /> 
 				) : (
-					<AccountAdminForm />
-				)
-			}
-			
-			<Container className="mt--7" fluid>
+				<Fragment>
+					{user.loading ? <Spinner /> : 
+					<DashboardHeader 
+						user={user}
+						title='Dashboard Account'
+						/>
+					}
+					<Container className="mt--7" fluid>
 					  <Row className="mt-5">
 						<Col>
 						  <Card className="shadow">
@@ -116,6 +122,11 @@ const DashboardAccount = ({history, auth: {user, fromService, loading, users}, g
 						</Col>
 					</Row>
 				</Container>
+				</Fragment>
+				)
+			}
+				
+			
 						
 			</div>
 		

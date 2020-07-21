@@ -97,7 +97,7 @@ class Contact extends React.Component {
 		emailjs.send(service_id, template_id, templateParams, user_id);
 		
 		this.setState({
-			plan: "basic",
+			plan: "Basic",
 			taskcategory: "write_emails",
 			deadline: "",
 			taskdescription: "",
@@ -169,9 +169,9 @@ class Contact extends React.Component {
 										onChange={this.handleChange}
 										id="ServiceLevel"
 									>
-									  <option value="basic" >Basic $35</option>
-									  <option value="premium" >Super $90</option>
-									  <option value="daily" >Curly $150</option>
+									  <option value="Basic" >Basic $35</option>
+									  <option value="Super" >Super $90</option>
+									  <option value="Curly" >Curly $150</option>
 									  <option value="One-time" >One-time $8.00/Request</option>
 									</Input>
 								  </FormGroup>

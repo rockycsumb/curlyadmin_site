@@ -161,6 +161,7 @@ const Register = ({setAlert, register, isAuthenticated, history}) => {
 										  <a
 											href="#pablo"
 											onClick={e => e.preventDefault()}
+											className="privacyPolicy"
 										  >
 											Privacy Policy
 										  </a>
