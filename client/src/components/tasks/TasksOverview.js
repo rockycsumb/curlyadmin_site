@@ -35,7 +35,13 @@ const TasksOverview = ({
 								<div className="col">
 									<h5 className="font-weight-bold mb-0 card-title">{title}</h5>
 									<span className="text-muted mb-0">{description}</span>
-									<div>Cost: {cost === 0 ? <small><em>Pending</em></small> : cost}</div>
+									<div>Cost: {cost === 0 ? (<small><em>Pending</em></small>
+										) : (
+											<Fragment>
+												$ {cost}.00
+											</Fragment>
+										)}
+									</div>
 								</div>
 								<div className="col-auto col">
 									<div className="bg-danger text-white rounded-circle shadow">

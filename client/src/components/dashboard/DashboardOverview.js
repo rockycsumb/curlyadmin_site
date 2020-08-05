@@ -121,16 +121,11 @@ const DashboardOverview = ({
 							<Table className="align-items-center table-flush" responsive>
 							  <thead className="thead-light">
 								<tr>
-								  <th scope="col">User Name</th>
-								  <th scope="col">Account Balance</th>
+								  <th scope="col">User</th>
 								  <th scope="col">Title</th>
-								  <th scope="col">Deadline</th>
-								  <th scope="col">Description</th>
-								  <th scope="col">Cost</th>
-								  <th scope="col">Urgency</th>
-								  <th scope="col">Status</th>
+								  <th scope="col">Deadline/Cost</th>
+								  <th scope="col">Urgency/Status</th>
 								  <th scope="col">Edit</th>
-								  <th scope="col">Delete</th>
 								</tr>
 							  </thead>
 							  <tbody>
@@ -144,7 +139,6 @@ const DashboardOverview = ({
 												user={task.name}
 												title={task.title}
 												deadlinedate={task.deadlinedate}
-												description={task.description}
 												urgency={task.urgency}
 												status={task.status} 
 												id={task._id}
@@ -186,13 +180,11 @@ const DashboardOverview = ({
 							<Table className="align-items-center table-flush" responsive>
 							  <thead className="thead-light">
 								<tr>
-								  <th scope="col">User Name</th>
 								  <th scope="col">Title</th>
-								  <th scope="col">Description</th>
 								  <th scope="col">Cost</th>
 								  <th scope="col">Urgency</th>
 								  <th scope="col">Status</th>
-								  <th scope="col">Deadline Date</th>
+								  <th scope="col">Deadline</th>
 								</tr>
 							  </thead>
 							  <tbody>
@@ -202,7 +194,6 @@ const DashboardOverview = ({
 												<TasksCompleted
 													user={task.name}
 													title={task.title}
-													description={task.description}
 													urgency={task.urgency}
 													status={task.status}
 													deadlinedate={task.deadlinedate}
@@ -282,13 +273,11 @@ const DashboardOverview = ({
 							<Table className="align-items-center table-flush" responsive>
 							  <thead className="thead-light">
 								<tr>
-								  <th scope="col">User Name</th>
 								  <th scope="col">Title</th>
-								  <th scope="col">Description</th>
 								  <th scope="col">Cost</th>
 								  <th scope="col">Urgency</th>
 								  <th scope="col">Status</th>
-								  <th scope="col">Deadline Date</th>
+								  <th scope="col">Deadline</th>
 								</tr>
 							  </thead>
 							  <tbody>
@@ -299,9 +288,7 @@ const DashboardOverview = ({
 									  if(task.status === "completed" && user._id === task.user._id){
 										  return(
 												<TasksUserCompleted
-													user={task.name}
 													title={task.title}
-													description={task.description}
 													urgency={task.urgency}
 													status={task.status}
 													deadlinedate={task.deadlinedate}

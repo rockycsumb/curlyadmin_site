@@ -1,9 +1,12 @@
 import React, {useState} from 'react';
 import {CardElement, useStripe, useElements} from '@stripe/react-stripe-js';
+import {connect} from 'react-redux';
+import {PropTypes} from 'prop-types';
+import {setAlert} from '../../../actions/alert';
 import axios from 'axios';
 import './checkoutform.css';
 
-const CheckoutForm = ({price, updateAccountProp, name, email, canpay}) => {
+const CheckoutForm = ({price, updateAccountProp, name, email, canpay, setAlert}) => {
   const [isProcessing, setProcessingTo] = useState(false);
   const [checkoutError, setCheckoutError] = useState();
   const [successCheckout, setSuccessCheckoutTo] = useState(false);
@@ -52,7 +55,7 @@ const CheckoutForm = ({price, updateAccountProp, name, email, canpay}) => {
     // Use your card Element with other Stripe.js APIs
      if (result.error) {
       // Show error to your customer (e.g., insufficient funds)
-      	 console.log(result.error.message);
+      	 // console.log(result.error.message);
 		 setCheckoutError(result.error.message);
          setProcessingTo(false);
 		 return;
@@ -64,11 +67,11 @@ const CheckoutForm = ({price, updateAccountProp, name, email, canpay}) => {
 			// execution. Set up a webhook or plugin to listen for the
 			// payment_intent.succeeded event that handles any business critical
 			// post-payment actions.
-			  console.log("payment success", result)
+			 
 			  setProcessingTo(false);
 			  setSuccessCheckoutTo(true);
+			  setAlert("Payment Processed", 'success')
 			  updateAccountProp();
-			 
 		  }
 		}
 	  } catch(err){
@@ -109,7 +112,7 @@ const CheckoutForm = ({price, updateAccountProp, name, email, canpay}) => {
 		   options={cardStyles}		  
 		  />
 	  </div>
-		  {successCheckout ? <h5>'Payment Processed!' </h5> : ''}
+		  {successCheckout ? <h5 className="text-success">Payment Processed</h5> : ''}
      
       <button className="btn btn-primary" type="submit" disabled={isProcessing || !stripe || !canpay}>
         {isProcessing ? "Processing..." : `Pay ${price}`}
@@ -117,4 +120,8 @@ const CheckoutForm = ({price, updateAccountProp, name, email, canpay}) => {
     </form>
   );
 }
-export default CheckoutForm;
+
+CheckoutForm.propTypes = {
+	setAlert: PropTypes.func.isRequired
+}
+export default connect(null, {setAlert})(CheckoutForm);

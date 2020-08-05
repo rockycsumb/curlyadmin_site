@@ -34,7 +34,7 @@ const TaskItem = ({
 	const handleEdit = (_id) =>{
 		history.push({
 			pathname: '/dashboard/edit-task',
-			state: _id
+			state: {id: _id, prevPath: history.location.pathname}
 		})
 	}
 	return (
@@ -73,7 +73,8 @@ const TaskItem = ({
 								</div>
 								<div className="col">
 									<div className="d-flex justify-content-end mt-2">
-										<h5>Cost: {cost === 0 ? <small><em>Pending</em></small> : cost}</h5>
+										<h5>Cost: {cost === 0 ? <small><em>Pending</em></small> : (
+												<Fragment>$ {cost}.00</Fragment>)}</h5>
 									</div>
 								</div>
 							</div>

@@ -35,9 +35,11 @@ const EditTask = ({auth, history, deleteTask, getTaskById, editTask, getAllUsers
 		getAllUsers();
 	},[getAllUsers])
 	
-	const taskId = history.location.state;
+	const taskId = history.location.state.id;
 	let thisTask = tasks.filter(task => task._id === taskId);
 	[thisTask] = thisTask;
+	
+	console.log("this task ", thisTask);
 
 	let thisUsersFunds = null;
 	if(auth.users !== null){
@@ -75,8 +77,9 @@ const EditTask = ({auth, history, deleteTask, getTaskById, editTask, getAllUsers
 		let edit = true;
 		editTask(formData, history, edit, taskId);
 		
-		{auth.user.rights === 'admin' ? history.push("/dashboard/overview") : history.push("/dashboard/task")}
-	}	
+		{auth.user.rights === 'admin' ? history.push(`${history.location.state.prevPath}`) : history.push("/dashboard/task")}
+	}
+	console.log("history from edit task ", history)
 	
 	return(
 		<div className="Dashboard-content">
@@ -107,7 +110,7 @@ const EditTask = ({auth, history, deleteTask, getTaskById, editTask, getAllUsers
 										<NavLinkRRD
 											className="bg-transparent EditProfile-close-x"
 											size="sm"
-											to={auth.user.rights === 'admin' ? ("/dashboard/overview") : ("/dashboard/task")}
+											to={auth.user.rights === 'admin' ? (`${history.location.state.prevPath}`) : ("/dashboard/task")}
 											tag={Link}
 											 >
 											<i class="fa fa-times" aria-hidden="true"></i>

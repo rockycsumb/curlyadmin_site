@@ -104,7 +104,7 @@ const DashboardAccount = ({history, auth: {user, fromService, loading, users}, g
 															{userInfo.name}
 														</td>
 														<td>
-															{userInfo.account}
+															${userInfo.account}.00
 														</td>
 														<td>
 															<Button

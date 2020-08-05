@@ -72,7 +72,12 @@ const TaskItem = ({
 									<h5 className="h2 font-weight-bold mb-0 card-title">{title}</h5>
 								</div>
 								<div>
-									<h5>Cost: {cost === 0 ? <small><em>Pending</em></small> : cost}</h5>
+									<h5>Cost: {cost === 0 ? (<small><em>Pending</em></small>
+										) : (
+											<Fragment>
+												$ {cost}.00
+											</Fragment>
+										)}</h5>
 								</div>
 							</div>
 							<hr />

@@ -15,9 +15,7 @@ import {
 
 const TasksUserCompleted = ({
 	auth, 
-	user, 
-	title, 
-	description,
+	title,
 	cost,
 	urgency, 
 	status, 
@@ -27,9 +25,7 @@ const TasksUserCompleted = ({
 	deleteTask,
 	setAlert
 }) =>{
-	
-	let descriptionShort = description.substring(0, 50);
-	
+		
 	const urgencyColor = (urgency) =>{
 		if (urgency === "low") {
 			return "success";
@@ -49,22 +45,20 @@ const TasksUserCompleted = ({
 		
 	return (	
 		<tr>
-            <td>{user}</td>
             <td>{title}</td>
-			<td>{descriptionShort} ...</td>
-			<td>{cost}</td>
+			<td>${cost}.00</td>
 			<td>
 				<Badge 
 					className="mr-1" 
 					color={urgencyColor(urgency)}>
-					Urgency: {urgency}
+					{urgency}
 				</Badge>
 			</td>
 			<td>
 				<Badge 
 					className="mr-2" 
 					color={status === "pending" ? "success" : "danger"}>
-					Agreement: {status}
+					{status}
 				</Badge>
 			</td>
 			<td><Moment format='MM/DD/YYYY' add={{day: 1}}>{deadlinedate}</Moment></td>

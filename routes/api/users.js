@@ -92,16 +92,13 @@ router.get("/allusers", auth, async (req, res)=>{
 // @access 	private
 router.post("/payment_intents", auth, async (req, res)=>{
 	
-	
-	
-	
 	if (req.method === "POST") {
 		
     try {
-		console.log("from post", req.method);
-	console.log("from method", req.body);
+	
       let { amount } = req.body;
-		let updateValue = 0;
+	  let updateValue = 0;
+		
 		if(amount === 'Curly'){
 			updateValue = 150 * 100;
 		} else if(amount === 'Super') {

@@ -132,13 +132,11 @@ const DashboardTasks = ({auth:{user, account}, task:{tasks, loading}, getTasks})
 								<Table className="align-items-center table-flush" responsive>
 								  <thead className="thead-light">
 									<tr>
-									  <th scope="col">User Name</th>
 									  <th scope="col">Title</th>
-									  <th scope="col">Description</th>
 									  <th scope="col">Cost</th>
 									  <th scope="col">Urgency</th>
 									  <th scope="col">Status</th>
-									  <th scope="col">Deadline Date</th>
+									  <th scope="col">Deadline</th>
 									</tr>
 								  </thead>
 								  <tbody>
@@ -146,9 +144,7 @@ const DashboardTasks = ({auth:{user, account}, task:{tasks, loading}, getTasks})
 										  if(task.status === "completed"){
 											  return(
 													<TasksCompleted
-														user={task.name}
 														title={task.title}
-														description={task.description}
 														urgency={task.urgency}
 														status={task.status}
 														deadlinedate={task.deadlinedate}
@@ -198,13 +194,11 @@ const DashboardTasks = ({auth:{user, account}, task:{tasks, loading}, getTasks})
 								<Table className="align-items-center table-flush" responsive>
 								  <thead className="thead-light">
 									<tr>
-									  <th scope="col">User Name</th>
 									  <th scope="col">Title</th>
-									  <th scope="col">Description</th>
 									  <th scope="col">Cost</th>
 									  <th scope="col">Urgency</th>
 									  <th scope="col">Status</th>
-									  <th scope="col">Deadline Date</th>
+									  <th scope="col">Deadline</th>
 									</tr>
 								  </thead>
 								  <tbody>
@@ -213,9 +207,7 @@ const DashboardTasks = ({auth:{user, account}, task:{tasks, loading}, getTasks})
 										  if(task.status === "completed" && user._id === task.user._id){
 											  return(
 													<TasksUserCompleted
-														user={task.name}
 														title={task.title}
-														description={task.description}
 														cost={task.cost}
 														urgency={task.urgency}
 														status={task.status}
