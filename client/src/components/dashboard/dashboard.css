@@ -5,33 +5,24 @@
 	flex-direction: row;
 }
 
-
 .Dashboard-sidebar {
 	height: 100%;
 	flex: 0 0 250px;
 	margin-right: 20px;
-	/* padding-right: 20px; */
-	/* border: solid red 2px; */
 }
 
 .Dashboard-main {	
 	width: 100%;
 	height: 100%;
-	background: -webkit-linear-gradient(top left, #073379, #B4D6FF);
-	background: -moz-linear-gradient(top left, #073379, #B4D6FF);
-	background: linear-gradient(to bottom right, #073379, #B4D6FF);
-	
+	background: #172B4D;
 }
 
 .Dashboard-bg {
-	background: -webkit-linear-gradient(top left, #073379, #B4D6FF);
-	background: -moz-linear-gradient(top left, #073379, #B4D6FF);
-	background: linear-gradient(to bottom right, #073379, #B4D6FF);
+	background: #172B4D;
 }
 
 .Dashboard-header-container {
 	margin-bottom: 20px;
-	/* border: solid red 4px; */
 	display: flex;
 	flex-direction: row;
 	align-items: center;
@@ -43,15 +34,11 @@
 	color: white;
 	margin-left: 16px;
 	font-size: .92rem;
-	/* border: 2px solid green; */
 }
 
 .Dashboard-user {
 	color: white;
-	/* border: 2px solid pink; */
-	/* display: inline; */
 	margin-right: 16px;
-	
 }
 
 .EditProfile-close-x{
@@ -75,16 +62,16 @@
 	display: flex;
 	flex-direction: row;
 	justify-content: space-between;
-	
 }
 
 .EditProfile-update-delete-buttons {
-	/* border: 2px solid red; */
 	font-size: .7em !important;
-	/* width: 9em; */
 	margin: 0 5px;
 }
 
+.Dashboard-content{
+	background: #172B4D;
+}
 
 @media only screen and (max-width: 768px){
 		.Dashboard-container {
@@ -97,8 +84,8 @@
 			flex: 0 0 0;
 			width: 100%;
 		}
+	
 		.Dashboard-main {
-			
 			width: 100%;
 			height: 100vh;
 			margin-left: 0;
@@ -108,37 +95,14 @@
 			position: absolute;
 			color: white;
 			padding-bottom: 20px;
-			
 		}
 	
 		.Dashboard-user {
 			color: white;
 			position: absolute;
 			right: 3em;
-			/* border: 2px solid pink; */
 			display: none;
 			margin-right: 16px;
 		}
-	
-		/* .EditProfile-close-x{
-			color: black;
-			font-size: 1em;
-			font-weight: bold;
-			position: absolute;
-			right: 10px;
-			top: 3em;
-		} */
 }
 
-
-.Dashboard-content{
-	/* height: 100vh;
-	margin-bottom: 100%;
-	
-	background: #073379; */
-	
-	background: -webkit-linear-gradient(top left, #073379, #B4D6FF);
-	background: -moz-linear-gradient(top left, #073379, #B4D6FF);
-	background: linear-gradient(to bottom right, #073379, #B4D6FF);
-	
-}

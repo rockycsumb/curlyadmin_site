@@ -43,7 +43,7 @@ const TaskForm = ({addTask, history, auth:{user, loading}}) =>{
 				/>
 			}
 				
-				<div className="col-xl-8 container-fluid mb-3">
+				<div className="col-xl-8 container-fluid pb-5">
 					<div className="shadow card">
 						<div className="bg-white border-0 card-header">
 							<div className="align-items-center row">
