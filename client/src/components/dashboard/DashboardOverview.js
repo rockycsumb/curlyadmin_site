@@ -250,7 +250,7 @@ const DashboardOverview = ({
 			{/*********   USER COMPLETED TASK *********/}
 			<Container className="mt--7" fluid>
 					  <Row className="mt-5">
-						<Col>
+						<Col className="mb-3">
 						  <Card className="shadow">
 							<CardHeader className="border-0">
 							  <Row className="align-items-center">

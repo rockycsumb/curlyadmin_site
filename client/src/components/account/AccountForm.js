@@ -38,14 +38,14 @@ const AccountForm = ({updateAccount, getAccountUpdate, history, fromServicePlan,
 	
 		
 	return(
-		<div>
+		<div className="Dashboard-content">
 			{user.loading ? <Spinner /> : 
 			<DashboardHeader 
 				user={user}
 				title='Dashboard Account'
 				/>
 			}
-				<div className="col-xl-8 container-fluid mb-3">
+				<div className="col-xl-8 container-fluid pb-3">
 					<div className="shadow card">
 						<div className="bg-white border-0 card-header">
 							<div className="align-items-center row">

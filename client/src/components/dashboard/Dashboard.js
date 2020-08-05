@@ -32,8 +32,6 @@ const Dashboard = ({
 		return (
 			loading && profile === null ? <Spinner /> :  
 			<Fragment>
-					
-					
 					<Router>
 						<Fragment>
 							<div className="Dashboard-container">

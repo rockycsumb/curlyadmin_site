@@ -38,7 +38,7 @@ const Task = ({getTaskById, task: {task, loading}, match}) =>{
 				
 				</div>
 				<div className="container-fluid">
-					<div className="header-body">
+					<div className="header-body pb-4">
 						
 						{loading || task === null ? (<Spinner /> 
 
