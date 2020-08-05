@@ -1,4 +1,5 @@
 const express = require('express');
+require('dotenv').config();
 const router = express.Router();
 const {check , validationResult } = require('express-validator');
 const bcrypt = require('bcryptjs');
@@ -6,7 +7,9 @@ const jwt = require('jsonwebtoken');
 const auth = require('../../middleware/auth');
 const User = require("../../models/User");
 const config = require('config');
-const stripe = require('stripe')('sk_test_51H62FWIiuUqeL62yXJoiuqzm7gvrGvFtYzW7wj4azLGhRLc8z9OaiFRH3f2hvGEErtk91c8AXcxymfwJiEMSKpwA00D39q96Wk');
+
+const strU = `${process.env.STR_U}`;
+const stripe = require('stripe')(strU);
 
 // @route 	POST api/users
 // @desc 	Register User
@@ -91,7 +94,6 @@ router.get("/allusers", auth, async (req, res)=>{
 // @desc 	Post sec stripe
 // @access 	private
 router.post("/payment_intents", auth, async (req, res)=>{
-	
 	if (req.method === "POST") {
 		
     try {

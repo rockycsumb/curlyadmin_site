@@ -16,7 +16,7 @@ import {
 
 //GET TASKS
 export const getTasks = () => async dispatch => {
-	console.log("from get tasks actions ")
+	
 	try {
 		const res = await axios.get(`${apiURL}api/task`);
 		dispatch({

@@ -34,8 +34,6 @@ const DashboardOverview = ({
 		getTasks();
 	}, [getTasks]);
 	
-	console.log("from dash over tasks ", tasks);
-	
 	const isEmpty = (tasks) =>{
 		let noTasks = true;
 		tasks.map(task =>{

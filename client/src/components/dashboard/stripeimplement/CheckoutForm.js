@@ -3,6 +3,7 @@ import {CardElement, useStripe, useElements} from '@stripe/react-stripe-js';
 import {connect} from 'react-redux';
 import {PropTypes} from 'prop-types';
 import {setAlert} from '../../../actions/alert';
+import apiURL from '../../../utils/apiURL';
 import axios from 'axios';
 import './checkoutform.css';
 
@@ -33,9 +34,8 @@ const CheckoutForm = ({price, updateAccountProp, name, email, canpay, setAlert})
 	  
    setProcessingTo(true);
 	  
-	  
 	  try {
-		  const { data: clientSecret } = await axios.post("https://mernstack-shrnu.run-us-west2.goorm.io/api/users/payment_intents", {
+		  const { data: clientSecret } = await axios.post(`${apiURL}api/users/payment_intents`, {
 			amount: `${price}`,
 			receiptEmail: `${email}` 
 		  });

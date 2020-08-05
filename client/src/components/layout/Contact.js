@@ -59,11 +59,11 @@ class Contact extends React.Component {
 		
 		evt.preventDefault();
 		
-		if(!this.state.isVerified) {
-			this.setState({
-				verifyRequired: true
-			})
-		} else {
+		// if(!this.state.isVerified) {
+		// 	this.setState({
+		// 		verifyRequired: true
+		// 	})
+		// } else {
 		
 		const {
 			plan,
@@ -118,7 +118,7 @@ class Contact extends React.Component {
 			state: templateParams.name
 		})
 	  }
-	}
+	// }
 	
 	 verifyCallback(response){
 	  if(response){
@@ -361,10 +361,13 @@ class Contact extends React.Component {
 								</Row>
 							   </Container>
 							 <div className="mb-3 justify-content-center row">
-								 
+								
+								 {/*
 								<div>
-								 <div className={this.state.verifyRequired ? `please-verify` : "please-verify-hide"}>Please verify</div>
-									 <div  className={this.state.verifyRequired ? `recaptcha-border` : ""}>
+									<div className={this.state.verifyRequired ? `please-verify` : "please-verify-hide"}>
+										Please verify
+									</div>
+									<div  className={this.state.verifyRequired ? `recaptcha-border` : ""}>
 										<div className="m-1">
 											 <Recaptcha
 												sitekey="6LdN0KQZAAAAAH104p0wqY4tUhL59v_BL2q7ZCXy"
@@ -375,6 +378,7 @@ class Contact extends React.Component {
 										</div>
 									</div>
 								</div>
+								*/}
 								
 							  </div>
 							  

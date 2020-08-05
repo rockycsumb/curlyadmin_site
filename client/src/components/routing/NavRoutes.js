@@ -35,7 +35,6 @@ const NavRoutes = ({auth: {isAuthenticated}}) => {
 						<Route exact path="/services" component={Services} />
 						<Route exact path="/contact" render={(props)=><Contact {...props} />} />
 						<Route exact path="/confirmation" component={Confirmation} />
-						<Route path="*" component={PageNotFound} />
 						<PrivateRoute exact path="/dashboard/overview" component={Dashboard} />
 						<Route exact path="/dashboard/login" component={()=><Redirect to="/" />} />
 					</Switch>

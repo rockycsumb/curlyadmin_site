@@ -13,7 +13,6 @@ import CheckoutForm from '../dashboard//stripeimplement/CheckoutForm';
 
 const strK = `${process.env.REACT_APP_STRIPE}`;
 
-console.log("strk ", strK)
 const stripePromise = loadStripe(strK);
 
 

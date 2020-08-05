@@ -68,11 +68,11 @@ class Landing extends React.Component {
 	
 	handleSubmit(evt){
 		
-		if(!this.state.isVerified) {
-			this.setState({
-				verifyRequired: true
-			})
-		} else {
+		// if(!this.state.isVerified) {
+		// 	this.setState({
+		// 		verifyRequired: true
+		// 	})
+		// } else {
 			
 		evt.preventDefault();
 		const {
@@ -105,7 +105,7 @@ class Landing extends React.Component {
 			state: templateParams.name
 		})
 	  }
-	}
+	// }
 	
 	verifyCallback(response){
 	  if(response){
@@ -417,9 +417,7 @@ confidentiality you deserve.
 						
 					  {/* RECAPTCHA CODE*/}
 					  {/* RECAPTCHA CODE*/}
-						
-					  {console.log("from landing REACAPTHA api ", recapKey)}
-					 
+					 {/*
 					  <div className="mb-3 justify-content-center row">
 						<div>
 						 <div className={this.state.verifyRequired ? `please-verify` : "please-verify-hide"}>Please verify</div>
@@ -435,6 +433,7 @@ confidentiality you deserve.
 							</div>
 						</div>
 					  </div>
+					  */}
 					  
                       <div>
                         <Button

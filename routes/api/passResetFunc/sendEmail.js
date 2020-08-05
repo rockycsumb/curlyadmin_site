@@ -2,7 +2,7 @@
 // https://github.com/sendgrid/sendgrid-nodejs
 require('dotenv').config();
 const sgMail = require('@sendgrid/mail');
-const apiKey = `${process.env.SENDGRID_API_KEY}`;
+const apiKey = `${process.env.SG_U}`;
 
 sgMail.setApiKey(apiKey);
 
