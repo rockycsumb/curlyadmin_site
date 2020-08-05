@@ -8,6 +8,7 @@ import About from '../layout/About';
 import Services from '../layout/Services';
 import Contact from '../layout/Contact';
 import Confirmation from '../layout/Confirmation';
+import PageNotFound from '../layout/PageNotFound';
 import ForgotPassword from '../auth/ForgotPassword';
 import ResetPassword from '../auth/ResetPassword';
 import Login from '../auth/Login';
@@ -34,6 +35,7 @@ const NavRoutes = ({auth: {isAuthenticated}}) => {
 						<Route exact path="/services" component={Services} />
 						<Route exact path="/contact" render={(props)=><Contact {...props} />} />
 						<Route exact path="/confirmation" component={Confirmation} />
+						<Route path="*" component={PageNotFound} />
 						<PrivateRoute exact path="/dashboard/overview" component={Dashboard} />
 						<Route exact path="/dashboard/login" component={()=><Redirect to="/" />} />
 					</Switch>

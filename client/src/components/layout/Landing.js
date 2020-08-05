@@ -26,7 +26,6 @@ import {
 const EMAIL_JS_KEY = `${process.env.REACT_APP_EMAILJS_API_KEY}`;
 const recapKey = `${process.env.REACT_APP_RECAPTCHA}`;
 
-// console.log("email js " + EMAIL_JS_KEY + " REACP KEY " + recapKey);
 const words = {
 	english: {
 		administratives_support: "Administrative Support",
@@ -87,10 +86,11 @@ class Landing extends React.Component {
 			email: email,
 			message: message	
 		}
-			
+		
+		
 		var service_id = "gmail";
 		var template_id = "formpage";
-		var user_id = 'user_XKRqgVmkTkoqnvfTpqZSo';
+		var user_id = EMAIL_JS_KEY;
 		
 		emailjs.send(service_id, template_id, templateParams, user_id);
 		
@@ -413,16 +413,20 @@ confidentiality you deserve.
                           rows="4"
                           type="textarea"
                         />
-					  </FormGroup>						
+					  </FormGroup>
+						
+					  {/* RECAPTCHA CODE*/}
 					  {/* RECAPTCHA CODE*/}
 						
+					  {console.log("from landing REACAPTHA api ", recapKey)}
+					 
 					  <div className="mb-3 justify-content-center row">
 						<div>
 						 <div className={this.state.verifyRequired ? `please-verify` : "please-verify-hide"}>Please verify</div>
 							 <div  className={this.state.verifyRequired ? `recaptcha-border` : ""}>
 								<div className="m-1">
 									 <Recaptcha
-										sitekey="6LdN0KQZAAAAAH104p0wqY4tUhL59v_BL2q7ZCXy"
+										sitekey={recapKey}
 										render="explicit"
 										onloadCallback={this.recaptchaLoaded}
 										verifyCallback={this.verifyCallback}
@@ -431,6 +435,7 @@ confidentiality you deserve.
 							</div>
 						</div>
 					  </div>
+					  
                       <div>
                         <Button
                           block

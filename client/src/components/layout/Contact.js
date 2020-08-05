@@ -16,6 +16,8 @@ import {
   Label
 } from "reactstrap";
 
+const EMAIL_JS_KEY = `${process.env.REACT_APP_EMAILJS_API_KEY}`;
+const recapKey = `${process.env.REACT_APP_RECAPTCHA}`;
 
 class Contact extends React.Component {
 	constructor(props){
@@ -54,6 +56,7 @@ class Contact extends React.Component {
 	}
 	
 	handleSubmit(evt){
+		
 		evt.preventDefault();
 		
 		if(!this.state.isVerified) {
@@ -92,7 +95,7 @@ class Contact extends React.Component {
 			
 		var service_id = "default_service";
 		var template_id = "formpage";
-		var user_id = 'user_XKRqgVmkTkoqnvfTpqZSo';
+		var user_id = EMAIL_JS_KEY;
 		
 		emailjs.send(service_id, template_id, templateParams, user_id);
 		
@@ -372,6 +375,7 @@ class Contact extends React.Component {
 										</div>
 									</div>
 								</div>
+								
 							  </div>
 							  
 							   <div>

@@ -5,6 +5,7 @@ const sgMail = require('@sendgrid/mail');
 const apiKey = `${process.env.SENDGRID_API_KEY}`;
 
 sgMail.setApiKey(apiKey);
+
 function sendResetLink(email, id){
 	const msg = {
 	  to: `${email}`,

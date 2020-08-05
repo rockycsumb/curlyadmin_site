@@ -10,7 +10,11 @@ import { Button } from "reactstrap";
 import {Elements} from '@stripe/react-stripe-js';
 import {loadStripe} from '@stripe/stripe-js';
 import CheckoutForm from '../dashboard//stripeimplement/CheckoutForm';
-const stripePromise = loadStripe('pk_test_51H62FWIiuUqeL62ywTnBjodUtF9shVeMjB7UT2RYHpGCWHz8pcEO1mnt82TQX7beEnlFdpSuTsQv6uFajFzAucmG00LuyM3h41');
+
+const strK = `${process.env.REACT_APP_STRIPE}`;
+
+console.log("strk ", strK)
+const stripePromise = loadStripe(strK);
 
 
 const AccountForm = ({updateAccount, getAccountUpdate, history, fromServicePlan, auth:{account, loading, user}}) =>{
