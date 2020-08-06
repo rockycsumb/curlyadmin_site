@@ -26,14 +26,14 @@ const NavRoutes = ({auth: {isAuthenticated}}) => {
 				{/*<Route render={() => <Redirect to={{pathname: "/"}} />} /> */}
 				<section>
 					<Switch>
-						<Route exact path="/forgotpass" component={ForgotPassword} />
-						<Route exact path="/resetpass/:id" component={ResetPassword} />
 						<Route exact path="/home" component={Landing} />
-						<Route exact path="/login" component={Login} />
-						<Route exact path="/register" component={Register} />
 						<Route exact path="/about" component={About} />
 						<Route exact path="/services" component={Services} />
 						<Route exact path="/contact" render={(props)=><Contact {...props} />} />
+						<Route exact path="/login" component={Login} />
+						<Route exact path="/forgotpass" component={ForgotPassword} />
+						<Route exact path="/resetpass/:id" component={ResetPassword} />
+						<Route exact path="/register" component={Register} />
 						<Route exact path="/confirmation" component={Confirmation} />
 						<PrivateRoute exact path="/dashboard/overview" component={Dashboard} />
 						<Route exact path="/dashboard/login" component={()=><Redirect to="/" />} />

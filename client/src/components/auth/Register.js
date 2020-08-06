@@ -10,6 +10,10 @@ import '../../assets/css/register.css';
 // reactstrap components
 import {
   Button,
+  Modal, 
+  ModalHeader, 
+  ModalBody, 
+  ModalFooter,
   NavLink
 } from "reactstrap";
 
@@ -24,6 +28,9 @@ const Register = ({setAlert, register, isAuthenticated, history}) => {
 		privacy: ''
 	});
 	
+	const [modal, setModal] = useState(false);
+  	const toggle = () => setModal(!modal);
+	
 	const {name, email, password, password2, privacy} = formData;
 	
 	const onChange = e =>{
@@ -33,7 +40,6 @@ const Register = ({setAlert, register, isAuthenticated, history}) => {
 	const handleCheckbox = e =>{
 		setFormData({...formData, privacy: e.target.checked.toString()})
 	}
-	
 		
 	const onSubmit = async e =>{
 		e.preventDefault();		
@@ -144,6 +150,10 @@ const Register = ({setAlert, register, isAuthenticated, history}) => {
 											required
 										/>
 									</div>
+									
+									
+									
+									
 									<div className="custom-control custom-control-alternative custom-checkbox">
 									  <input
 										className="custom-control-input"
@@ -151,24 +161,33 @@ const Register = ({setAlert, register, isAuthenticated, history}) => {
 										type="checkbox"
 										name='privacy'
 										onClick={e =>handleCheckbox(e)}
-									  />	
+									  />
+										
+										
 									  <label
 										className="custom-control-label"
 										htmlFor="customCheckRegister"
 									  >
 										<span>
-										  I agree with the{" "}
-										  <a
-											href="#pablo"
-											onClick={e => e.preventDefault()}
-											className="privacyPolicy"
-										  >
-											Privacy Policy
-										  </a>
+										  I agree with the <Button onClick={toggle} color="link" className="p-0 m-0">Privacy</Button>
 										</span>
 									  </label>
 									</div>
-
+										<Modal isOpen={modal} toggle={toggle} >
+											<ModalHeader toggle={toggle}>Privacy Policy</ModalHeader>
+											<ModalBody>
+											  -Upon registering we save information into a database <br />
+								- Information is not sold <br />
+								- Tasks and communication is stored for record purposes  <br />
+								- Once a task is agreed upon it is locked and cannot be changed  <br />
+											</ModalBody>
+											<ModalFooter>
+											  <Button color="primary" onClick={toggle}>Close</Button>
+											</ModalFooter>
+										</Modal>
+									
+									
+									
 									<div className="form-group d-flex justify-content-center mt-3 mb-1">
 									  <Button
 										className="btn register-create-btn mt-4"
