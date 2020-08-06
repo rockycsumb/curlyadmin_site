@@ -22,9 +22,9 @@ import {
   Col
 } from "reactstrap";
 
-//EMAIL KEY
-const EMAIL_JS_KEY = `${process.env.REACT_APP_EMAILJS_API_KEY}`;
-const recapKey = `${process.env.REACT_APP_RECAPTCHA}`;
+//EJ U
+const EJ_U = `${process.env.REACT_APP_EJ_U}`;
+const recapU = `${process.env.REACT_APP_RECAP_U}`;
 
 const words = {
 	english: {
@@ -68,11 +68,11 @@ class Landing extends React.Component {
 	
 	handleSubmit(evt){
 		
-		// if(!this.state.isVerified) {
-		// 	this.setState({
-		// 		verifyRequired: true
-		// 	})
-		// } else {
+		if(!this.state.isVerified) {
+			this.setState({
+				verifyRequired: true
+			})
+		} else {
 			
 		evt.preventDefault();
 		const {
@@ -90,7 +90,8 @@ class Landing extends React.Component {
 		
 		var service_id = "gmail";
 		var template_id = "formpage";
-		var user_id = EMAIL_JS_KEY;
+
+		var user_id = EJ_U;
 		
 		emailjs.send(service_id, template_id, templateParams, user_id);
 		
@@ -105,7 +106,7 @@ class Landing extends React.Component {
 			state: templateParams.name
 		})
 	  }
-	// }
+	}
 	
 	verifyCallback(response){
 	  if(response){
@@ -120,7 +121,7 @@ class Landing extends React.Component {
 	  
     let languageSelected = "english";
     const {language} = this.props;
-    // console.log("lang from redux " ,language)
+    
 	
 	if(language !== undefined)
 		{
@@ -413,18 +414,20 @@ confidentiality you deserve.
                           rows="4"
                           type="textarea"
                         />
-					  </FormGroup>
-						
+
+					  </FormGroup>						
 					  {/* RECAPTCHA CODE*/}
-					  {/* RECAPTCHA CODE*/}
-					 {/*
+					  
 					  <div className="mb-3 justify-content-center row">
 						<div>
-						 <div className={this.state.verifyRequired ? `please-verify` : "please-verify-hide"}>Please verify</div>
-							 <div  className={this.state.verifyRequired ? `recaptcha-border` : ""}>
+							<div className={this.state.verifyRequired ? `please-verify` : "please-verify-hide"}>
+								Please verify
+							</div>
+							<div  className={this.state.verifyRequired ? `recaptcha-border` : ""}>
 								<div className="m-1">
-									 <Recaptcha
-										sitekey={recapKey}
+
+									<Recaptcha
+										sitekey={recapU}
 										render="explicit"
 										onloadCallback={this.recaptchaLoaded}
 										verifyCallback={this.verifyCallback}
@@ -432,9 +435,7 @@ confidentiality you deserve.
 								</div>
 							</div>
 						</div>
-					  </div>
-					  */}
-					  
+					  </div>				  
                       <div>
                         <Button
                           block
