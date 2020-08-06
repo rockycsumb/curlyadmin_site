@@ -18,6 +18,7 @@ import {
 
 //EJ U
 const EJ_U = `${process.env.REACT_APP_EJ_U}`;
+const recapU = `${process.env.REACT_APP_RECAP_U}`;
 
 class Contact extends React.Component {
 	constructor(props){
@@ -371,7 +372,7 @@ class Contact extends React.Component {
 										 <div  className={this.state.verifyRequired ? `recaptcha-border` : ""}>
 											<div className="m-1">
 												 <Recaptcha
-													sitekey="6LdN0KQZAAAAAH104p0wqY4tUhL59v_BL2q7ZCXy"
+													sitekey={recapU}
 													render="explicit"
 													onloadCallback={this.recaptchaLoaded}
 													verifyCallback={this.verifyCallback}
