@@ -16,6 +16,8 @@ import {
   Label
 } from "reactstrap";
 
+//EJ U
+const EJ_U = `${process.env.REACT_APP_EJ_U}`;
 
 class Contact extends React.Component {
 	constructor(props){
@@ -92,7 +94,7 @@ class Contact extends React.Component {
 			
 		var service_id = "default_service";
 		var template_id = "formpage";
-		var user_id = 'user_XKRqgVmkTkoqnvfTpqZSo';
+		var user_id = EJ_U;
 		
 		emailjs.send(service_id, template_id, templateParams, user_id);
 		
@@ -358,22 +360,27 @@ class Contact extends React.Component {
 								</Row>
 							   </Container>
 							 <div className="mb-3 justify-content-center row">
+								 {/*  RECAPTCHA  */}
+								 {/*  RECAPTCHA  */}
+								 
 								 
 								<div>
-								 <div className={this.state.verifyRequired ? `please-verify` : "please-verify-hide"}>Please verify</div>
-									 <div  className={this.state.verifyRequired ? `recaptcha-border` : ""}>
-										<div className="m-1">
-											 <Recaptcha
-												sitekey="6LdN0KQZAAAAAH104p0wqY4tUhL59v_BL2q7ZCXy"
-												render="explicit"
-												onloadCallback={this.recaptchaLoaded}
-												verifyCallback={this.verifyCallback}
-											  />
+									 <div className={this.state.verifyRequired ? `please-verify` : "please-verify-hide"}>
+									 Please verify
+									 </div>
+										 <div  className={this.state.verifyRequired ? `recaptcha-border` : ""}>
+											<div className="m-1">
+												 <Recaptcha
+													sitekey="6LdN0KQZAAAAAH104p0wqY4tUhL59v_BL2q7ZCXy"
+													render="explicit"
+													onloadCallback={this.recaptchaLoaded}
+													verifyCallback={this.verifyCallback}
+												  />
+											</div>
 										</div>
-									</div>
 								</div>
+								
 							  </div>
-							  
 							   <div>
 								   <Button
 									  block

@@ -22,8 +22,9 @@ import {
   Col
 } from "reactstrap";
 
-//EMAIL KEY
-const EMAIL_JS_KEY = `${process.env.REACT_APP_API_KEY}`;
+//EJ U
+const EJ_U = `${process.env.REACT_APP_EJ_U}`;
+const recapU = `${process.env.REACT_APP_RECAP_U}`;
 
 const words = {
 	english: {
@@ -67,11 +68,11 @@ class Landing extends React.Component {
 	
 	handleSubmit(evt){
 		
-		if(!this.state.isVerified) {
-			this.setState({
-				verifyRequired: true
-			})
-		} else {
+		// if(!this.state.isVerified) {
+		// 	this.setState({
+		// 		verifyRequired: true
+		// 	})
+		// } else {
 			
 		evt.preventDefault();
 		const {
@@ -88,7 +89,7 @@ class Landing extends React.Component {
 			
 		var service_id = "gmail";
 		var template_id = "formpage";
-		var user_id = 'user_XKRqgVmkTkoqnvfTpqZSo';
+		var user_id = EJ_U;
 		
 		emailjs.send(service_id, template_id, templateParams, user_id);
 		
@@ -103,7 +104,7 @@ class Landing extends React.Component {
 			state: templateParams.name
 		})
 	  }
-	}
+	// }
 	
 	verifyCallback(response){
 	  if(response){
@@ -413,14 +414,16 @@ confidentiality you deserve.
                         />
 					  </FormGroup>						
 					  {/* RECAPTCHA CODE*/}
-						
+					  
 					  <div className="mb-3 justify-content-center row">
 						<div>
-						 <div className={this.state.verifyRequired ? `please-verify` : "please-verify-hide"}>Please verify</div>
-							 <div  className={this.state.verifyRequired ? `recaptcha-border` : ""}>
+							<div className={this.state.verifyRequired ? `please-verify` : "please-verify-hide"}>
+								Please verify
+							</div>
+							<div  className={this.state.verifyRequired ? `recaptcha-border` : ""}>
 								<div className="m-1">
-									 <Recaptcha
-										sitekey="6LdN0KQZAAAAAH104p0wqY4tUhL59v_BL2q7ZCXy"
+									<Recaptcha
+										sitekey={recapU}
 										render="explicit"
 										onloadCallback={this.recaptchaLoaded}
 										verifyCallback={this.verifyCallback}
@@ -429,6 +432,7 @@ confidentiality you deserve.
 							</div>
 						</div>
 					  </div>
+					  
                       <div>
                         <Button
                           block
