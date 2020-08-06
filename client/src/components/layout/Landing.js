@@ -68,11 +68,11 @@ class Landing extends React.Component {
 	
 	handleSubmit(evt){
 		
-		// if(!this.state.isVerified) {
-		// 	this.setState({
-		// 		verifyRequired: true
-		// 	})
-		// } else {
+		if(!this.state.isVerified) {
+			this.setState({
+				verifyRequired: true
+			})
+		} else {
 			
 		evt.preventDefault();
 		const {
@@ -104,7 +104,7 @@ class Landing extends React.Component {
 			state: templateParams.name
 		})
 	  }
-	// }
+	}
 	
 	verifyCallback(response){
 	  if(response){
@@ -119,7 +119,7 @@ class Landing extends React.Component {
 	  
     let languageSelected = "english";
     const {language} = this.props;
-    // console.log("lang from redux " ,language)
+    
 	
 	if(language !== undefined)
 		{
