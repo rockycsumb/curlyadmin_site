@@ -2,7 +2,7 @@ import React, {useState} from "react";
 import {Link, Redirect} from 'react-router-dom';
 import {connect} from 'react-redux';
 import {setAlert} from '../../actions/alert';
-import {register} from '../../actions/auth';
+import {register} from '../../actions/authDemo';
 import PropTypes from 'prop-types';
 import Alert from '../layout/Alert';
 import '../../assets/css/register.css';
@@ -19,7 +19,7 @@ import {
 
 import './Auth.css';
 
-const Register = ({setAlert, register, isAuthenticated, history}) => {	
+const RegisterDemo = ({setAlert, register, isAuthenticated, history}) => {	
 	const [formData, setFormData] = useState({
 		name:'',
 		email: '',
@@ -57,12 +57,12 @@ const Register = ({setAlert, register, isAuthenticated, history}) => {
 	}
 	
 	
-	// console.log("from register page ", history.location.state);
+	console.log("from register page ", history.location.state);
 	
 	
 	//Redirect if logged login
 	if(isAuthenticated){
-		return <Redirect to="/demo/dashboard/overview" />
+		return <Redirect to="/dashboard/overview" />
 	}
 	
 	
@@ -206,7 +206,7 @@ const Register = ({setAlert, register, isAuthenticated, history}) => {
 											  <span>
 												  <NavLink
 													  className="signin"
-													  to="/demo/curlyadmin/login" 
+													  to="/login" 
 													  tag={Link}
 													  >Sign In
 												  </NavLink>
@@ -223,7 +223,7 @@ const Register = ({setAlert, register, isAuthenticated, history}) => {
     );
   }
 
-Register.propTypes = {
+RegisterDemo.propTypes = {
 	
 	setAlert: PropTypes.func.isRequired,
 	register: PropTypes.func.isRequired,
@@ -235,4 +235,4 @@ const mapStateToProps = state =>({
 	isAuthenticated: state.auth.isAuthenticated
 })
 
-export default connect(mapStateToProps, {setAlert, register})(Register);
+export default connect(mapStateToProps, {setAlert, register})(RegisterDemo);

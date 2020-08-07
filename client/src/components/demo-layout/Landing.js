@@ -68,11 +68,11 @@ class Landing extends React.Component {
 	
 	handleSubmit(evt){
 		
-		if(!this.state.isVerified) {
-			this.setState({
-				verifyRequired: true
-			})
-		} else {
+		// if(!this.state.isVerified) {
+		// 	this.setState({
+		// 		verifyRequired: true
+		// 	})
+		// } else {
 			
 		evt.preventDefault();
 		const {
@@ -102,11 +102,11 @@ class Landing extends React.Component {
 		})
 
 		this.props.history.push({
-			pathname: '/confirmation',
+			pathname: '/demo/curlyadmin/confirmation',
 			state: templateParams.name
 		})
 	  }
-	}
+	// }
 	
 	verifyCallback(response){
 	  if(response){
@@ -422,7 +422,7 @@ confidentiality you deserve.
 
 					  </FormGroup>						
 					  {/* RECAPTCHA CODE*/}
-					  
+					  {/*
 					  <div className="mb-3 justify-content-center row">
 						<div>
 							<div className={this.state.verifyRequired ? `please-verify` : "please-verify-hide"}>
@@ -440,7 +440,9 @@ confidentiality you deserve.
 								</div>
 							</div>
 						</div>
-					  </div>				  
+					  </div>
+					  */}
+					  
                       <div>
                         <Button
                           block

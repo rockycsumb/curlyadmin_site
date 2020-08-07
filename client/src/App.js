@@ -2,7 +2,7 @@ import React, {Fragment, useEffect} from 'react';
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 
 import './App.css';
-import NavRoutes from './components/routing/NavRoutes';
+import DemoRoutes from './components/demo-layout/DemoRoutes';
 
 //Redux
 import {Provider} from 'react-redux';
@@ -22,7 +22,7 @@ const App = () => {
 	
   return (
 	  <Provider store={store}>
-	  	<NavRoutes />
+	  	<DemoRoutes />
 	</Provider>
   );
 }

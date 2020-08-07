@@ -19,7 +19,7 @@ class Services extends React.Component {
 	constructor(props){
 		super(props);
 		this.state = {
-			serviceLevel: ""
+			serviceLevel: "none"
 		}
 		this.handleClick = this.handleClick.bind(this);
 	}
@@ -28,7 +28,7 @@ class Services extends React.Component {
 		evt.preventDefault();
 		this.setState({serviceLevel: evt.target.name})
 		this.props.history.push({
-			pathname: '/register',
+			pathname: '/demo/curlyadmin/register',
 			state: {service: evt.target.name, pay: true}
 		});
 	}
@@ -96,7 +96,7 @@ class Services extends React.Component {
 									   button-color-primary 
 									   btn-rollover-color-primary 
 									   card-button-text"
-							  to="/contact"
+							  to="/demo/curlyadmin/register"
 							  tag={Link}
 							  name="Basic"
 							  onClick={this.handleClick}
@@ -132,7 +132,7 @@ class Services extends React.Component {
 									   button-color-danger 
 									   btn-rollover-color-danger
 									   card-button-text"
-							  to="/contact"
+							  to="/demo/curlyadmin/register"
 							  tag={Link}
 							  name="Super"
 							  onClick={this.handleClick}
@@ -168,7 +168,7 @@ class Services extends React.Component {
 									   button-color-success 
 									   btn-rollover-color-success
 									   card-button-text"
-							  to="/contact"
+							  to="/demo/curlyadmin/register"
 							  tag={Link}
 							  name="Curly"
 							  onClick={this.handleClick}

@@ -11,9 +11,9 @@ import Confirmation from './Confirmation';
 import PageNotFound from './PageNotFound';
 import ForgotPassword from '../auth/ForgotPassword';
 import ResetPassword from '../auth/ResetPassword';
-import Login from '../auth/Login';
-import Register from '../auth/Register';
-import Dashboard from '../dashboard/Dashboard';
+import LoginDemo from '../auth/LoginDemo';
+import RegisterDemo from '../auth/RegisterDemo';
+import Dashboard from '../demo-dashboard/Dashboard';
 import PrivateRoute from '../routing/PrivateRoute';
 import Footer from "../Footers/Footer.js";
 
@@ -21,8 +21,8 @@ const NavRoutes = ({auth: {isAuthenticated}}) => {
 	return (
 		<Router>
 			<Fragment>				
-			{isAuthenticated ? <Redirect id="navbar-main" to="/dashboard/overview" /> : <NavBar />}
-						<Route exact path="/demo/curlyadmin/" component={Landing} />
+			{isAuthenticated ? <Redirect id="navbar-main" to="/demo/dashboard/overview" /> : <NavBar />}
+						
 				{/*<Route render={() => <Redirect to={{pathname: "/"}} />} /> */}
 				<section>
 					<Switch>
@@ -30,13 +30,13 @@ const NavRoutes = ({auth: {isAuthenticated}}) => {
 						<Route exact path="/demo/curlyadmin/about" component={About} />
 						<Route exact path="/demo/curlyadmin/services" component={Services} />
 						<Route exact path="/demo/curlyadmin/contact" render={(props)=><Contact {...props} />} />
-						<Route exact path="/demo/curlyadmin/login" component={Login} />
+						<Route exact path="/demo/curlyadmin/login" component={LoginDemo} />
 						<Route exact path="/demo/curlyadmin/forgotpass" component={ForgotPassword} />
 						<Route exact path="/demo/curlyadmin/resetpass/:id" component={ResetPassword} />
-						<Route exact path="/demo/curlyadmin/register" component={Register} />
+						<Route exact path="/demo/curlyadmin/register" component={RegisterDemo} />
 						<Route exact path="/demo/curlyadmin/confirmation" component={Confirmation} />
 						<PrivateRoute exact path="/demo/dashboard/overview" component={Dashboard} />
-						<Route exact path="/demo/dashboard/login" component={()=><Redirect to="/" />} />
+						<Route exact path="/demo/dashboard/login" component={()=><Redirect to="/demo/curlyadmin/" />} />
 					</Switch>
 				</section>
 				{isAuthenticated ? <Fragment /> : <Footer />}

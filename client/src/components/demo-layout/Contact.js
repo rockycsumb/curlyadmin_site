@@ -60,11 +60,11 @@ class Contact extends React.Component {
 		
 		evt.preventDefault();
 		
-		if(!this.state.isVerified) {
-			this.setState({
-				verifyRequired: true
-			})
-		} else {
+		// if(!this.state.isVerified) {
+		// 	this.setState({
+		// 		verifyRequired: true
+		// 	})
+		// } else {
 		
 		const {
 			plan,
@@ -116,11 +116,11 @@ class Contact extends React.Component {
 		})
 		
 		this.props.history.push({
-			pathname: '/confirmation',
+			pathname: '/demo/curlyadmin/confirmation',
 			state: templateParams.name
 		})
 	  }
-	}
+	// }
 	
 	 verifyCallback(response){
 	  if(response){
@@ -367,7 +367,7 @@ class Contact extends React.Component {
 								 {/*  RECAPTCHA  */}
 								 {/*  RECAPTCHA  */}
 								 
-								 
+								 {/*
 								<div>
 									 <div className={this.state.verifyRequired ? `please-verify` : "please-verify-hide"}>
 									 Please verify
@@ -383,6 +383,7 @@ class Contact extends React.Component {
 											</div>
 										</div>
 								</div>
+								*/}
 							  </div>
 							   <div>
 								   <Button

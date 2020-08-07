@@ -1,0 +1,42 @@
+.Dashboardcopy-container {
+	display: flex;
+	flex-direction: column;
+	width: 100%;
+	height: 100%;
+	/* border: solid 2px yellow; */
+}
+
+.Dashboardcopy-navbar {
+	position: fixed;
+	width: 100%;
+	height: 100px;
+	background-color: lightblue;
+}
+
+.Dashboardcopy-content {
+	width: 100%;
+	height: 100%;
+	background-color: lightgreen;
+}
+
+@media (min-width: 692px){
+	.Dashboardcopy-container {
+		flex-direction: row;
+	}
+	
+	.Dashboardcopy-navbar {
+		position: fixed;
+		width: 200px;
+		height: 100%;
+		background-color: lightblue;
+		margin-right: 1em;
+		border: 2px solid yellow;
+	}
+	
+	.Dashboardcopy-content {
+		margin-left: 200px;
+		height: 100%;
+		background-color: lightgreen;
+	}
+
+}

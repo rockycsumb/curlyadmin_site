@@ -1,0 +1,5 @@
+.dashboardProfile-alert {
+	width: 5em;
+	position: "absolute"; 
+	z-index: "3000";
+}

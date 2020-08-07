@@ -22,8 +22,9 @@ const NavRoutes = ({auth: {isAuthenticated}}) => {
 	return (
 		<Router>
 			<Fragment>				
-			{isAuthenticated ? <Redirect id="navbar-main" to="/dashboard/overview" /> : <NavBar />}
-						<Route exact path="/" component={Landing} />
+			{isAuthenticated ? <Redirect id="navbar-main" to="/demo/dashboard/overview" /> : <NavBar />}
+				
+				<Route exact path="/" component={Landing} />
 				{/*<Route render={() => <Redirect to={{pathname: "/"}} />} /> */}
 				<section>
 					<Switch>
@@ -36,8 +37,7 @@ const NavRoutes = ({auth: {isAuthenticated}}) => {
 						<Route exact path="/resetpass/:id" component={ResetPassword} />
 						<Route exact path="/register" component={Register} />
 						<Route exact path="/confirmation" component={Confirmation} />
-						<PrivateRoute exact path="/dashboard/overview" component={Dashboard} />
-						<Route exact path="/dashboard/login" component={()=><Redirect to="/" />} />
+						<PrivateRoute exact path="/demo/dashboard/overview" component={Dashboard} />
 						
 						{/* DEMO LINK */}
 						<Route exact path="/demo/curlyadmin" component={DemoRoutes} />

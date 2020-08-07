@@ -30,6 +30,12 @@ app.use('/api/auth', require('./routes/api/auth'));
 app.use('/api/profile', require('./routes/api/profile'));
 app.use('/api/task', require('./routes/api/task'));
 
+//Define Demo Routes
+app.use('/api/demo/users', require('./routes/api/usersDemo'));
+app.use('/api/demo/auth', require('./routes/api/authDemo'));
+app.use('/api/demo/profile', require('./routes/api/profileDemo'));
+app.use('/api/demo/task', require('./routes/api/taskDemo'));
+
 //Serve static assets in production
 if(process.env.NODE_ENV === 'production'){
    //Set Static folder
