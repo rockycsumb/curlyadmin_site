@@ -34,7 +34,7 @@ const NavBar = ({auth: {isAuthenticated, loading}, logout}) => {
 		<Fragment>
 			<NavItem>
 				<NavLink 
-					to="/login" 
+					to="/demo/curlyadmin/login" 
 					tag={Link}
 					onClick={toggler}
 				>
@@ -58,7 +58,7 @@ const NavBar = ({auth: {isAuthenticated, loading}, logout}) => {
 					className="dropdown-content"
 				>
 					<div className="dropdown-navbar-header ">
-						<NavbarBrand to="/" tag={Link} onClick={toggler}>
+						<NavbarBrand to="/demo/curlyadmin/" tag={Link} onClick={toggler}>
 							<span>
 								{/*<i 
 								className="fas fa-glasses" 
@@ -77,7 +77,7 @@ const NavBar = ({auth: {isAuthenticated, loading}, logout}) => {
 					<Nav vertical>
 						<NavItem>
 							<NavLink 
-								to="/" 
+								to="/demo/curlyadmin/" 
 								tag={Link}
 								onClick={toggler}
 							>
@@ -86,7 +86,7 @@ const NavBar = ({auth: {isAuthenticated, loading}, logout}) => {
 						</NavItem>
 						<NavItem>
 							<NavLink 
-								to="/services" 
+								to="/demo/curlyadmin/services" 
 								tag={Link}
 								onClick={toggler}
 							>
@@ -95,7 +95,7 @@ const NavBar = ({auth: {isAuthenticated, loading}, logout}) => {
 						</NavItem>
 						<NavItem>
 							<NavLink 
-								to="/about" 
+								to="/demo/curlyadmin/about" 
 								tag={Link}
 								onClick={toggler}
 							>
@@ -104,7 +104,7 @@ const NavBar = ({auth: {isAuthenticated, loading}, logout}) => {
 						</NavItem>
 						<NavItem>
 							<NavLink 
-								to="/contact" 
+								to="/demo/curlyadmin/contact" 
 								tag={Link}
 								onClick={toggler}
 							>
@@ -112,10 +112,9 @@ const NavBar = ({auth: {isAuthenticated, loading}, logout}) => {
 							</NavLink>
 						</NavItem>
 						
-						{/*
 						<NavItem>
 							<NavLink 
-								to="/login" 
+								to="/demo/curlyadmin/login" 
 								tag={Link}
 								onClick={toggler}
 							>
@@ -124,14 +123,13 @@ const NavBar = ({auth: {isAuthenticated, loading}, logout}) => {
 						</NavItem>
 						<NavItem>
 							<NavLink 
-								to="/register" 
+								to="/demo/curlyadmin/register" 
 								tag={Link}
 								onClick={toggler}
 							>
 								Sign Up
 							</NavLink>
 						</NavItem>
-						*/}
 						
 					</Nav>
 				  </div>
@@ -144,7 +142,7 @@ const NavBar = ({auth: {isAuthenticated, loading}, logout}) => {
 				id="navbar-main"
 				>
 				<Container>
-				<NavbarBrand to="/" tag={Link}>
+				<NavbarBrand to="/demo/curlyadmin/" tag={Link}>
 					<div className="navbarBrand">
 						<div>
 							{/*<i 
@@ -166,7 +164,7 @@ const NavBar = ({auth: {isAuthenticated, loading}, logout}) => {
 						<NavItem>
 							<NavLinkRRD
 								className="navbar-navlink"
-								to="/home" 
+								to="/demo/curlyadmin/home" 
 								activeClassName={"active-navbar"}
 								tag={Link}
 							>
@@ -177,7 +175,7 @@ const NavBar = ({auth: {isAuthenticated, loading}, logout}) => {
 						<NavItem>
 							<NavLinkRRD
 								className="navbar-navlink"
-								to="/services" 
+								to="/demo/curlyadmin/services" 
 								activeClassName={"active-navbar"}
 								tag={Link}
 							>
@@ -188,7 +186,7 @@ const NavBar = ({auth: {isAuthenticated, loading}, logout}) => {
 							<NavLinkRRD 
 								className="navbar-navlink"
 								activeClassName={"active-navbar"}
-								to="/about" 
+								to="/demo/curlyadmin/about" 
 								tag={Link}
 							>
 								About
@@ -198,20 +196,18 @@ const NavBar = ({auth: {isAuthenticated, loading}, logout}) => {
 							<NavLinkRRD 
 								className="navbar-navlink"
 								activeClassName={"active-navbar"}
-								to="/contact" 
+								to="/demo/curlyadmin/contact" 
 								tag={Link}
 							>
 								Contact
 							</NavLinkRRD>
 						</NavItem>
 						
-						{/*
-						
 						<NavItem>
 							<NavLinkRRD 
 								className="navbar-navlink pr-1"
 								activeClassName={"active-navbar"}
-								to="/Login" 
+								to="/demo/curlyadmin/Login" 
 								tag={Link}
 							>
 								Login
@@ -222,13 +218,12 @@ const NavBar = ({auth: {isAuthenticated, loading}, logout}) => {
 							<NavLinkRRD 
 								className="navbar-navlink pl-1"
 								activeClassName={"active-navbar"}
-								to="/register" 
+								to="/demo/curlyadmin/register" 
 								tag={Link}
 							>
 								Sign Up
 							</NavLinkRRD>
 						</NavItem>
-						*/}
 						
 					</Nav>
 				</Container>

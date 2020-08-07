@@ -14,6 +14,7 @@ import ResetPassword from '../auth/ResetPassword';
 import Login from '../auth/Login';
 import Register from '../auth/Register';
 import Dashboard from '../dashboard/Dashboard';
+import DemoRoutes from '../demo-layout/DemoRoutes';
 import PrivateRoute from './PrivateRoute';
 import Footer from "../Footers/Footer.js";
 
@@ -37,6 +38,9 @@ const NavRoutes = ({auth: {isAuthenticated}}) => {
 						<Route exact path="/confirmation" component={Confirmation} />
 						<PrivateRoute exact path="/dashboard/overview" component={Dashboard} />
 						<Route exact path="/dashboard/login" component={()=><Redirect to="/" />} />
+						
+						{/* DEMO LINK */}
+						<Route exact path="/demo/curlyadmin" component={DemoRoutes} />
 					</Switch>
 				</section>
 				{isAuthenticated ? <Fragment /> : <Footer />}
