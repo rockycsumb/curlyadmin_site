@@ -66,6 +66,7 @@ const NavBar = ({auth: {isAuthenticated, loading}, logout}) => {
 							</span>
 							<span className="curlyName">Curly</span>
 							<span className="adminName">ADMIN</span>
+							<span className="text-warning font-weight-bold"> -DEMO-</span>
 						</NavbarBrand>
 						<div>
 							<Button onClick={toggler} className="dropdown-toggler bg-transparent" >
@@ -151,7 +152,8 @@ const NavBar = ({auth: {isAuthenticated, loading}, logout}) => {
 						</div>
 						<div>
 								<span className="curlyName">Curly</span>
-								<span className="adminName">ADMIN</span>
+								<span className="adminName">ADMIN </span>
+								<span className="text-warning font-weight-bold">-DEMO-</span>
 						</div>
 					</div>
 				</NavbarBrand>
@@ -202,7 +204,7 @@ const NavBar = ({auth: {isAuthenticated, loading}, logout}) => {
 								Contact
 							</NavLinkRRD>
 						</NavItem>
-						
+	
 						<NavItem>
 							<NavLinkRRD 
 								className="navbar-navlink pr-1"
@@ -224,7 +226,6 @@ const NavBar = ({auth: {isAuthenticated, loading}, logout}) => {
 								Sign Up
 							</NavLinkRRD>
 						</NavItem>
-						
 					</Nav>
 				</Container>
 			</Navbar>

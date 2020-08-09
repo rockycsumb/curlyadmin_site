@@ -94,10 +94,9 @@ router.get("/allusers", auth, async (req, res)=>{
 // @desc 	Post sec stripe
 // @access 	private
 router.post("/payment_intents", auth, async (req, res)=>{
-	if (req.method === "POST") {
-		
-    try {
 	
+	if (req.method === "POST") {
+    try {
       let { amount } = req.body;
 	  let updateValue = 0;
 		

@@ -11,7 +11,7 @@ import {Elements} from '@stripe/react-stripe-js';
 import {loadStripe} from '@stripe/stripe-js';
 import CheckoutForm from '../demo-dashboard//stripeimplement/CheckoutForm';
 
-const strK = `${process.env.REACT_APP_STRIPE}`;
+const strK = `${process.env.REACT_APP_sU}`;
 
 const stripePromise = loadStripe(strK);
 

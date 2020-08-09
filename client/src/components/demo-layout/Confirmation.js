@@ -59,7 +59,7 @@ class Confirmation extends React.Component {
 								<Button
 								  outline
 								  className="btn btn-outline-dark mr-2 mb-3 mb-sm-0 shadow-sm"
-								  to="/about"
+								  to="/demo/curlyadmin/about"
 								  tag={Link}
 								>
 								  <span className="">About</span>
@@ -67,7 +67,7 @@ class Confirmation extends React.Component {
 								<Button
 								  outline
 								  className="btn btn-outline-dark mb-3 mb-sm-0 shadow-sm"
-								  to="/"
+								  to="/demo/curlyadmin/"
 								  tag={Link}
 								>
 								  <span className="">

@@ -144,11 +144,6 @@ class Landing extends React.Component {
 		 <ScrollAnimation animateIn="fadeIn">
           <section className="landing-cards">
             <Container>
-								<h1>Demo Curly</h1>
-				<h1>Demo Curly</h1>
-				<h1>Demo Curly</h1>
-
-				<h1>Demo Curly</h1>
               <Row className="justify-content-center">
                 <Col lg="12">
                   <Row className="row-grid justify-content-center">

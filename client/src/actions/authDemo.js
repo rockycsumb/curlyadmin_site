@@ -41,23 +41,25 @@ export const loadUser = () => async dispatch => {
 
 //Register User
 export const register = ({name, email, password, privacy}, history ) => async dispatch => {
+	console.log("test before reg from ", history.location.state)
 	const config = {
 		headers: {
 			'Content-type': 'application/json'
 		}
 	}
 	const body = JSON.stringify({name, email, password, privacy});
-	// if(history.location.state !== undefined || history.location.state !== null){
-		
-	// 	const fromService = {
-	// 							pay: history.location.state.pay,
-	// 							service: history.location.state.service
-	// 						}
-	// 	dispatch({
-	// 		type: FROM_SERVICE,
-	// 		payload: fromService
-	// 	});
-	// }
+	
+	if(history.location.state !== null){
+		const fromService = {
+								pay: history.location.state.pay,
+								service: history.location.state.service
+							}
+		dispatch({
+			type: FROM_SERVICE,
+			payload: fromService
+		});
+	}
+	
 	try {
 		const res = await axios.post(`${apiURL}api/demo/users`, body, config);
 		dispatch({

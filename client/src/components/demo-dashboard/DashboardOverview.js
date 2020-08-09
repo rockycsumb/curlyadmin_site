@@ -226,7 +226,7 @@ const DashboardOverview = ({
 							
 							
 							{thisUserHasNoTasksToCompleted(tasks) ? (
-								<div className="container mb-2">
+								<div className="ml-3 mb-2">
 									<Link to='/demo/dashboard/add-task' className="btn btn-info">Add Task</Link>
 								</div> 
 								) : (

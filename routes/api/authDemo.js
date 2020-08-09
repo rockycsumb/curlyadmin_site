@@ -8,9 +8,9 @@ const {check , validationResult } = require('express-validator');
 const config = require('config');
 const jwt = require('jsonwebtoken');
 const { v4: uuidv4 } = require('uuid');
-const { createUser, getUser, updateUser } = require("./passResetFunc/usersFunc");
-const { createResetRequest, getResetRequest } = require("./passResetFunc/resetRequests");
-const sendResetLink = require("./passResetFunc/sendEmail");
+const { createUser, getUser, updateUser } = require("./passResetFunc/usersFuncDemo");
+const { createResetRequest, getResetRequest } = require("./passResetFunc/resetRequestsDemo");
+const sendResetLink = require("./passResetFunc/sendEmailDemo");
 // const cors = require('cors');
 // router.use(cors());
 
@@ -20,7 +20,7 @@ const sendResetLink = require("./passResetFunc/sendEmail");
 router.get('/', auth, async (req, res)=> {
 	try {
 		const userDemo = await UserDemo.findById(req.user.id).select('-password');
-		res.json(user)
+		res.json(userDemo)
 		
 	} catch(err){
 		console.error(err.message);

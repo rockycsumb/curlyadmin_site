@@ -4,7 +4,7 @@ align-content: center;
 }
 
 .Login-card{
-	height: 400px;
+	height: 500px;
 	margin-top: auto;
 	margin-bottom: 5em;
 	width: 400px;
@@ -60,7 +60,7 @@ box-shadow: 0 0 0 0 !important;
 }
 
 .Login-card-footer {
-	padding-bottom: 90px;
+	padding-bottom: 45px;
 }
 
 .login_btn {

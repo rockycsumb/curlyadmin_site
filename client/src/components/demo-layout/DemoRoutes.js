@@ -9,8 +9,8 @@ import Services from './Services';
 import Contact from './Contact';
 import Confirmation from './Confirmation';
 import PageNotFound from './PageNotFound';
-import ForgotPassword from '../auth/ForgotPassword';
-import ResetPassword from '../auth/ResetPassword';
+import ForgotPassword from '../auth/ForgotPasswordDemo';
+import ResetPassword from '../auth/ResetPasswordDemo';
 import LoginDemo from '../auth/LoginDemo';
 import RegisterDemo from '../auth/RegisterDemo';
 import Dashboard from '../demo-dashboard/Dashboard';
@@ -26,6 +26,8 @@ const NavRoutes = ({auth: {isAuthenticated}}) => {
 				{/*<Route render={() => <Redirect to={{pathname: "/"}} />} /> */}
 				<section>
 					<Switch>
+						<Route exact path="/demo/curlyadmin" component={Landing} />
+						<Route exact path="/demo/curlyadmin/" component={Landing} />
 						<Route exact path="/demo/curlyadmin/home" component={Landing} />
 						<Route exact path="/demo/curlyadmin/about" component={About} />
 						<Route exact path="/demo/curlyadmin/services" component={Services} />
@@ -39,7 +41,6 @@ const NavRoutes = ({auth: {isAuthenticated}}) => {
 						<Route exact path="/demo/dashboard/login" component={()=><Redirect to="/demo/curlyadmin/" />} />
 					</Switch>
 				</section>
-				{isAuthenticated ? <Fragment /> : <Footer />}
 			</Fragment>	
 		</Router>
 	)

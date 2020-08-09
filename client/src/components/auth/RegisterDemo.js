@@ -62,7 +62,7 @@ const RegisterDemo = ({setAlert, register, isAuthenticated, history}) => {
 	
 	//Redirect if logged login
 	if(isAuthenticated){
-		return <Redirect to="/dashboard/overview" />
+		return <Redirect to="/demo/dashboard/overview" />
 	}
 	
 	

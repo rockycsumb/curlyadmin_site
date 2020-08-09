@@ -24,7 +24,7 @@ const ForgotPassword = () => {
             email,
         };
         axios({
-            url: `${apiURL}api/auth/forgot`,
+            url: `${apiURL}api/demo/auth/forgot`,
             data: body,
             method: "post",
         }).then(res => {

@@ -26,6 +26,12 @@ import {
 
 import './Auth.css';
 
+const dasn= `${process.env.REACT_APP_DASN}`;
+const dasp= `${process.env.REACT_APP_DASP}`;
+const dusn= `${process.env.REACT_APP_DUSN}`;
+const dusp= `${process.env.REACT_APP_DUSP}`;
+
+
 const LoginDemo = ({login, isAuthenticated}) => {
 	const [formData, setFormData] = useState({
 		email: '',
@@ -41,6 +47,11 @@ const LoginDemo = ({login, isAuthenticated}) => {
 	const onSubmit = async e =>{
 		e.preventDefault();
 		login(email, password);
+	}
+	
+	const demoSignOn = (e, emailDemo, passwordDemo) => {
+		e.preventDefault();
+		login(emailDemo, passwordDemo)
 	}
 	
 	//Redirect if logged login
@@ -71,7 +82,22 @@ const LoginDemo = ({login, isAuthenticated}) => {
 							<span><i class="fab fa-twitter-square"></i></span>*/}
 						</div>
 					</div>
+					<div className="card-header text-center">
+						<h4>Demo as a:</h4>
+						<button type="button" 
+							onClick={e => demoSignOn(e, dasn, dasp)} 
+							class="btn btn-warning mx-1">
+							Demo Admin
+						</button> 
+							or 
+						<button type="button" 
+							onClick={e => demoSignOn(e, dusn, dusp)} 
+							class="btn btn-warning mx-1">
+							Demo User
+						</button>
+					</div>
 					<div className="card-body">
+						
 						<form onSubmit={e => onSubmit(e)}>
 							<div className="input-group form-group">
 								<div className="input-group-prepend">
@@ -122,7 +148,7 @@ const LoginDemo = ({login, isAuthenticated}) => {
 							Don't have an account?
 							<NavLink 
 									className="text-secondary signup"
-									to="/register"
+									to="/demo/curlyadmin/register"
 									tag={Link}
 								  >
 									<small>Sign Up</small>
@@ -132,7 +158,7 @@ const LoginDemo = ({login, isAuthenticated}) => {
 							Forgot password? 
 							<NavLink 
 									className="text-secondary signup"
-									to="/forgotpass"
+									to="/demo/curlyadmin/forgotpass"
 									tag={Link}
 								  >
 									<small>Click Here</small>

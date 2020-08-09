@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 const TaskDemoSchema = new mongoose.Schema({
 	user: {
 		type: mongoose.Schema.Types.ObjectId,
-		ref: 'user'
+		ref: 'userDemo'
 	},
 	title: {
 		type: String,

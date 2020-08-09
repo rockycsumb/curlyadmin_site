@@ -33,8 +33,8 @@ import {
   Media
 } from "reactstrap";
 
-const stripePromise = loadStripe('pk_test_51H62FWIiuUqeL62ywTnBjodUtF9shVeMjB7UT2RYHpGCWHz8pcEO1mnt82TQX7beEnlFdpSuTsQv6uFajFzAucmG00LuyM3h41');
-
+const sU = `${process.env.REACT_APP_sU}`;
+const stripePromise = loadStripe(sU);
 
 const DashboardAccount = ({history, auth: {user, fromService, loading, users}, getAllUsers}) =>{
 
