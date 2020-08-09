@@ -42,7 +42,9 @@ const NavRoutes = ({auth: {isAuthenticated}}) => {
 						<PrivateRoute exact path="/demo/dashboard/overview" component={Dashboard} />
 						
 						{/* DEMO LINK */}
-						<Route exact path="/demo/curlyadmin" component={DemoRoutes} />
+						<Route exact path="/demo/curlyadmin/" component={DemoRoutes} />
+						<Route exact path="/demo/curlyadmin/login" component={DemoRoutes} />
+						<Route exact path="/demo/curlyadmin/resetpass/:id" component={DemoRoutes} />
 					</Switch>
 				</section>
 				{isAuthenticated ? <Fragment /> : <Footer />}

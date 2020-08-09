@@ -3,8 +3,8 @@
 require('dotenv').config();
 const sgMail = require('@sendgrid/mail');
 const apiKey = `${process.env.SG_U}`;
-// const resLink = "https://mernstack-shrnureact.run-us-west2.goorm.io/";
-const resLink = "https://curlyadmin-dev.herokuapp.com/";
+const resLink = "https://mernstack-shrnureact.run-us-west2.goorm.io/";
+// const resLink = "https://curlyadmin-dev.herokuapp.com/";
 
 
 sgMail.setApiKey(apiKey);
@@ -16,7 +16,7 @@ function sendResetLink(email, id){
 	  subject: 'Reset password instructions',
 	  html: `<p>To reset your password, please click on this link:</p><br>
 <p>This link will expire in 15 minutes</p><br>
-${resLikn}demo/curlyadmin/resetpass/${id}`,
+${resLink}demo/curlyadmin/resetpass/${id}`,
 	};
 
 	sgMail.send(msg).then(() => {
