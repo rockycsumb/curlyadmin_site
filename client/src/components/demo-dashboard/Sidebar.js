@@ -38,7 +38,8 @@ const Sidebar = ({auth: {isAuthenticated, user}, logout, props}) =>{
 								style={{fontSize: "50px", marginRight: "5px"}} />*/}
 							</span>
 							<span className="curlyName">Curly</span>
-							<span className="adminName">ADMIN</span>						  
+							<span className="adminName">ADMIN</span>
+						  <span className="text-warning font-weight-bold"> -DEMO-</span>
 						  	<div>
 								{user === null ? <Spinner /> : user.rights === "admin" ? "Admin Control" : ""}
 						  	</div>

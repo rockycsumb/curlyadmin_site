@@ -3,6 +3,7 @@ import React from "react";
 import '../../assets/css/contact.css';
 import emailjs from 'emailjs-com';
 import ScrollAnimation from 'react-animate-on-scroll';
+import Footer from "../Footers/Footer.js";
 import Recaptcha from 'react-recaptcha';
 
 // reactstrap components
@@ -404,6 +405,7 @@ class Contact extends React.Component {
 			</form>
 			</ScrollAnimation>
         </main>
+		 <Footer />
       </>
     );
   }

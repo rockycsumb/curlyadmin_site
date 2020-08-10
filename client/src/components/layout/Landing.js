@@ -6,6 +6,7 @@ import emailjs from 'emailjs-com';
 import ScrollAnimation from 'react-animate-on-scroll';
 import '../../assets/css/Landing.css';
 import Recaptcha from 'react-recaptcha';
+import Footer from "../Footers/Footer.js";
 
 // reactstrap components
 import {
@@ -459,6 +460,7 @@ confidentiality you deserve.
          </section>
         </ScrollAnimation>
         </main>
+		<Footer />
       </>
     );
   }

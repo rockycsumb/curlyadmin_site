@@ -2,8 +2,8 @@ import React, {useEffect, useState, Fragment} from "react";
 import { NavLink as NavLinkRRD, Link } from "react-router-dom";
 import {connect} from 'react-redux';
 import PropTypes from 'prop-types';
-import {logout} from '../../actions/auth';
-import '../../assets/css/Navbar.css';
+import {logout} from '../../actions/authDemo';
+import '../../assets/css/NavbarDemo.css';
 import Headroom from "headroom.js";
 import {CSSTransition} from 'react-transition-group';
 
@@ -25,7 +25,7 @@ const NavBar = ({auth: {isAuthenticated, loading}, logout}) => {
 	};
 	
 	useEffect(()=>{
-			var myElement = document.getElementById("navbar-main");
+			var myElement = document.getElementById("navbar-main-demo");
 			var headroom = new Headroom(myElement);
 			headroom.init();
 	},[]);
@@ -138,9 +138,9 @@ const NavBar = ({auth: {isAuthenticated, loading}, logout}) => {
 			</CSSTransition>
 			
 			<Navbar 
-				className="headroom fixed-top navbar-main navbar-dark bg-color"
+				className="headroom fixed-top navbar-main-demo navbar-dark bg-color"
 				expand="lg"
-				id="navbar-main"
+				id="navbar-main-demo"
 				>
 				<Container>
 				<NavbarBrand to="/demo/curlyadmin/" tag={Link}>

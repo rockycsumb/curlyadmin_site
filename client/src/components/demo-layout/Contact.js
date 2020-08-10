@@ -4,6 +4,7 @@ import '../../assets/css/contact.css';
 import emailjs from 'emailjs-com';
 import ScrollAnimation from 'react-animate-on-scroll';
 import Recaptcha from 'react-recaptcha';
+import Footer from "../demo-footer/Footer.js";
 
 // reactstrap components
 import {
@@ -44,6 +45,10 @@ class Contact extends React.Component {
 		this.handleSubmit = this.handleSubmit.bind(this);
 		this.recaptchaLoaded = this.recaptchaLoaded.bind(this);
 		this.verifyCallback = this.verifyCallback.bind(this);
+	}
+	
+	componentDidMount() {
+	  window.scrollTo(0, 0)
 	}
 	
 	handleChange(evt){
@@ -405,6 +410,7 @@ class Contact extends React.Component {
 			</form>
 			</ScrollAnimation>
         </main>
+		 <Footer />
       </>
     );
   }

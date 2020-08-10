@@ -129,11 +129,10 @@ const TaskForm = ({addTask, history, auth:{user, loading}}) =>{
 									  </div>
 									
 									<hr className="my-4" />
-									<div class="form-group row">
-									  <label htmlFor="input-deadlinedate" class="col-2 col-form-label">
+									<div class="form-group">
+									  <label htmlFor="input-deadlinedate">
 										  Deadline Date
 									  </label>
-									  <div class="col-10">
 										<input 
 											class="form-control"
 											id="input-deadlinedate"
@@ -144,7 +143,6 @@ const TaskForm = ({addTask, history, auth:{user, loading}}) =>{
 											onChange={e => onChange(e)}
 											required
 										/>
-									  </div>
 									</div>
 									<hr className="my-4" />	
 							</form>

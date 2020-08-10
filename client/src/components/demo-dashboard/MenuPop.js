@@ -55,6 +55,7 @@ export const MenuPop = ({isCollapse, setMenuCollapse, logout}) =>{
 						</span>
 						<span className="curlyName">Curly</span>
 						<span className="adminName">ADMIN</span>
+						<span className="text-warning font-weight-bold"> -DEMO-</span>
 					</NavbarBrand>
 					<div>
 						<Button onClick={toggler} className="dropdown-toggler bg-transparent" >

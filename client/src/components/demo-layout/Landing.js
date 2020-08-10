@@ -6,6 +6,7 @@ import emailjs from 'emailjs-com';
 import ScrollAnimation from 'react-animate-on-scroll';
 import '../../assets/css/Landing.css';
 import Recaptcha from 'react-recaptcha';
+import Footer from "../demo-footer/Footer.js";
 
 // reactstrap components
 import {
@@ -55,7 +56,11 @@ class Landing extends React.Component {
 		this.recaptchaLoaded = this.recaptchaLoaded.bind(this);
 		this.verifyCallback = this.verifyCallback.bind(this);
 	}
-
+	
+	componentDidMount() {
+	  window.scrollTo(0, 0)
+	}
+	
 	handleChange(evt){
 		this.setState({
 			[evt.target.name]: evt.target.value
@@ -176,7 +181,7 @@ class Landing extends React.Component {
 									   btn-rollover-color-primary
 									   font-weight-bold
 									   py-2 px-4"
-							to="/services"
+							to="/demo/curlyadmin/services"
 							tag={Link}
                           >
 							   Learn more                   
@@ -215,7 +220,7 @@ class Landing extends React.Component {
 									   btn-rollover-color-success
 									   font-weight-bold
 									   py-2 px-4"
-                        	to="/services"
+                        	to="/demo/curlyadmin/services"
 							tag={Link}
                           >
 							   Learn more                   
@@ -251,7 +256,7 @@ class Landing extends React.Component {
 									   btn-rollover-color-danger
 									   font-weight-bold
 									   py-2 px-4"
-                          	to="/services"
+                          	to="/demo/curlyadmin/services"
 							tag={Link}
                           >
 							   Learn more                   
@@ -295,7 +300,7 @@ class Landing extends React.Component {
 									   btn-rollover-color-primary
 									   font-weight-bold
 									   py-2 px-4"
-							to="/services"
+							to="/demo/curlyadmin/services"
 							tag={Link}
                           >
 							   Learn more                   
@@ -336,7 +341,7 @@ confidentiality you deserve.
 									   btn-rollover-color-danger
 									   font-weight-bold
 									   py-2 px-4"
-								to="/services"
+								to="/demo/curlyadmin/services"
 								tag={Link}
 							 >
 							   Learn more                   
@@ -461,6 +466,7 @@ confidentiality you deserve.
          </section>
         </ScrollAnimation>
         </main>
+		<Footer />
       </>
     );
   }

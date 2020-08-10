@@ -1,10 +1,15 @@
 import React from "react";
 import ScrollAnimation from 'react-animate-on-scroll';
 import '../../assets/css/about.css';
+import Footer from "../demo-footer/Footer.js";
 
 // reactstrap components
 class About extends React.Component {
+	componentDidMount() {
+	  window.scrollTo(0, 0)
+	}
    render() {
+	   
     return (
       <>
         <main ref="main" className="services-background">
@@ -88,6 +93,7 @@ class About extends React.Component {
 			</div>
 			</section>
         </main>
+		<Footer />
       </>
     );
   }

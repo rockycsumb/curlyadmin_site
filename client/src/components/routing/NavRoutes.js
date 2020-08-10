@@ -1,5 +1,5 @@
 import React, {Fragment} from 'react';
-import {BrowserRouter as Router, Route, Switch, Redirect} from 'react-router-dom';
+import {BrowserRouter as Router, Route, Switch, Redirect,} from 'react-router-dom';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 import NavBar from '../layout/Navbar';
@@ -19,7 +19,7 @@ import DemoHome from '../demo-layout/Landing';
 import PrivateRoute from './PrivateRoute';
 import Footer from "../Footers/Footer.js";
 
-const NavRoutes = ({auth: {isAuthenticated}}) => {
+const NavRoutes = ({auth: {isAuthenticated}, location}) => {
 	return (
 		<Router>
 			<Fragment>				
@@ -47,7 +47,10 @@ const NavRoutes = ({auth: {isAuthenticated}}) => {
 						<Route exact path="/demo/curlyadmin/resetpass/:id" component={DemoRoutes} />
 					</Switch>
 				</section>
+				
+				{/*
 				{isAuthenticated ? <Fragment /> : <Footer />}
+				*/}
 			</Fragment>	
 		</Router>
 	)

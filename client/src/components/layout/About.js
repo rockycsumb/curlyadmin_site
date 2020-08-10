@@ -1,5 +1,6 @@
 import React from "react";
 import ScrollAnimation from 'react-animate-on-scroll';
+import Footer from "../Footers/Footer.js";
 import '../../assets/css/about.css';
 
 // reactstrap components
@@ -88,6 +89,7 @@ class About extends React.Component {
 			</div>
 			</section>
         </main>
+		<Footer />
       </>
     );
   }

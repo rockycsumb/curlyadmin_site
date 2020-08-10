@@ -15,7 +15,7 @@ import LoginDemo from '../auth/LoginDemo';
 import RegisterDemo from '../auth/RegisterDemo';
 import Dashboard from '../demo-dashboard/Dashboard';
 import PrivateRoute from '../routing/PrivateRoute';
-import Footer from "../Footers/Footer.js";
+
 
 const NavRoutes = ({auth: {isAuthenticated}}) => {
 	return (

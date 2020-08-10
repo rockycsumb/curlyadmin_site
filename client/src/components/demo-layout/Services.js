@@ -1,6 +1,6 @@
 import React from "react";
 import {Link, withRouter} from 'react-router-dom';
-import Footer from '../Footers/Footer.js';
+import Footer from '../demo-footer/Footer.js';
 import '../../assets/css/Services.css';
 import ScrollAnimation from 'react-animate-on-scroll';
 
@@ -22,6 +22,10 @@ class Services extends React.Component {
 			serviceLevel: "none"
 		}
 		this.handleClick = this.handleClick.bind(this);
+	}
+	
+	componentDidMount() {
+	  window.scrollTo(0, 0)
 	}
 	
 	handleClick(evt){
@@ -185,7 +189,7 @@ class Services extends React.Component {
             </Container>
           </section>
         </main>
-
+		<Footer />
       </>
     );
   }

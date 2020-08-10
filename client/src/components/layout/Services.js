@@ -185,7 +185,7 @@ class Services extends React.Component {
             </Container>
           </section>
         </main>
-
+		<Footer />
       </>
     );
   }
