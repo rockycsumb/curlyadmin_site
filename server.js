@@ -15,7 +15,7 @@ connectDB();
 
 // Init Middleware
 app.use(express.json({extended: false}));
-app.use(cors({origin: 'https://curlyadmin.com'}))
+app.use(cors({origin: 'https://www.curlyadmin.com'}))
 // app.use(cors({origin: 'https://mernstack-shrnureact.run-us-west2.goorm.io'}))
 
 
