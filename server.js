@@ -15,7 +15,7 @@ connectDB();
 
 // Init Middleware
 app.use(express.json({extended: false}));
-app.use(cors({origin: 'https://mernstack-shrnureact.run-us-west2.goorm.io'}))
+app.use(cors({origin: 'https://curlyadmin.com'}))
 
 
 //before deploy to heroku notes
