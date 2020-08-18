@@ -3,9 +3,9 @@
 require('dotenv').config();
 const sgMail = require('@sendgrid/mail');
 const apiKey = `${process.env.SG_U}`;
-const resLink = "https://mernstack-shrnureact.run-us-west2.goorm.io/";
+// const resLink = "https://mernstack-shrnureact.run-us-west2.goorm.io/";
 // const resLink = "https://curlyadmin-dev.herokuapp.com/";
-
+const resLink = "https://www.curlyadmin.com/";
 
 sgMail.setApiKey(apiKey);
 
