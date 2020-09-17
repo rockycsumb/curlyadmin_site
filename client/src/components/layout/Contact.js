@@ -178,6 +178,7 @@ class Contact extends React.Component {
 									  <option value="Basic" >Basic $35</option>
 									  <option value="Super" >Super $90</option>
 									  <option value="Curly" >Curly $150</option>
+									  <option value="ITsupport" >IT Support</option>
 									  <option value="One-time" >One-time $8.00/Request</option>
 									</Input>
 								  </FormGroup>
