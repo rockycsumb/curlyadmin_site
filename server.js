@@ -15,8 +15,7 @@ connectDB();
 
 // Init Middleware
 app.use(express.json({extended: false}));
-app.use(cors({origin: 'https://mernstack-shrnureact.run-us-west2.goorm.io'}))
-
+app.use(cors({origin: 'https://mernstackTEST-shrnureact.run-us-west2.goorm.io'}))
 
 //before deploy to heroku notes
 // commented out app.get (below), and added //Serve static assets, also added const path = require('path)
