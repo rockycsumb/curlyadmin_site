@@ -110,7 +110,7 @@ const LoginDemo = ({login, isAuthenticated}) => {
 									name='email'
 									value={email}
 									onChange={e => onChange(e)}
-									required
+									
 								/>
 
 							</div>
@@ -126,8 +126,7 @@ const LoginDemo = ({login, isAuthenticated}) => {
 									name='password'
 									value={password}
 									onChange={e =>onChange(e)}
-									minLength='7'
-									required
+									
 								/>
 							</div>
 
