@@ -26,10 +26,7 @@ import {
 
 import './Auth.css';
 
-const dasn= `${process.env.REACT_APP_DASN}`;
-const dasp= `${process.env.REACT_APP_DASP}`;
-const dusn= `${process.env.REACT_APP_DUSN}`;
-const dusp= `${process.env.REACT_APP_DUSP}`;
+
 
 
 const LoginDemo = ({login, isAuthenticated}) => {
@@ -85,13 +82,13 @@ const LoginDemo = ({login, isAuthenticated}) => {
 					<div className="card-header text-center">
 						<h4>Demo as a:</h4>
 						<button type="button" 
-							onClick={e => demoSignOn(e, dasn, dasp)} 
+							onClick={e => demoSignOn(e, "demoAdmin@demoAdmin.com", "demoAdmin")} 
 							class="btn btn-warning mx-1">
 							Demo Admin
 						</button> 
 							or 
 						<button type="button" 
-							onClick={e => demoSignOn(e, dusn, dusp)} 
+							onClick={e => demoSignOn(e, "demoUser@demoUser.com", "demoUser")} 
 							class="btn btn-warning mx-1">
 							Demo User
 						</button>
